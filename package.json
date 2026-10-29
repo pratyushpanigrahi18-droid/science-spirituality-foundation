@@ -9,7 +9,7 @@
     "starter"
   ],
   "main": "src/index.tsx",
-  "homepage": "/science-spirituality-foundation",
+  "homepage": "https://scienceandspiritualityfoundation.org",
   "dependencies": {
     "loader-utils": "3.2.1",
     "react": "18.2.0",
