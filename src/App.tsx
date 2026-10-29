@@ -15,7 +15,9 @@ import { servicePages } from "./Component/serviceData.ts";
 import "./styles.css";
 
 export default function App() {
-  const [currentPath, setCurrentPath] = useState(window.location.pathname);
+  const [currentPath, setCurrentPath] = useState(
+    window.location.pathname
+  );
 
   useEffect(() => {
     const handleNavigation = () => {
@@ -66,6 +68,7 @@ export default function App() {
         <Hero />
         <About />
         <Services />
+        <Booking />
         <Contact />
       </main>
       <Footer />
