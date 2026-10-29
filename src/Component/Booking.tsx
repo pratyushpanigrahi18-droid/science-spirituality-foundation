@@ -4,8 +4,26 @@ const WHATSAPP_NUMBER = "918328909832";
 
 const Booking: React.FC = () => {
   const [selectedSessionType, setSelectedSessionType] = useState("");
-
   const [selectedService, setSelectedService] = useState("");
+  const [selectedPLRConcerns, setSelectedPLRConcerns] = useState<string[]>([]);
+
+  const plrConcerns = [
+    "Repeating Problems in Life",
+    "Relationship Difficulties",
+    "Recurring Physical Pain or Discomfort",
+    "Mental and Emotional Disturbances",
+    "Fears and Phobias",
+    "Anxiety and Insecurity",
+    "Emotional Triggers",
+    "Feeling Stuck in Life",
+    "Attachment and Difficulty Letting Go",
+    "Self-Worth and Confidence",
+    "Unexplained Connections or Familiarity",
+    "Recurring Dreams or Inner Imagery",
+    "Childhood or Early-Life Experiences",
+    "Spiritual Exploration and Curiosity",
+    "Other Personal Concern",
+  ];
 
   const selectSessionType = (sessionType: string) => {
     setSelectedSessionType(sessionType);
@@ -26,7 +44,9 @@ const Booking: React.FC = () => {
     }, 100);
   };
 
-  const handleWhatsAppBooking = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleWhatsAppBooking = (
+    event: React.FormEvent<HTMLFormElement>
+  ) => {
     event.preventDefault();
 
     const form = event.currentTarget;
@@ -43,8 +63,9 @@ const Booking: React.FC = () => {
       form.elements.namedItem("phone") as HTMLInputElement
     )?.value.trim();
 
-    const service = (form.elements.namedItem("service") as HTMLSelectElement)
-      ?.value;
+    const service = (
+      form.elements.namedItem("service") as HTMLSelectElement
+    )?.value;
 
     const sessionType = (
       form.elements.namedItem("sessionType") as HTMLSelectElement
@@ -63,6 +84,12 @@ Email: ${email || "Not provided"}
 Phone / WhatsApp: ${phone || "Not provided"}
 Service: ${service || "Not selected"}
 Session Type: ${sessionType || "Not selected"}
+${
+  service === "Past Life Regression" &&
+  selectedPLRConcerns.length > 0
+    ? `PLR areas to explore: ${selectedPLRConcerns.join(", ")}`
+    : ""
+}
 
 My requirements:
 ${message || "I would like to discuss my requirements."}
@@ -82,10 +109,6 @@ Thank you.`;
     <section id="booking" className="booking-section">
       <style>
         {`
-          /* =====================================================
-             BOOKING OPTIONS
-             ===================================================== */
-
           .booking-section .booking-option {
             cursor: pointer;
             position: relative;
@@ -117,31 +140,71 @@ Thank you.`;
             letter-spacing: 0.3px;
           }
 
-          /* =====================================================
-             FORM SELECTED STATE
-             ===================================================== */
-
           .booking-section .booking-form-card {
             scroll-margin-top: 100px;
           }
 
-          /* =====================================================
-             MOBILE
-             ===================================================== */
+          .booking-section .plr-concerns-group {
+            margin-top: 18px;
+          }
+
+          .booking-section .plr-concerns-intro {
+            margin: 6px 0 14px;
+            color: #68616f;
+            font-size: 0.92rem;
+            line-height: 1.55;
+          }
+
+          .booking-section .plr-concerns-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 10px;
+          }
+
+          .booking-section .plr-concern-option {
+            display: flex;
+            align-items: flex-start;
+            gap: 9px;
+            padding: 12px;
+            border: 1px solid rgba(112, 79, 145, 0.18);
+            border-radius: 10px;
+            background: #fff;
+            cursor: pointer;
+            line-height: 1.4;
+            font-size: 0.92rem;
+          }
+
+          .booking-section .plr-concern-option.selected {
+            border-color: #c9a65a;
+            background: rgba(201, 166, 90, 0.10);
+          }
+
+          .booking-section .plr-concern-option input {
+            margin-top: 3px;
+            accent-color: #8b6b2e;
+            flex: 0 0 auto;
+          }
+
+          .booking-section .plr-concerns-disclaimer {
+            margin-top: 14px;
+            color: #68616f;
+            font-size: 0.82rem;
+            line-height: 1.6;
+          }
 
           @media (max-width: 600px) {
             .booking-section .booking-option-hint {
               font-size: 11px;
+            }
+
+            .booking-section .plr-concerns-grid {
+              grid-template-columns: 1fr;
             }
           }
         `}
       </style>
 
       <div className="booking-container">
-        {/* =====================================================
-            LEFT SIDE
-            ===================================================== */}
-
         <div className="booking-intro">
           <p className="section-tag">BOOK A SESSION</p>
 
@@ -155,16 +218,12 @@ Thank you.`;
             consultation or enquire about a session that suits your needs.
           </p>
 
-          {/* =================================================
-              CLICKABLE SESSION OPTIONS
-              ================================================= */}
-
           <div className="booking-options">
-            {/* FREE CONSULTATION */}
-
             <div
               className={`booking-option ${
-                selectedSessionType === "Free Consultation" ? "selected" : ""
+                selectedSessionType === "Free Consultation"
+                  ? "selected"
+                  : ""
               }`}
               role="button"
               tabIndex={0}
@@ -172,7 +231,6 @@ Thank you.`;
               onKeyDown={(event) => {
                 if (event.key === "Enter" || event.key === " ") {
                   event.preventDefault();
-
                   selectSessionType("Free Consultation");
                 }
               }}
@@ -181,7 +239,6 @@ Thank you.`;
 
               <div>
                 <h3>Free Consultation</h3>
-
                 <p>
                   A complimentary initial conversation to understand your
                   requirements and help you explore the available options.
@@ -195,8 +252,6 @@ Thank you.`;
               </div>
             </div>
 
-            {/* ONLINE ZOOM */}
-
             <div
               className={`booking-option ${
                 selectedSessionType === "Online Session — Zoom"
@@ -209,7 +264,6 @@ Thank you.`;
               onKeyDown={(event) => {
                 if (event.key === "Enter" || event.key === " ") {
                   event.preventDefault();
-
                   selectSessionType("Online Session — Zoom");
                 }
               }}
@@ -218,7 +272,6 @@ Thank you.`;
 
               <div>
                 <h3>Online Sessions — Zoom</h3>
-
                 <p>
                   Convenient sessions conducted online through Zoom, allowing
                   you to connect from wherever you are.
@@ -232,8 +285,6 @@ Thank you.`;
               </div>
             </div>
 
-            {/* OFFLINE CENTRES */}
-
             <div
               className={`booking-option ${
                 selectedSessionType === "Offline Session — Our Centre"
@@ -242,11 +293,12 @@ Thank you.`;
               }`}
               role="button"
               tabIndex={0}
-              onClick={() => selectSessionType("Offline Session — Our Centre")}
+              onClick={() =>
+                selectSessionType("Offline Session — Our Centre")
+              }
               onKeyDown={(event) => {
                 if (event.key === "Enter" || event.key === " ") {
                   event.preventDefault();
-
                   selectSessionType("Offline Session — Our Centre");
                 }
               }}
@@ -255,13 +307,13 @@ Thank you.`;
 
               <div>
                 <h3>Offline Sessions — Our Centres</h3>
-
                 <p>
-                  In-person sessions available at our designated centres. Centre
-                  details and timings will be shared during enquiry.
+                  In-person sessions available at our designated centres.
+                  Centre details and timings will be shared during enquiry.
                 </p>
 
-                {selectedSessionType === "Offline Session — Our Centre" && (
+                {selectedSessionType ===
+                  "Offline Session — Our Centre" && (
                   <span className="booking-option-hint">
                     Selected — complete the enquiry →
                   </span>
@@ -270,50 +322,38 @@ Thank you.`;
             </div>
           </div>
 
-          {/* =================================================
-              BOOKING PROCESS
-              ================================================= */}
-
           <div className="booking-highlights">
             <div className="booking-step">
               <strong>01</strong>
-
               <div>
                 <span>Choose</span>
-
                 <p>Select a service and your preferred session type.</p>
               </div>
             </div>
 
             <div className="booking-step">
               <strong>02</strong>
-
               <div>
                 <span>Connect</span>
-
                 <p>Share your requirements with us through WhatsApp.</p>
               </div>
             </div>
 
             <div className="booking-step">
               <strong>03</strong>
-
               <div>
                 <span>Confirm</span>
-
                 <p>We will discuss available timings and the next steps.</p>
               </div>
             </div>
           </div>
         </div>
 
-        {/* =====================================================
-            RIGHT SIDE — BOOKING FORM
-            ===================================================== */}
-
         <div className="booking-form-card">
           <div className="booking-form-header">
-            <p className="form-eyebrow">FREE CONSULTATION & SESSION ENQUIRY</p>
+            <p className="form-eyebrow">
+              FREE CONSULTATION & SESSION ENQUIRY
+            </p>
 
             <h3>Tell Us How We Can Help</h3>
 
@@ -324,8 +364,6 @@ Thank you.`;
           </div>
 
           <form className="booking-form" onSubmit={handleWhatsAppBooking}>
-            {/* NAME + EMAIL */}
-
             <div className="form-row">
               <div className="form-group">
                 <label htmlFor="name">
@@ -353,8 +391,6 @@ Thank you.`;
               </div>
             </div>
 
-            {/* PHONE + SERVICE */}
-
             <div className="form-row">
               <div className="form-group">
                 <label htmlFor="phone">
@@ -379,7 +415,14 @@ Thank you.`;
                   id="service"
                   name="service"
                   value={selectedService}
-                  onChange={(event) => setSelectedService(event.target.value)}
+                  onChange={(event) => {
+                    const nextService = event.target.value;
+                    setSelectedService(nextService);
+
+                    if (nextService !== "Past Life Regression") {
+                      setSelectedPLRConcerns([]);
+                    }
+                  }}
                   required
                 >
                   <option value="" disabled>
@@ -387,7 +430,6 @@ Thank you.`;
                   </option>
 
                   <option value="Reiki Healing">Reiki Healing</option>
-
                   <option value="Dowsing">Dowsing</option>
 
                   <option value="Past Life Regression">
@@ -395,11 +437,8 @@ Thank you.`;
                   </option>
 
                   <option value="Chakra Wellness">Chakra Wellness</option>
-
                   <option value="Spiritual Wellness">Spiritual Wellness</option>
-
                   <option value="Meditation">Meditation</option>
-
                   <option value="Manifestation">Manifestation</option>
 
                   <option value="Fingerprint Analysis">
@@ -407,13 +446,56 @@ Thank you.`;
                   </option>
 
                   <option value="Free Consultation">Free Consultation</option>
-
                   <option value="General Enquiry">General Enquiry</option>
                 </select>
               </div>
             </div>
 
-            {/* SESSION TYPE */}
+            {selectedService === "Past Life Regression" && (
+              <div className="form-group plr-concerns-group">
+                <label>What Would You Like to Explore?</label>
+
+                <p className="plr-concerns-intro">
+                  Select one or more areas that best describe what you would
+                  like to discuss.
+                </p>
+
+                <div className="plr-concerns-grid">
+                  {plrConcerns.map((concern) => {
+                    const checked = selectedPLRConcerns.includes(concern);
+
+                    return (
+                      <label
+                        key={concern}
+                        className={`plr-concern-option ${
+                          checked ? "selected" : ""
+                        }`}
+                      >
+                        <input
+                          type="checkbox"
+                          checked={checked}
+                          onChange={() => {
+                            setSelectedPLRConcerns((current) =>
+                              checked
+                                ? current.filter((item) => item !== concern)
+                                : [...current, concern]
+                            );
+                          }}
+                        />
+
+                        <span>{concern}</span>
+                      </label>
+                    );
+                  })}
+                </div>
+
+                <p className="plr-concerns-disclaimer">
+                  PLR is an exploratory practice. It cannot establish the
+                  cause of physical pain or mental-health symptoms and is not
+                  a substitute for appropriate medical or mental-health care.
+                </p>
+              </div>
+            )}
 
             <div className="form-group">
               <label htmlFor="sessionType">
@@ -424,14 +506,18 @@ Thank you.`;
                 id="sessionType"
                 name="sessionType"
                 value={selectedSessionType}
-                onChange={(event) => setSelectedSessionType(event.target.value)}
+                onChange={(event) =>
+                  setSelectedSessionType(event.target.value)
+                }
                 required
               >
                 <option value="" disabled>
                   Select session type
                 </option>
 
-                <option value="Free Consultation">Free Consultation</option>
+                <option value="Free Consultation">
+                  Free Consultation
+                </option>
 
                 <option value="Online Session — Zoom">
                   Online Session — Zoom
@@ -443,10 +529,10 @@ Thank you.`;
               </select>
             </div>
 
-            {/* REQUIREMENTS */}
-
             <div className="form-group">
-              <label htmlFor="message">Tell Us About Your Requirements</label>
+              <label htmlFor="message">
+                Tell Us About Your Requirements
+              </label>
 
               <textarea
                 id="message"
@@ -455,8 +541,6 @@ Thank you.`;
                 placeholder="Briefly tell us what you would like to explore or understand..."
               />
             </div>
-
-            {/* BUTTON */}
 
             <div className="booking-form-actions">
               <button
@@ -467,8 +551,6 @@ Thank you.`;
                 Enquire Through WhatsApp
               </button>
             </div>
-
-            {/* NOTE */}
 
             <p className="booking-form-note">
               Your enquiry will open in WhatsApp with the details you provide.
