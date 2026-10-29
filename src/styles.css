@@ -1576,3 +1576,271 @@ section {
     line-height: 1.75;
   }
 }
+
+/* =========================================================
+   HOMEPAGE: LIGHT LAYOUT WITH BOOKING LEFT AND SSF BANNER RIGHT
+   ========================================================= */
+
+.ssf-home-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  align-items: start;
+  gap: 36px;
+  width: 100%;
+  padding: 34px clamp(24px, 4vw, 64px) 0;
+  background: #faf8f2;
+  color: #26352c;
+}
+
+.ssf-home-left {
+  min-width: 0;
+  width: 100%;
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.ssf-home-intro {
+  padding: 28px 0 0;
+  background: transparent;
+  color: #26352c;
+}
+
+.ssf-home-intro .hero-tagline {
+  margin: 0 0 16px;
+  color: #92743a;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  line-height: 1.8;
+  text-transform: uppercase;
+}
+
+.ssf-home-intro h1 {
+  max-width: 680px;
+  margin: 0;
+  color: #173f2a;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(38px, 4vw, 58px);
+  font-weight: 500;
+  line-height: 1.12;
+}
+
+.ssf-home-intro h1 span {
+  color: #b89a5a;
+}
+
+.ssf-home-intro .hero-description {
+  max-width: 620px;
+  margin: 20px 0 0;
+  color: #68736c;
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+.ssf-home-intro .hero-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.ssf-home-intro .hero-button.primary {
+  background: #b89a5a;
+  color: #ffffff;
+}
+
+.ssf-home-intro .hero-button.secondary {
+  border: 1px solid #173f2a;
+  color: #173f2a;
+}
+
+.ssf-home-intro .hero-button.secondary:hover {
+  background: #e9f0e9;
+}
+
+/* Show the supplied banner as a real image, without text overlays. */
+.ssf-home-banner {
+  position: sticky;
+  top: 100px;
+  align-self: start;
+  min-width: 0;
+  width: 100%;
+  padding-top: 20px;
+}
+
+.ssf-home-banner img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: calc(100vh - 130px);
+  object-fit: contain;
+  object-position: top center;
+  border-radius: 4px;
+}
+
+/* Keep the existing booking form, but restyle it for the light layout. */
+.ssf-home-layout .booking-section {
+  width: 100%;
+  padding: 36px 0 60px;
+  background: transparent !important;
+  color: #26352c !important;
+}
+
+.ssf-home-layout .booking-container {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 26px;
+  width: 100%;
+  max-width: none;
+  margin: 0;
+}
+
+.ssf-home-layout .booking-intro {
+  padding: 0;
+}
+
+.ssf-home-layout .booking-section h2 {
+  color: #173f2a;
+  font-size: clamp(32px, 3vw, 43px);
+}
+
+.ssf-home-layout .booking-section h2 span {
+  color: #b89a5a;
+}
+
+.ssf-home-layout .booking-intro-text {
+  color: #68736c;
+  font-size: 15px;
+}
+
+.ssf-home-layout .booking-highlights {
+  margin-top: 26px;
+  gap: 14px;
+}
+
+.ssf-home-layout .booking-step {
+  padding-bottom: 14px;
+  border-bottom-color: rgba(23, 63, 42, 0.14);
+}
+
+.ssf-home-layout .booking-step strong {
+  color: #92743a;
+}
+
+.ssf-home-layout .booking-step span {
+  color: #173f2a;
+}
+
+.ssf-home-layout .booking-step p {
+  color: #68736c;
+}
+
+.ssf-home-layout .booking-options {
+  color: #26352c;
+}
+
+.ssf-home-layout .booking-option {
+  border-color: rgba(23, 63, 42, 0.15);
+}
+
+.ssf-home-layout .booking-option h3 {
+  color: #173f2a;
+}
+
+.ssf-home-layout .booking-option p {
+  color: #68736c;
+}
+
+.ssf-home-layout .booking-form-card {
+  width: 100%;
+  min-width: 0;
+  padding: clamp(20px, 3vw, 34px);
+  background: #ffffff;
+  border: 1px solid rgba(23, 63, 42, 0.12);
+  border-radius: 10px;
+  box-shadow: 0 12px 35px rgba(13, 47, 32, 0.08);
+  color: #26352c;
+}
+
+.ssf-home-layout .booking-form-header h3 {
+  color: #173f2a;
+  font-size: clamp(25px, 2.4vw, 30px);
+}
+
+.ssf-home-layout .booking-form-header p:last-child {
+  color: #68736c;
+}
+
+.ssf-home-layout .booking-form-note {
+  color: #68736c;
+}
+
+.ssf-home-layout .booking-form .form-row {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 14px;
+}
+
+/* Tablet and mobile: stack content first, banner below it. */
+@media (max-width: 900px) {
+  .ssf-home-layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 10px;
+    padding: 20px 24px 0;
+  }
+
+  .ssf-home-left {
+    max-width: 760px;
+  }
+
+  .ssf-home-banner {
+    position: static;
+    grid-row: 1;
+    padding-top: 0;
+    margin-bottom: 10px;
+  }
+
+  .ssf-home-banner img {
+    width: 100%;
+    max-height: none;
+  }
+
+  .ssf-home-intro {
+    padding-top: 18px;
+  }
+
+  .ssf-home-layout .booking-section {
+    padding-bottom: 40px;
+  }
+}
+
+@media (max-width: 600px) {
+  .ssf-home-layout {
+    padding: 12px 16px 0;
+  }
+
+  .ssf-home-intro h1 {
+    font-size: clamp(35px, 9vw, 46px);
+  }
+
+  .ssf-home-intro .hero-buttons {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .ssf-home-intro .hero-button {
+    width: 100%;
+  }
+
+  .ssf-home-layout .booking-form-card {
+    padding: 22px 17px;
+  }
+
+  .ssf-home-layout .booking-form .form-row {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+  }
+
+  .ssf-home-layout .booking-section {
+    padding-top: 28px;
+  }
+}
