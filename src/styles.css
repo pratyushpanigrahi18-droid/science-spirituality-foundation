@@ -142,17 +142,16 @@ select {
     linear-gradient(
       90deg,
       #0d2f20 0%,
-      #0d2f20 48%,
-      rgba(13, 47, 32, 0.96) 58%,
-      rgba(13, 47, 32, 0.75) 70%,
-      rgba(13, 47, 32, 0.25) 88%,
-      rgba(13, 47, 32, 0.12) 100%
+      rgba(13, 47, 32, 0.96) 42%,
+      rgba(13, 47, 32, 0.65) 65%,
+      rgba(13, 47, 32, 0.15) 100%
     ),
-    url("../public/ssf-banner.png");
+    url("/ssf-landscape.jpg");
 
-  background-size: 100% 100%, auto 100%;
-  background-position: center, right center;
+  background-size: cover;
+  background-position: center;
   background-repeat: no-repeat;
+
   color: #ffffff;
 }
 
