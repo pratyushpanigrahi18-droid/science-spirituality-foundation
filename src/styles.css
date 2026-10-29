@@ -1,35 +1,20 @@
-/* =========================================================
-   SCIENCE & SPIRITUALITY FOUNDATION
-   MASTER STYLESHEET
-   ========================================================= */
-
 :root {
   --forest: #173f2a;
   --deep-green: #0d2f20;
   --sage: #55745c;
   --light-sage: #e9f0e9;
-
   --gold: #b89a5a;
   --light-gold: #d8c28f;
-
   --ivory: #faf8f2;
   --cream: #f3efe5;
   --white: #ffffff;
-
   --text: #26352c;
   --muted: #68736c;
-
   --border: rgba(23, 63, 42, 0.12);
-
   --shadow: 0 12px 35px rgba(13, 47, 32, 0.09);
   --shadow-hover: 0 18px 45px rgba(13, 47, 32, 0.15);
-
   --max-width: 1180px;
 }
-
-/* =========================================================
-     GLOBAL
-     ========================================================= */
 
 * {
   box-sizing: border-box;
@@ -42,12 +27,9 @@ html {
 body {
   margin: 0;
   padding: 0;
-
   background: var(--ivory);
   color: var(--text);
-
   font-family: Arial, Helvetica, sans-serif;
-
   line-height: 1.6;
 }
 
@@ -63,32 +45,22 @@ select {
   font: inherit;
 }
 
-/* =========================================================
-     NAVBAR
-     ========================================================= */
-
 .navbar {
   position: sticky;
   top: 0;
   z-index: 1000;
-
   background: rgba(250, 248, 242, 0.97);
-
   border-bottom: 1px solid var(--border);
-
   backdrop-filter: blur(12px);
 }
 
 .navbar-container {
   width: min(100% - 40px, var(--max-width));
   min-height: 78px;
-
   margin: 0 auto;
-
   display: flex;
   align-items: center;
   justify-content: space-between;
-
   gap: 30px;
 }
 
@@ -96,14 +68,12 @@ select {
   display: flex;
   align-items: center;
   gap: 12px;
-
   flex-shrink: 0;
 }
 
 .navbar-logo-image {
   width: 52px;
   height: 52px;
-
   object-fit: contain;
   flex-shrink: 0;
 }
@@ -116,18 +86,14 @@ select {
 
 .logo-main {
   color: var(--forest);
-
   font-family: Georgia, "Times New Roman", serif;
-
   font-size: 17px;
   font-weight: 700;
 }
 
 .logo-sub {
   margin-top: 3px;
-
   color: var(--gold);
-
   font-size: 11px;
   letter-spacing: 2px;
   text-transform: uppercase;
@@ -137,16 +103,13 @@ select {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-
   gap: 24px;
 }
 
 .navbar-links a {
   color: var(--forest);
-
   font-size: 14px;
   font-weight: 600;
-
   transition: color 0.25s ease, transform 0.25s ease;
 }
 
@@ -157,83 +120,65 @@ select {
 
 .mobile-menu-button {
   display: none;
-
   border: 0;
   background: transparent;
-
   color: var(--forest);
-
   font-size: 28px;
-
   cursor: pointer;
 }
 
-/* =========================================================
-     HERO
-     ========================================================= */
+/* HERO */
 
 .hero {
   min-height: 650px;
-
   display: flex;
   align-items: center;
-
   position: relative;
   isolation: isolate;
   overflow: hidden;
 
-  /* The banner contains its own logo artwork; darken the text area to prevent visual overlap. */
-  background-color: var(--deep-green);
+  background-color: #0d2f20;
   background-image:
     linear-gradient(
       90deg,
-      rgba(13, 47, 32, 0.98) 0%,
-      rgba(13, 47, 32, 0.94) 34%,
-      rgba(13, 47, 32, 0.82) 52%,
-      rgba(13, 47, 32, 0.48) 72%,
-      rgba(13, 47, 32, 0.18) 100%
+      #0d2f20 0%,
+      #0d2f20 48%,
+      rgba(13, 47, 32, 0.96) 58%,
+      rgba(13, 47, 32, 0.75) 70%,
+      rgba(13, 47, 32, 0.25) 88%,
+      rgba(13, 47, 32, 0.12) 100%
     ),
     url("../public/ssf-banner.png");
 
-  background-size: cover;
-  background-position: center right;
+  background-size: 100% 100%, auto 100%;
+  background-position: center, right center;
   background-repeat: no-repeat;
-
-  color: var(--white);
+  color: #ffffff;
 }
 
 .hero-content {
   position: relative;
   z-index: 1;
-
-  width: min(100% - 40px, var(--max-width));
-
+  width: min(100% - 40px, 1180px);
   margin: 0 auto;
-
   padding: 100px 0;
 }
 
 .hero-tagline {
   margin: 0 0 18px;
-
   color: var(--light-gold);
-
   font-size: 13px;
   font-weight: 700;
-
   letter-spacing: 2px;
   text-transform: uppercase;
 }
 
 .hero h1 {
-  max-width: 650px;
-
+  max-width: 720px;
   margin: 0;
-
   font-family: Georgia, "Times New Roman", serif;
-
-  font-size: clamp(44px, 6vw, 76px);
-  line-height: 1.05;
+  font-size: clamp(42px, 4.8vw, 64px);
+  line-height: 1.08;
   font-weight: 500;
 }
 
@@ -243,21 +188,16 @@ select {
 
 .hero-description {
   max-width: 650px;
-
   margin: 28px 0 0;
-
   font-size: 18px;
   line-height: 1.8;
-
   color: rgba(255, 255, 255, 0.9);
 }
 
 .hero-buttons {
   display: flex;
   flex-wrap: wrap;
-
   gap: 14px;
-
   margin-top: 36px;
 }
 
@@ -265,16 +205,11 @@ select {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-
   min-height: 50px;
-
   padding: 0 25px;
-
   border-radius: 3px;
-
   font-size: 14px;
   font-weight: 700;
-
   transition: transform 0.25s ease, background 0.25s ease;
 }
 
@@ -289,17 +224,12 @@ select {
 
 .hero-button.secondary {
   border: 1px solid rgba(255, 255, 255, 0.65);
-
   color: var(--white);
 }
 
 .hero-button.secondary:hover {
   background: rgba(255, 255, 255, 0.1);
 }
-
-/* =========================================================
-     GENERAL SECTION
-     ========================================================= */
 
 section {
   width: 100%;
@@ -317,29 +247,17 @@ section {
 .booking-container,
 .contact-container {
   width: min(100%, var(--max-width));
-
   margin: 0 auto;
 }
 
-/* =========================================================
-     SECTION TAG
-     ========================================================= */
-
 .section-tag {
   margin: 0 0 15px;
-
   color: var(--gold);
-
   font-size: 12px;
   font-weight: 700;
-
   letter-spacing: 2px;
   text-transform: uppercase;
 }
-
-/* =========================================================
-     ABOUT
-     ========================================================= */
 
 .about-section {
   background: var(--white);
@@ -347,21 +265,15 @@ section {
 
 .about-container {
   display: grid;
-
   grid-template-columns: 1fr 1fr;
-
   gap: 70px;
-
   align-items: center;
 }
 
 .about-section h2 {
   margin: 0 0 22px;
-
   color: var(--forest);
-
   font-family: Georgia, "Times New Roman", serif;
-
   font-size: clamp(34px, 4vw, 52px);
   line-height: 1.15;
   font-weight: 500;
@@ -369,7 +281,6 @@ section {
 
 .about-section p {
   color: var(--muted);
-
   font-size: 17px;
 }
 
@@ -377,41 +288,29 @@ section {
   max-width: 600px;
 }
 
-/* =========================================================
-     SERVICES
-     ========================================================= */
-
 .services-section {
   background: var(--ivory);
 }
 
 .services-header {
   max-width: 760px;
-
   margin: 0 auto 55px;
-
   text-align: center;
 }
 
 .services-eyebrow {
   margin: 0 0 12px;
-
   color: var(--gold);
-
   font-size: 12px;
   font-weight: 700;
-
   letter-spacing: 2px;
   text-transform: uppercase;
 }
 
 .services-header h2 {
   margin: 0;
-
   color: var(--forest);
-
   font-family: Georgia, "Times New Roman", serif;
-
   font-size: clamp(36px, 4vw, 54px);
   line-height: 1.15;
   font-weight: 500;
@@ -419,75 +318,52 @@ section {
 
 .services-header-text {
   max-width: 650px;
-
   margin: 20px auto 0;
-
   color: var(--muted);
-
   font-size: 17px;
 }
 
 .services-grid {
   display: grid;
-
   grid-template-columns: repeat(4, 1fr);
-
   gap: 22px;
 }
 
 .service-card {
   min-height: 300px;
-
   padding: 32px 28px;
-
   display: flex;
   flex-direction: column;
-
   background: var(--white);
-
   border: 1px solid var(--border);
-
   border-radius: 8px;
-
   box-shadow: var(--shadow);
-
   transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
 .service-card:hover {
   transform: translateY(-7px);
-
   border-color: rgba(184, 154, 90, 0.45);
-
   box-shadow: var(--shadow-hover);
 }
 
 .service-card-icon {
   width: 46px;
   height: 46px;
-
   margin-bottom: 24px;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   border-radius: 50%;
-
   background: var(--light-sage);
-
   color: var(--gold);
-
   font-size: 21px;
 }
 
 .service-card h3 {
   margin: 0 0 14px;
-
   color: var(--forest);
-
   font-family: Georgia, "Times New Roman", serif;
-
   font-size: 25px;
   line-height: 1.2;
   font-weight: 500;
@@ -495,9 +371,7 @@ section {
 
 .service-card p {
   margin: 0;
-
   color: var(--muted);
-
   font-size: 14px;
   line-height: 1.7;
 }
@@ -505,27 +379,19 @@ section {
 .service-card-link {
   margin-top: auto;
   padding-top: 25px;
-
   display: inline-flex;
   align-items: center;
   gap: 10px;
-
   color: var(--forest);
-
   font-size: 13px;
   font-weight: 700;
-
   text-transform: uppercase;
   letter-spacing: 0.7px;
-
   transition: color 0.25s ease;
 }
-
 .service-card-link span {
   color: var(--gold);
-
   font-size: 18px;
-
   transition: transform 0.25s ease;
 }
 
@@ -537,47 +403,34 @@ section {
   transform: translateX(4px);
 }
 
-/* =========================================================
-     SERVICE DETAIL PAGES
-     ========================================================= */
-
 .service-page {
   background: var(--ivory);
 }
 
 .service-page-hero {
   padding: 120px 20px;
-
   background: var(--deep-green);
-
   color: var(--white);
-
   text-align: center;
 }
 
 .service-page-hero-inner {
   width: min(100%, 850px);
-
   margin: 0 auto;
 }
 
 .service-page-label {
   margin: 0 0 15px;
-
   color: var(--light-gold);
-
   font-size: 12px;
   font-weight: 700;
-
   letter-spacing: 2px;
   text-transform: uppercase;
 }
 
 .service-page-hero h1 {
   margin: 0;
-
   font-family: Georgia, "Times New Roman", serif;
-
   font-size: clamp(42px, 6vw, 68px);
   line-height: 1.1;
   font-weight: 500;
@@ -585,20 +438,15 @@ section {
 
 .service-page-hero p {
   max-width: 700px;
-
   margin: 25px auto 0;
-
   color: rgba(255, 255, 255, 0.82);
-
   font-size: 18px;
   line-height: 1.8;
 }
 
 .service-page-content {
   width: min(100% - 40px, 950px);
-
   margin: 0 auto;
-
   padding: 90px 0;
 }
 
@@ -612,20 +460,15 @@ section {
 
 .service-page-section h2 {
   margin: 0 0 20px;
-
   color: var(--forest);
-
   font-family: Georgia, "Times New Roman", serif;
-
   font-size: 36px;
   font-weight: 500;
 }
 
 .service-page-section p {
   margin: 0 0 18px;
-
   color: var(--muted);
-
   font-size: 17px;
   line-height: 1.85;
 }
@@ -633,9 +476,7 @@ section {
 .service-page-section ul {
   margin: 20px 0 0;
   padding-left: 22px;
-
   color: var(--muted);
-
   font-size: 16px;
   line-height: 1.9;
 }
@@ -646,20 +487,15 @@ section {
 
 .service-page-note {
   padding: 28px;
-
   background: var(--cream);
-
   border-left: 4px solid var(--gold);
-
   color: var(--muted);
 }
 
 .service-page-actions {
   display: flex;
   flex-wrap: wrap;
-
   gap: 15px;
-
   margin-top: 45px;
 }
 
@@ -667,32 +503,20 @@ section {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-
   min-height: 50px;
-
   padding: 0 25px;
-
   background: var(--forest);
-
   color: var(--white);
-
   border-radius: 3px;
-
   font-size: 14px;
   font-weight: 700;
 }
 
 .service-page-button.secondary {
   background: transparent;
-
   border: 1px solid var(--forest);
-
   color: var(--forest);
 }
-
-/* =========================================================
-     BOOKING
-     ========================================================= */
 
 .booking-section {
   background: radial-gradient(
@@ -701,21 +525,15 @@ section {
       transparent 35%
     ),
     var(--deep-green);
-
   color: var(--white);
 }
 
 .booking-container {
   display: grid;
-
   grid-template-columns: 0.85fr 1.15fr;
-
   gap: 70px;
-
   align-items: center;
 }
-
-/* ---------- Booking Intro ---------- */
 
 .booking-intro {
   padding: 20px 0;
@@ -723,11 +541,8 @@ section {
 
 .booking-section h2 {
   margin: 0;
-
   color: var(--white);
-
   font-family: Georgia, "Times New Roman", serif;
-
   font-size: clamp(38px, 4vw, 56px);
   line-height: 1.12;
   font-weight: 500;
@@ -735,40 +550,29 @@ section {
 
 .booking-section h2 span {
   display: block;
-
   color: var(--light-gold);
 }
 
 .booking-intro-text {
   max-width: 520px;
-
   margin: 25px 0 0;
-
   color: rgba(255, 255, 255, 0.78);
-
   font-size: 17px;
   line-height: 1.8;
 }
 
-/* ---------- Booking Steps ---------- */
-
 .booking-highlights {
   margin-top: 45px;
-
   display: flex;
   flex-direction: column;
-
   gap: 20px;
 }
 
 .booking-step {
   display: flex;
   align-items: flex-start;
-
   gap: 18px;
-
   padding-bottom: 20px;
-
   border-bottom: 1px solid rgba(255, 255, 255, 0.12);
 }
 
@@ -778,43 +582,30 @@ section {
 
 .booking-step strong {
   min-width: 38px;
-
   color: var(--light-gold);
-
   font-family: Georgia, "Times New Roman", serif;
-
   font-size: 19px;
   font-weight: 500;
 }
 
 .booking-step span {
   display: block;
-
   color: var(--white);
-
   font-size: 15px;
   font-weight: 700;
 }
 
 .booking-step p {
   margin: 4px 0 0;
-
   color: rgba(255, 255, 255, 0.62);
-
   font-size: 13px;
 }
 
-/* ---------- Booking Form Card ---------- */
-
 .booking-form-card {
   padding: 42px;
-
   background: var(--white);
-
   border-radius: 12px;
-
   box-shadow: 0 25px 60px rgba(0, 0, 0, 0.18);
-
   color: var(--text);
 }
 
@@ -824,12 +615,9 @@ section {
 
 .form-eyebrow {
   margin: 0 0 8px;
-
   color: var(--gold);
-
   font-size: 11px;
   font-weight: 700;
-
   letter-spacing: 2px;
   text-transform: uppercase;
 }
@@ -837,11 +625,8 @@ section {
 .booking-form-header h3,
 .contact-form-header h3 {
   margin: 0;
-
   color: var(--forest);
-
   font-family: Georgia, "Times New Roman", serif;
-
   font-size: 30px;
   line-height: 1.2;
   font-weight: 500;
@@ -850,15 +635,9 @@ section {
 .booking-form-header p:last-child,
 .contact-form-header p:last-child {
   margin: 10px 0 0;
-
   color: var(--muted);
-
   font-size: 14px;
 }
-
-/* =========================================================
-     FORM ELEMENTS
-     ========================================================= */
 
 .booking-form,
 .contact-form {
@@ -867,9 +646,7 @@ section {
 
 .form-row {
   display: grid;
-
   grid-template-columns: 1fr 1fr;
-
   gap: 18px;
 }
 
@@ -879,11 +656,8 @@ section {
 
 .form-group label {
   display: block;
-
   margin-bottom: 8px;
-
   color: var(--forest);
-
   font-size: 13px;
   font-weight: 700;
 }
@@ -896,23 +670,14 @@ section {
 .form-group textarea,
 .form-group select {
   width: 100%;
-
   display: block;
-
   padding: 13px 15px;
-
   background: #fcfbf7;
-
   border: 1px solid rgba(23, 63, 42, 0.18);
-
   border-radius: 5px;
-
   color: var(--text);
-
   font-size: 14px;
-
   outline: none;
-
   transition: border-color 0.25s ease, box-shadow 0.25s ease,
     background 0.25s ease;
 }
@@ -923,13 +688,11 @@ section {
 
 .form-group textarea {
   min-height: 125px;
-
   resize: vertical;
 }
 
 .form-group select {
   height: 48px;
-
   cursor: pointer;
 }
 
@@ -942,15 +705,9 @@ section {
 .form-group textarea:focus,
 .form-group select:focus {
   background: var(--white);
-
   border-color: var(--gold);
-
   box-shadow: 0 0 0 3px rgba(184, 154, 90, 0.12);
 }
-
-/* =========================================================
-     BOOKING BUTTON
-     ========================================================= */
 
 .booking-form-actions {
   margin-top: 5px;
@@ -959,37 +716,25 @@ section {
 .booking-button,
 .contact-button {
   width: 100%;
-
   min-height: 52px;
-
   border: 0;
-
   border-radius: 5px;
-
   background: var(--forest);
-
   color: var(--white);
-
   font-size: 14px;
   font-weight: 700;
-
   cursor: pointer;
-
   display: inline-flex;
   align-items: center;
   justify-content: center;
-
   gap: 10px;
-
   transition: transform 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
 }
 
 .booking-button:hover,
 .contact-button:hover {
   background: #215238;
-
   transform: translateY(-2px);
-
   box-shadow: 0 10px 25px rgba(13, 47, 32, 0.18);
 }
 
@@ -1000,31 +745,19 @@ section {
 .booking-form-note,
 .contact-form-note {
   margin: 15px 0 0;
-
   color: #89918b;
-
   font-size: 12px;
-
   line-height: 1.6;
-
   text-align: center;
 }
-
-/* =========================================================
-     CONTACT
-     ========================================================= */
-
 .contact-section {
   background: var(--white);
 }
 
 .contact-container {
   display: grid;
-
   grid-template-columns: 1fr 0.85fr;
-
   gap: 80px;
-
   align-items: start;
 }
 
@@ -1034,74 +767,50 @@ section {
 
 .contact-section h2 {
   max-width: 620px;
-
   margin: 0 0 22px;
-
   color: var(--forest);
-
   font-family: Georgia, "Times New Roman", serif;
-
   font-size: clamp(38px, 4vw, 54px);
-
   line-height: 1.15;
-
   font-weight: 500;
 }
 
 .contact-section h2 span {
   display: block;
-
   color: var(--gold);
 }
 
 .contact-intro-text {
   max-width: 600px;
-
   margin: 0;
-
   color: var(--muted);
-
   font-size: 17px;
-
   line-height: 1.8;
 }
 
-/* ---------- Contact Details ---------- */
-
 .contact-details {
   margin-top: 38px;
-
   display: flex;
   flex-direction: column;
-
   gap: 13px;
 }
 
 .contact-item {
   min-height: 75px;
-
   padding: 15px 18px;
-
   display: flex;
   align-items: center;
-
   gap: 16px;
-
   background: var(--ivory);
-
   border: 1px solid var(--border);
-
   border-radius: 7px;
-
   transition: transform 0.25s ease, border-color 0.25s ease,
     box-shadow 0.25s ease;
 }
 
 .contact-item:hover {
   border-color: rgba(184, 154, 90, 0.45);
-
   box-shadow: var(--shadow);
-
   transform: translateX(3px);
 }
 
@@ -1112,89 +821,60 @@ section {
 .contact-icon {
   width: 43px;
   height: 43px;
-
   flex-shrink: 0;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   border-radius: 50%;
-
   background: var(--light-sage);
-
   color: var(--gold);
-
   font-size: 18px;
 }
 
 .contact-item strong {
   display: block;
-
   color: var(--forest);
-
   font-size: 14px;
 }
 
 .contact-item p {
   margin: 3px 0 0;
-
   color: var(--muted);
-
   font-size: 13px;
 }
 
 .contact-arrow {
   margin-left: auto;
-
   color: var(--gold);
-
   font-size: 20px;
 }
 
-/* ---------- Social Note ---------- */
-
 .contact-social-note {
   margin-top: 30px;
-
   padding: 20px 22px;
-
   background: var(--cream);
-
   border-left: 3px solid var(--gold);
 }
 
 .contact-social-note span {
   color: var(--forest);
-
   font-size: 13px;
-
   font-weight: 700;
-
   letter-spacing: 1px;
-
   text-transform: uppercase;
 }
 
 .contact-social-note p {
   margin: 5px 0 0;
-
   color: var(--muted);
-
   font-size: 13px;
 }
 
-/* ---------- Contact Form ---------- */
-
 .contact-form-card {
   padding: 38px;
-
   background: var(--ivory);
-
   border: 1px solid var(--border);
-
   border-radius: 12px;
-
   box-shadow: var(--shadow);
 }
 
@@ -1202,29 +882,17 @@ section {
   margin-bottom: 28px;
 }
 
-/* =========================================================
-     FOOTER
-     ========================================================= */
-
 .footer {
   padding: 35px 20px;
-
   background: #092219;
-
   color: rgba(255, 255, 255, 0.7);
-
   text-align: center;
 }
 
 .footer p {
   margin: 0;
-
   font-size: 13px;
 }
-
-/* =========================================================
-     RESPONSIVE
-     ========================================================= */
 
 @media (max-width: 1050px) {
   .navbar-links {
@@ -1241,7 +909,6 @@ section {
 
   .booking-container {
     grid-template-columns: 1fr;
-
     max-width: 800px;
   }
 
@@ -1256,10 +923,8 @@ section {
 
   .booking-highlights {
     max-width: 600px;
-
     margin-left: auto;
     margin-right: auto;
-
     text-align: left;
   }
 
@@ -1283,25 +948,22 @@ section {
 
   .hero {
     min-height: 580px;
-    background-position: 68% center;
     background-image:
       linear-gradient(
         90deg,
-        rgba(13, 47, 32, 0.96) 0%,
-        rgba(13, 47, 32, 0.88) 58%,
-        rgba(13, 47, 32, 0.58) 100%
+        #0d2f20 0%,
+        rgba(13, 47, 32, 0.97) 55%,
+        rgba(13, 47, 32, 0.82) 100%
       ),
       url("../public/ssf-banner.png");
-  }
-
-  .hero h1 {
-    max-width: 100%;
+    background-size: 100% 100%, auto 100%;
+    background-position: center, right center;
+    background-repeat: no-repeat;
   }
 
   .about-container,
   .contact-container {
     grid-template-columns: 1fr;
-
     gap: 40px;
   }
 
@@ -1319,6 +981,21 @@ section {
 }
 
 @media (max-width: 600px) {
+  .hero {
+    min-height: 560px;
+    background-image:
+      linear-gradient(
+        90deg,
+        #0d2f20 0%,
+        rgba(13, 47, 32, 0.98) 65%,
+        rgba(13, 47, 32, 0.90) 100%
+      ),
+      url("../public/ssf-banner.png");
+    background-size: 100% 100%, auto 100%;
+    background-position: center, right center;
+    background-repeat: no-repeat;
+  }
+
   .navbar-logo-image {
     width: 45px;
     height: 45px;
@@ -1371,7 +1048,6 @@ section {
 
   .form-row {
     grid-template-columns: 1fr;
-
     gap: 0;
   }
 
@@ -1389,11 +1065,6 @@ section {
     font-size: 38px;
   }
 }
-
-/* =========================================================
-     FOUNDER PROFILE & MESSAGE
-     ========================================================= */
-
 .about-container {
   display: block;
 }
