@@ -179,22 +179,33 @@ select {
   align-items: center;
 
   position: relative;
+  isolation: isolate;
+  overflow: hidden;
 
-  background: linear-gradient(
+  /* The banner contains its own logo artwork; darken the text area to prevent visual overlap. */
+  background-color: var(--deep-green);
+  background-image:
+    linear-gradient(
       90deg,
-      rgba(13, 47, 32, 0.86),
-      rgba(13, 47, 32, 0.52),
-      rgba(13, 47, 32, 0.22)
+      rgba(13, 47, 32, 0.98) 0%,
+      rgba(13, 47, 32, 0.94) 34%,
+      rgba(13, 47, 32, 0.82) 52%,
+      rgba(13, 47, 32, 0.48) 72%,
+      rgba(13, 47, 32, 0.18) 100%
     ),
     url("../public/ssf-banner.png");
 
   background-size: cover;
-  background-position: center;
+  background-position: center right;
+  background-repeat: no-repeat;
 
   color: var(--white);
 }
 
 .hero-content {
+  position: relative;
+  z-index: 1;
+
   width: min(100% - 40px, var(--max-width));
 
   margin: 0 auto;
@@ -215,7 +226,7 @@ select {
 }
 
 .hero h1 {
-  max-width: 760px;
+  max-width: 650px;
 
   margin: 0;
 
@@ -1272,6 +1283,19 @@ section {
 
   .hero {
     min-height: 580px;
+    background-position: 68% center;
+    background-image:
+      linear-gradient(
+        90deg,
+        rgba(13, 47, 32, 0.96) 0%,
+        rgba(13, 47, 32, 0.88) 58%,
+        rgba(13, 47, 32, 0.58) 100%
+      ),
+      url("../public/ssf-banner.png");
+  }
+
+  .hero h1 {
+    max-width: 100%;
   }
 
   .about-container,
