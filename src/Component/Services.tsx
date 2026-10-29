@@ -1,8 +1,15 @@
+
 import React from "react";
-import ServiceCard from "./ServiceCard";
+import ServiceCard from "./ServiceCard.tsx";
+
+interface Service {
+  title: string;
+  description: string;
+  link: string;
+}
 
 const Services: React.FC = () => {
-  const services = [
+  const services: Service[] = [
     {
       title: "Reiki Healing",
       description:
@@ -57,7 +64,9 @@ const Services: React.FC = () => {
     <section id="services" className="services-section">
       <div className="services-container">
         <div className="services-header">
-          <p className="services-eyebrow">SCIENCE & SPIRITUALITY FOUNDATION</p>
+          <p className="services-eyebrow">
+            SCIENCE & SPIRITUALITY FOUNDATION
+          </p>
 
           <h2>Explore Our Services</h2>
 
