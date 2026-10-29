@@ -10,7 +10,6 @@ import Contact from "./Component/Contact.tsx";
 import Footer from "./Component/Footer.tsx";
 import ServicePage from "./Component/ServicePage.tsx";
 import Certificates from "./Component/Certificates.tsx";
-
 import { servicePages } from "./Component/serviceData.ts";
 
 import "./styles.css";
@@ -67,7 +66,6 @@ export default function App() {
         <Hero />
         <About />
         <Services />
-        <Booking />
         <Contact />
       </main>
       <Footer />
