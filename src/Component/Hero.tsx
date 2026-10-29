@@ -1,18 +1,18 @@
 
 import React from "react";
-import Booking from "./Booking.tsx";
 
 const Hero: React.FC = () => {
   return (
-    <div className="ssf-home-layout" id="home">
-      <main className="ssf-home-left">
-        <section className="ssf-home-intro">
+    <section id="home" className="ssf-home-layout">
+      <div className="ssf-home-left">
+        <div className="ssf-home-intro">
           <p className="hero-tagline">
             Science • Spirituality • Consciousness • Wellbeing
           </p>
 
           <h1>
-            A Brighter Understanding <span>of Life</span>
+            A Brighter Understanding
+            <span> of Life</span>
           </h1>
 
           <p className="hero-description">
@@ -30,18 +30,16 @@ const Hero: React.FC = () => {
               Book a Session
             </a>
           </div>
-        </section>
-
-        <Booking />
-      </main>
+        </div>
+      </div>
 
       <aside className="ssf-home-banner">
         <img
           src="/ssf-banner.png"
-          alt="Science and Spirituality Foundation — Experiment. Explore. Experience."
+          alt="Science and Spirituality Foundation"
         />
       </aside>
-    </div>
+    </section>
   );
 };
 
