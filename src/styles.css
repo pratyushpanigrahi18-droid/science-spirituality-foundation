@@ -186,7 +186,7 @@ select {
       rgba(13, 47, 32, 0.52),
       rgba(13, 47, 32, 0.22)
     ),
-    url("/ssf-banner.png");
+    url("../public/ssf-banner.png");
 
   background-size: cover;
   background-position: center;
