@@ -23,12 +23,6 @@ const Services: React.FC = () => {
       link: "/services/past-life-regression",
     },
     {
-      title: "Chakra Wellness",
-      description:
-        "Discover practices focused on chakra awareness, meditation and personal balance.",
-      link: "/services/chakra-wellness",
-    },
-    {
       title: "Spiritual Wellness",
       description:
         "Explore mindfulness, self-awareness and practices for personal growth.",
