@@ -1,452 +1,592 @@
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 
-interface ServicePageProps {
-  title: string;
-  subtitle: string;
-  sections: any[];
-}
+const WHATSAPP_NUMBER = "918328909832";
 
-const reikiConcerns = [
-  "Stress & Anxiety",
-  "Headaches & Migraines",
-  "Quick Pain Relief",
-  "Neck & Back Pain",
-  "Joint Pain",
-  "Digestive Problems",
-  "Fatigue & Low Energy",
-  "Emotional Stress",
-  "Wellness Assessment",
-  "Distance Healing",
-  "Relationship & Emotional Wellbeing",
-  "Grief & Emotional Healing",
-  "Chakra Cleaning",
-  "Women's Wellness",
-  "Chronic Pain & General Discomfort",
-  "Relaxation & Inner Peace",
-  "Personal Growth & Self-Discovery",
-  "Any Other Problem",
-];
+const Booking: React.FC = () => {
+  const [selectedSessionType, setSelectedSessionType] = useState("");
+  const [selectedService, setSelectedService] = useState("");
+  const [selectedPLRConcerns, setSelectedPLRConcerns] = useState<string[]>([]);
 
-const dowsingAreas = [
-  "Water Source Exploration",
-  "Land & Property",
-  "Home & Space Energy",
-  "Personal Energy",
-  "Wellness & Balance",
-  "Object & Environmental Checking",
-  "Decision Guidance",
-  "Energy Blockage Exploration",
-  "Space Harmony",
-  "Any Other Enquiry",
-];
+  useEffect(() => {
+    const handleServiceSelection = (event: Event) => {
+      const customEvent = event as CustomEvent<string>;
+      const service = customEvent.detail;
 
-const ServicePage: React.FC<ServicePageProps> = ({
-  title,
-  subtitle,
-  sections = [],
-}) => {
-  const safeTitle = (title ?? "").toLowerCase();
-  const isReiki = safeTitle === "reiki healing";
-  const isDowsing = safeTitle === "dowsing";
+      if (service) {
+        setSelectedService(service);
 
-  const handleConcernClick = (
-    event: React.MouseEvent<HTMLAnchorElement>,
-    serviceName: string
+        if (service !== "Past Life Regression") {
+          setSelectedPLRConcerns([]);
+        }
+      }
+    };
+
+    window.addEventListener("ssf-select-service", handleServiceSelection);
+
+    return () => {
+      window.removeEventListener(
+        "ssf-select-service",
+        handleServiceSelection
+      );
+    };
+  }, []);
+
+  const plrConcerns = [
+    "Repeating Problems in Life",
+    "Relationship Difficulties",
+    "Recurring Physical Pain or Discomfort",
+    "Mental and Emotional Disturbances",
+    "Fears and Phobias",
+    "Anxiety and Insecurity",
+    "Emotional Triggers",
+    "Feeling Stuck in Life",
+    "Attachment and Difficulty Letting Go",
+    "Self-Worth and Confidence",
+    "Unexplained Connections or Familiarity",
+    "Recurring Dreams or Inner Imagery",
+    "Childhood or Early-Life Experiences",
+    "Spiritual Exploration and Curiosity",
+    "Other Personal Concern",
+  ];
+
+  const selectSessionType = (sessionType: string) => {
+    setSelectedSessionType(sessionType);
+
+    if (sessionType === "Free Consultation") {
+      setSelectedService("Free Consultation");
+    }
+
+    setTimeout(() => {
+      const formCard = document.querySelector(".booking-form-card");
+
+      if (formCard) {
+        formCard.scrollIntoView({
+          behavior: "smooth",
+          block: "center",
+        });
+      }
+    }, 100);
+  };
+
+  const handleWhatsAppBooking = (
+    event: React.FormEvent<HTMLFormElement>
   ) => {
     event.preventDefault();
 
-    window.dispatchEvent(
-      new CustomEvent<string>("ssf-select-service", {
-        detail: serviceName,
-      })
-    );
+    const form = event.currentTarget;
 
-    const bookingSection = document.getElementById("booking");
+    const name = (
+      form.elements.namedItem("name") as HTMLInputElement
+    )?.value.trim();
 
-    if (bookingSection) {
-      bookingSection.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
-    }
+    const email = (
+      form.elements.namedItem("email") as HTMLInputElement
+    )?.value.trim();
+
+    const phone = (
+      form.elements.namedItem("phone") as HTMLInputElement
+    )?.value.trim();
+
+    const service = (
+      form.elements.namedItem("service") as HTMLSelectElement
+    )?.value;
+
+    const sessionType = (
+      form.elements.namedItem("sessionType") as HTMLSelectElement
+    )?.value;
+
+    const message = (
+      form.elements.namedItem("message") as HTMLTextAreaElement
+    )?.value.trim();
+
+    const bookingMessage = `Hello Science & Spirituality Foundation,
+
+I would like to enquire about a session.
+
+Name: ${name || "Not provided"}
+Email: ${email || "Not provided"}
+Phone / WhatsApp: ${phone || "Not provided"}
+Service: ${service || "Not selected"}
+Session Type: ${sessionType || "Not selected"}
+${
+  service === "Past Life Regression" &&
+  selectedPLRConcerns.length > 0
+    ? `PLR areas to explore: ${selectedPLRConcerns.join(", ")}`
+    : ""
+}
+
+My requirements:
+${message || "I would like to discuss my requirements."}
+
+Please let me know the available timings and session details.
+
+Thank you.`;
+
+    const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
+      bookingMessage
+    )}`;
+
+    window.open(whatsappUrl, "_blank");
   };
 
   return (
-    <main className="service-page">
+    <section id="booking" className="booking-section">
       <style>
         {`
-          .service-page .reiki-service-hero {
-            position: relative;
-            width: 100%;
-            overflow: hidden;
-            background: #f5f1e8;
-            line-height: 0;
-          }
-
-          .service-page .reiki-service-image {
-            display: block;
-            width: 100%;
-            height: auto;
-            max-width: 100%;
-            object-fit: contain;
-            object-position: center center;
-          }
-
-          /* Dowsing image replaces the green hero strip */
-
-          .service-page .dowsing-service-hero {
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            min-height: 500px;
-            overflow: hidden;
-            padding: 70px 24px;
-            background-image:
-              linear-gradient(
-                rgba(9, 29, 20, 0.42),
-                rgba(9, 29, 20, 0.58)
-              ),
-              url("/dowsing-hero.webp");
-            background-size: cover;
-            background-position: center 45%;
-            background-repeat: no-repeat;
-            text-align: center;
-          }
-
-          .service-page .dowsing-service-hero-inner {
-            position: relative;
-            z-index: 1;
-            width: min(100%, 900px);
-            margin: 0 auto;
-            color: #ffffff;
-          }
-
-          .service-page .dowsing-service-hero .service-page-label {
-            margin-bottom: 18px;
-            color: #f1dfb5;
-            font-size: 14px;
-            font-weight: 700;
-            letter-spacing: 2.5px;
-          }
-
-          .service-page .dowsing-service-hero h1 {
-            margin: 0 0 20px;
-            color: #ffffff;
-            font-family: Georgia, "Times New Roman", serif;
-            font-size: clamp(52px, 7vw, 82px);
-            font-weight: 500;
-            line-height: 1.1;
-          }
-
-          .service-page .dowsing-service-hero-inner > p:last-child {
-            max-width: 720px;
-            margin: 0 auto;
-            color: #ffffff;
-            font-size: clamp(17px, 2vw, 21px);
-            line-height: 1.7;
-          }
-
-          .service-page .service-page-hero {
-            position: relative;
-            z-index: 1;
-          }
-
-          .service-page .service-page-content {
-            position: relative;
-            z-index: 2;
-            line-height: normal;
-          }
-
-          .reiki-concerns-section,
-          .dowsing-areas-section {
-            width: 100%;
-            padding: 70px 4%;
-            text-align: center;
-          }
-
-          .reiki-concerns-title,
-          .dowsing-areas-title {
-            margin-bottom: 45px;
-          }
-
-          .reiki-concerns-title h2,
-          .dowsing-areas-title h2 {
-            margin-bottom: 12px;
-          }
-
-          .reiki-concerns-title p,
-          .dowsing-areas-title p {
-            max-width: 750px;
-            margin: 0 auto;
-            line-height: 1.7;
-          }
-
-          .reiki-concerns-grid,
-          .dowsing-areas-grid {
-            display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 24px;
-            max-width: 1200px;
-            margin: 0 auto;
-          }
-
-          .reiki-concern-card,
-          .dowsing-area-card {
-            min-height: 125px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 25px 22px;
-            border-radius: 18px;
-            text-decoration: none;
-            background: linear-gradient(
-              135deg,
-              #ffffff,
-              #f8f3fb
-            );
-            border: 1px solid rgba(112, 79, 145, 0.12);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
-            transition:
-              transform 0.3s ease,
-              box-shadow 0.3s ease,
-              border-color 0.3s ease;
+          .booking-section .booking-option {
             cursor: pointer;
+            position: relative;
           }
 
-          .reiki-concern-card:hover,
-          .dowsing-area-card:hover {
-            transform: translateY(-7px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.14);
-            border-color: rgba(112, 79, 145, 0.35);
+          .booking-section .booking-option:focus {
+            outline: 2px solid #c9a65a;
+            outline-offset: 2px;
           }
 
-          .reiki-concern-name,
-          .dowsing-area-name {
-            font-size: 1.12rem;
+          .booking-section .booking-option.selected {
+            border-color: #c9a65a;
+            background: rgba(201, 166, 90, 0.12);
+            box-shadow: 0 0 0 1px rgba(201, 166, 90, 0.18);
+          }
+
+          .booking-section .booking-option.selected
+          .booking-option-icon {
+            background: #c9a65a;
+            color: #173f2a;
+          }
+
+          .booking-section .booking-option-hint {
+            display: block;
+            margin-top: 7px;
+            color: #c9a65a;
+            font-size: 12px;
             font-weight: 600;
-            color: #3f3151;
-            line-height: 1.45;
+            letter-spacing: 0.3px;
           }
 
-          @media (max-width: 900px) {
-            .reiki-concerns-grid,
-            .dowsing-areas-grid {
-              grid-template-columns: repeat(2, minmax(0, 1fr));
-              gap: 20px;
-            }
+          .booking-section .booking-form-card {
+            scroll-margin-top: 100px;
+          }
+
+          .booking-section .plr-concerns-group {
+            margin-top: 18px;
+          }
+
+          .booking-section .plr-concerns-intro {
+            margin: 6px 0 14px;
+            color: #68616f;
+            font-size: 0.92rem;
+            line-height: 1.55;
+          }
+
+          .booking-section .plr-concerns-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 10px;
+          }
+
+          .booking-section .plr-concern-option {
+            display: flex;
+            align-items: flex-start;
+            gap: 9px;
+            padding: 12px;
+            border: 1px solid rgba(112, 79, 145, 0.18);
+            border-radius: 10px;
+            background: #fff;
+            cursor: pointer;
+            line-height: 1.4;
+            font-size: 0.92rem;
+          }
+
+          .booking-section .plr-concern-option.selected {
+            border-color: #c9a65a;
+            background: rgba(201, 166, 90, 0.10);
+          }
+
+          .booking-section .plr-concern-option input {
+            margin-top: 3px;
+            accent-color: #8b6b2e;
+            flex: 0 0 auto;
+          }
+
+          .booking-section .plr-concerns-disclaimer {
+            margin-top: 14px;
+            color: #68616f;
+            font-size: 0.82rem;
+            line-height: 1.6;
           }
 
           @media (max-width: 600px) {
-            .service-page .dowsing-service-hero {
-              min-height: 390px;
-              padding: 55px 20px;
-              background-position: center center;
-            }
-
-            .service-page .dowsing-service-hero h1 {
-              font-size: 48px;
-            }
-
-            .service-page .dowsing-service-hero .service-page-label {
+            .booking-section .booking-option-hint {
               font-size: 11px;
-              letter-spacing: 1.8px;
             }
 
-            .reiki-concerns-section,
-            .dowsing-areas-section {
-              padding: 50px 5%;
-            }
-
-            .reiki-concerns-grid,
-            .dowsing-areas-grid {
+            .booking-section .plr-concerns-grid {
               grid-template-columns: 1fr;
-              gap: 18px;
-            }
-
-            .reiki-concern-card,
-            .dowsing-area-card {
-              min-height: 105px;
-              padding: 22px 18px;
-            }
-
-            .reiki-concern-name,
-            .dowsing-area-name {
-              font-size: 1.05rem;
             }
           }
         `}
       </style>
 
-      {isReiki ? (
-        <section className="reiki-service-hero">
-          <img
-            src="/reiki-healing.png"
-            alt="Reiki Healing"
-            className="reiki-service-image"
-          />
-        </section>
-      ) : isDowsing ? (
-        <section className="dowsing-service-hero">
-          <div className="dowsing-service-hero-inner">
-            <p className="service-page-label">
-              SCIENCE & SPIRITUALITY FOUNDATION
+      <div className="booking-container">
+        <div className="booking-intro">
+          <p className="section-tag">BOOK A SESSION</p>
+
+          <h2>
+            Begin Your
+            <span> Inner Journey</span>
+          </h2>
+
+          <p className="booking-intro-text">
+            Every journey begins with a conversation. Start with a free
+            consultation or enquire about a session that suits your needs.
+          </p>
+
+          <div className="booking-options">
+            <div
+              className={`booking-option ${
+                selectedSessionType === "Free Consultation"
+                  ? "selected"
+                  : ""
+              }`}
+              role="button"
+              tabIndex={0}
+              onClick={() => selectSessionType("Free Consultation")}
+              onKeyDown={(event) => {
+                if (event.key === "Enter" || event.key === " ") {
+                  event.preventDefault();
+                  selectSessionType("Free Consultation");
+                }
+              }}
+            >
+              <div className="booking-option-icon">+</div>
+
+              <div>
+                <h3>Free Consultation</h3>
+                <p>
+                  A complimentary initial conversation to understand your
+                  requirements and help you explore the available options.
+                </p>
+
+                {selectedSessionType === "Free Consultation" && (
+                  <span className="booking-option-hint">
+                    Selected — complete the enquiry →
+                  </span>
+                )}
+              </div>
+            </div>
+
+            <div
+              className={`booking-option ${
+                selectedSessionType === "Online Session — Zoom"
+                  ? "selected"
+                  : ""
+              }`}
+              role="button"
+              tabIndex={0}
+              onClick={() => selectSessionType("Online Session — Zoom")}
+              onKeyDown={(event) => {
+                if (event.key === "Enter" || event.key === " ") {
+                  event.preventDefault();
+                  selectSessionType("Online Session — Zoom");
+                }
+              }}
+            >
+              <div className="booking-option-icon">↗</div>
+
+              <div>
+                <h3>Online Sessions — Zoom</h3>
+                <p>
+                  Convenient sessions conducted online through Zoom, allowing
+                  you to connect from wherever you are.
+                </p>
+
+                {selectedSessionType === "Online Session — Zoom" && (
+                  <span className="booking-option-hint">
+                    Selected — complete the enquiry →
+                  </span>
+                )}
+              </div>
+            </div>
+
+            <div
+              className={`booking-option ${
+                selectedSessionType === "Offline Session — Our Centre"
+                  ? "selected"
+                  : ""
+              }`}
+              role="button"
+              tabIndex={0}
+              onClick={() =>
+                selectSessionType("Offline Session — Our Centre")
+              }
+              onKeyDown={(event) => {
+                if (event.key === "Enter" || event.key === " ") {
+                  event.preventDefault();
+                  selectSessionType("Offline Session — Our Centre");
+                }
+              }}
+            >
+              <div className="booking-option-icon">●</div>
+
+              <div>
+                <h3>Offline Sessions — Our Centres</h3>
+                <p>
+                  In-person sessions available at our designated centres.
+                  Centre details and timings will be shared during enquiry.
+                </p>
+
+                {selectedSessionType ===
+                  "Offline Session — Our Centre" && (
+                  <span className="booking-option-hint">
+                    Selected — complete the enquiry →
+                  </span>
+                )}
+              </div>
+            </div>
+          </div>
+
+          <div className="booking-highlights">
+            <div className="booking-step">
+              <strong>01</strong>
+              <div>
+                <span>Choose</span>
+                <p>Select a service and your preferred session type.</p>
+              </div>
+            </div>
+
+            <div className="booking-step">
+              <strong>02</strong>
+              <div>
+                <span>Connect</span>
+                <p>Share your requirements with us through WhatsApp.</p>
+              </div>
+            </div>
+
+            <div className="booking-step">
+              <strong>03</strong>
+              <div>
+                <span>Confirm</span>
+                <p>We will discuss available timings and the next steps.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="booking-form-card">
+          <div className="booking-form-header">
+            <p className="form-eyebrow">
+              FREE CONSULTATION & SESSION ENQUIRY
             </p>
 
-            <h1>{title}</h1>
+            <h3>Tell Us How We Can Help</h3>
 
-            <p>{subtitle}</p>
-          </div>
-        </section>
-      ) : (
-        <section className="service-page-hero">
-          <div className="service-page-hero-inner">
-            <p className="service-page-label">
-              SCIENCE & SPIRITUALITY FOUNDATION
+            <p>
+              Fill in the details below and connect with us directly on
+              WhatsApp.
             </p>
-
-            <h1>{title}</h1>
-
-            <p>{subtitle}</p>
           </div>
-        </section>
-      )}
 
-      <div className="service-page-content">
-        {sections.map((section, index) => (
-          <section className="service-page-section" key={index}>
-            {section.title && <h2>{section.title}</h2>}
-            {section.heading && <h2>{section.heading}</h2>}
+          <form className="booking-form" onSubmit={handleWhatsAppBooking}>
+            <div className="form-row">
+              <div className="form-group">
+                <label htmlFor="name">
+                  Full Name <span>*</span>
+                </label>
 
-            {typeof section.content === "string" && (
-              <p>{section.content}</p>
-            )}
+                <input
+                  id="name"
+                  name="name"
+                  type="text"
+                  placeholder="Enter your full name"
+                  required
+                />
+              </div>
 
-            {Array.isArray(section.content) &&
-              section.content.map(
-                (paragraph: string, paragraphIndex: number) => (
-                  <p key={paragraphIndex}>{paragraph}</p>
-                )
-              )}
+              <div className="form-group">
+                <label htmlFor="email">Email Address</label>
 
-            {Array.isArray(section.paragraphs) &&
-              section.paragraphs.map(
-                (paragraph: string, paragraphIndex: number) => (
-                  <p key={paragraphIndex}>{paragraph}</p>
-                )
-              )}
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  placeholder="Enter your email address"
+                />
+              </div>
+            </div>
 
-            {Array.isArray(section.bullets) &&
-              section.bullets.length > 0 && (
-                <ul>
-                  {section.bullets.map(
-                    (bullet: string, bulletIndex: number) => (
-                      <li key={bulletIndex}>{bullet}</li>
-                    )
-                  )}
-                </ul>
-              )}
+            <div className="form-row">
+              <div className="form-group">
+                <label htmlFor="phone">
+                  WhatsApp / Phone <span>*</span>
+                </label>
 
-            {section.note && (
-              <div className="service-page-note">
-                {section.note}
+                <input
+                  id="phone"
+                  name="phone"
+                  type="tel"
+                  placeholder="Enter your WhatsApp number"
+                  required
+                />
+              </div>
+
+              <div className="form-group">
+                <label htmlFor="service">
+                  Service <span>*</span>
+                </label>
+
+                <select
+                  id="service"
+                  name="service"
+                  value={selectedService}
+                  onChange={(event) => {
+                    const nextService = event.target.value;
+                    setSelectedService(nextService);
+
+                    if (nextService !== "Past Life Regression") {
+                      setSelectedPLRConcerns([]);
+                    }
+                  }}
+                  required
+                >
+                  <option value="" disabled>
+                    Select a service
+                  </option>
+
+                  <option value="Reiki Healing">Reiki Healing</option>
+                  <option value="Dowsing">Dowsing</option>
+
+                  <option value="Past Life Regression">
+                    Past Life Regression
+                  </option>
+
+                  <option value="Meditation">Meditation</option>
+                  <option value="Manifestation">Manifestation</option>
+
+                  <option value="Fingerprint Analysis">
+                    Fingerprint Analysis
+                  </option>
+
+                  <option value="Free Consultation">
+                    Free Consultation
+                  </option>
+                  <option value="General Enquiry">General Enquiry</option>
+                </select>
+              </div>
+            </div>
+
+            {selectedService === "Past Life Regression" && (
+              <div className="form-group plr-concerns-group">
+                <label>What Would You Like to Explore?</label>
+
+                <p className="plr-concerns-intro">
+                  Select one or more areas that best describe what you would
+                  like to discuss.
+                </p>
+
+                <div className="plr-concerns-grid">
+                  {plrConcerns.map((concern) => {
+                    const checked = selectedPLRConcerns.includes(concern);
+
+                    return (
+                      <label
+                        key={concern}
+                        className={`plr-concern-option ${
+                          checked ? "selected" : ""
+                        }`}
+                      >
+                        <input
+                          type="checkbox"
+                          checked={checked}
+                          onChange={() => {
+                            setSelectedPLRConcerns((current) =>
+                              checked
+                                ? current.filter((item) => item !== concern)
+                                : [...current, concern]
+                            );
+                          }}
+                        />
+
+                        <span>{concern}</span>
+                      </label>
+                    );
+                  })}
+                </div>
+
+                <p className="plr-concerns-disclaimer">
+                  PLR is an exploratory practice. It cannot establish the
+                  cause of physical pain or mental-health symptoms and is not
+                  a substitute for appropriate medical or mental-health care.
+                </p>
               </div>
             )}
-          </section>
-        ))}
 
-        {isReiki && (
-          <section className="reiki-concerns-section">
-            <div className="reiki-concerns-title">
-              <h2>Are You Facing Any of These?</h2>
+            <div className="form-group">
+              <label htmlFor="sessionType">
+                Preferred Session Type <span>*</span>
+              </label>
 
-              <p>
-                Explore Reiki as a complementary practice for relaxation,
-                emotional wellbeing, self-awareness and personal balance.
-              </p>
+              <select
+                id="sessionType"
+                name="sessionType"
+                value={selectedSessionType}
+                onChange={(event) =>
+                  setSelectedSessionType(event.target.value)
+                }
+                required
+              >
+                <option value="" disabled>
+                  Select session type
+                </option>
+
+                <option value="Free Consultation">
+                  Free Consultation
+                </option>
+
+                <option value="Online Session — Zoom">
+                  Online Session — Zoom
+                </option>
+
+                <option value="Offline Session — Our Centre">
+                  Offline Session — Our Centre
+                </option>
+              </select>
             </div>
 
-            <div className="reiki-concerns-grid">
-              {reikiConcerns.map((concern) => (
-                <a
-                  key={concern}
-                  href="#booking"
-                  className="reiki-concern-card"
-                  onClick={(event) =>
-                    handleConcernClick(event, "Reiki Healing")
-                  }
-                >
-                  <div className="reiki-concern-name">{concern}</div>
-                </a>
-              ))}
-            </div>
-          </section>
-        )}
+            <div className="form-group">
+              <label htmlFor="message">
+                Tell Us About Your Requirements
+              </label>
 
-        {isDowsing && (
-          <section className="dowsing-areas-section">
-            <div className="dowsing-areas-title">
-              <h2>What Would You Like to Explore?</h2>
-
-              <p>
-                Select an area below to enquire about a dowsing session.
-              </p>
+              <textarea
+                id="message"
+                name="message"
+                rows={5}
+                placeholder="Briefly tell us what you would like to explore or understand..."
+              />
             </div>
 
-            <div className="dowsing-areas-grid">
-              {dowsingAreas.map((area) => (
-                <a
-                  key={area}
-                  href="#booking"
-                  className="dowsing-area-card"
-                  onClick={(event) =>
-                    handleConcernClick(event, "Dowsing")
-                  }
-                >
-                  <div className="dowsing-area-name">{area}</div>
-                </a>
-              ))}
+            <div className="booking-form-actions">
+              <button
+                type="submit"
+                className="booking-button whatsapp-booking-button"
+              >
+                <span className="button-icon">◉</span>
+                Enquire Through WhatsApp
+              </button>
             </div>
-          </section>
-        )}
 
-        <div className="service-page-actions">
-          <a
-            href="#booking"
-            className="service-page-button"
-            onClick={(event) => {
-              event.preventDefault();
-
-              if (isReiki || isDowsing) {
-                window.dispatchEvent(
-                  new CustomEvent<string>("ssf-select-service", {
-                    detail: isReiki ? "Reiki Healing" : "Dowsing",
-                  })
-                );
-              }
-
-              const bookingSection = document.getElementById("booking");
-
-              if (bookingSection) {
-                bookingSection.scrollIntoView({
-                  behavior: "smooth",
-                  block: "start",
-                });
-              }
-            }}
-          >
-            Book a Session
-          </a>
-
-          <a href="/#contact" className="service-page-button secondary">
-            Contact Us
-          </a>
+            <p className="booking-form-note">
+              Your enquiry will open in WhatsApp with the details you provide.
+              We will respond with available timings, session details and
+              information about the next steps.
+            </p>
+          </form>
         </div>
       </div>
-    </main>
+    </section>
   );
 };
 
-export default ServicePage;
+export default Booking;
