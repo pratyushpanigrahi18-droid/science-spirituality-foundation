@@ -193,7 +193,7 @@ const ServicePage: React.FC<ServicePageProps> = ({
                 rgba(21, 42, 29, 0.30),
                 rgba(21, 42, 29, 0.48)
               ),
-              url("/plr-hero.webp");
+              url("/plr-hero.webp?v=2");
             background-size: cover;
             background-position: center 42%;
             background-repeat: no-repeat;
