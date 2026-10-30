@@ -185,48 +185,23 @@ const ServicePage: React.FC<ServicePageProps> = ({
             align-items: center;
             justify-content: center;
             width: 100%;
-            min-height: clamp(620px, 58vw, 820px);
+            aspect-ratio: 16 / 9;
+            min-height: 560px;
+            max-height: 820px;
             overflow: hidden;
-            padding: 90px 24px;
+            padding: 70px 24px;
             isolation: isolate;
             background: #18271f;
-            text-align: center;
-          }
-
-          /* Soft, full-width backdrop fills the side space without cropping the photo */
-          .service-page .plr-service-hero::before {
-            content: "";
-            position: absolute;
-            inset: -18px;
-            z-index: -2;
-            background-image: url("/plr-hero.webp?v=4");
+            background-image:
+              linear-gradient(
+                rgba(21, 42, 29, 0.30),
+                rgba(21, 42, 29, 0.46)
+              ),
+              url("/plr-hero.webp?v=5");
             background-size: cover;
             background-position: center center;
-            filter: blur(18px);
-            transform: scale(1.04);
-            opacity: 0.72;
-          }
-
-          .service-page .plr-service-hero::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            z-index: -1;
-            background: linear-gradient(
-              rgba(21, 42, 29, 0.34),
-              rgba(21, 42, 29, 0.48)
-            );
-          }
-
-          .service-page .plr-service-image {
-            position: absolute;
-            inset: 0;
-            z-index: -1;
-            display: block;
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            object-position: center center;
+            background-repeat: no-repeat;
+            text-align: center;
           }
 
           .service-page .plr-service-hero-inner {
@@ -392,13 +367,12 @@ const ServicePage: React.FC<ServicePageProps> = ({
             }
 
             .service-page .plr-service-hero {
-              min-height: 520px;
+              aspect-ratio: auto;
+              min-height: 460px;
+              max-height: none;
               padding: 55px 20px;
-            }
-
-            .service-page .plr-service-image {
-              object-fit: contain;
-              object-position: center center;
+              background-size: contain;
+              background-color: #18271f;
             }
 
             .service-page .plr-service-hero h1 {
@@ -466,11 +440,6 @@ const ServicePage: React.FC<ServicePageProps> = ({
         </section>
       ) : isPLR ? (
         <section className="plr-service-hero">
-          <img
-            src="/plr-hero.webp?v=4"
-            alt="Past Life Regression session"
-            className="plr-service-image"
-          />
           <div className="plr-service-hero-inner">
             <p className="service-page-label">
               SCIENCE & SPIRITUALITY FOUNDATION
