@@ -10,17 +10,17 @@ interface ServicePageProps {
 const reikiConcerns = [
   "Stress & Anxiety",
   "Headaches & Migraines",
-  "Sleep Problems / Insomnia",
+  "Quick Pain Relief",
   "Neck & Back Pain",
   "Joint Pain",
   "Digestive Problems",
   "Fatigue & Low Energy",
   "Emotional Stress",
-  "Concentration & Mental Clarity",
-  "Work & Study Pressure",
+  "Wellness Assessment",
+  "Distance Healing",
   "Relationship & Emotional Wellbeing",
   "Grief & Emotional Healing",
-  "Self-Confidence & Inner Balance",
+  "Chakra Cleaning",
   "Women's Wellness",
   "Chronic Pain & General Discomfort",
   "Relaxation & Inner Peace",
@@ -51,9 +51,16 @@ const ServicePage: React.FC<ServicePageProps> = ({
   const isDowsing = safeTitle === "dowsing";
 
   const handleConcernClick = (
-    event: React.MouseEvent<HTMLAnchorElement>
+    event: React.MouseEvent<HTMLAnchorElement>,
+    serviceName: string
   ) => {
     event.preventDefault();
+
+    window.dispatchEvent(
+      new CustomEvent<string>("ssf-select-service", {
+        detail: serviceName,
+      })
+    );
 
     const bookingSection = document.getElementById("booking");
 
@@ -367,7 +374,9 @@ const ServicePage: React.FC<ServicePageProps> = ({
                   key={concern}
                   href="#booking"
                   className="reiki-concern-card"
-                  onClick={handleConcernClick}
+                  onClick={(event) =>
+                    handleConcernClick(event, "Reiki Healing")
+                  }
                 >
                   <div className="reiki-concern-name">{concern}</div>
                 </a>
@@ -392,7 +401,9 @@ const ServicePage: React.FC<ServicePageProps> = ({
                   key={area}
                   href="#booking"
                   className="dowsing-area-card"
-                  onClick={handleConcernClick}
+                  onClick={(event) =>
+                    handleConcernClick(event, "Dowsing")
+                  }
                 >
                   <div className="dowsing-area-name">{area}</div>
                 </a>
@@ -407,6 +418,15 @@ const ServicePage: React.FC<ServicePageProps> = ({
             className="service-page-button"
             onClick={(event) => {
               event.preventDefault();
+
+              if (isReiki || isDowsing) {
+                window.dispatchEvent(
+                  new CustomEvent<string>("ssf-select-service", {
+                    detail: isReiki ? "Reiki Healing" : "Dowsing",
+                  })
+                );
+              }
+
               const bookingSection = document.getElementById("booking");
 
               if (bookingSection) {
