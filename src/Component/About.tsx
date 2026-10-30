@@ -87,10 +87,71 @@ const About: React.FC = () => {
           transform: translateY(-2px);
         }
 
+        /* Founder profile layout */
+
+        .ssf-about-redesign .founder-profile {
+          display: grid;
+          grid-template-columns: minmax(0, 420px) minmax(0, 1fr);
+          gap: clamp(35px, 4vw, 65px);
+          align-items: start;
+          width: 100%;
+          margin: 0 auto 100px;
+        }
+
+        .ssf-about-redesign .founder-image-wrapper {
+          width: 100%;
+          max-width: 420px;
+          align-self: start;
+          margin: 0;
+        }
+
+        .ssf-about-redesign .founder-image {
+          display: block;
+          width: 100%;
+          height: auto;
+          max-width: 100%;
+          object-fit: contain;
+          object-position: center top;
+          border-radius: 12px;
+          box-shadow: 0 12px 30px rgba(13, 47, 32, 0.10);
+        }
+
+        .ssf-about-redesign .founder-profile-content {
+          min-width: 0;
+          align-self: start;
+          margin: 0;
+        }
+
+        .ssf-about-redesign .founder-profile-content > .section-tag {
+          margin-top: 0;
+        }
+
+        .ssf-about-redesign .founder-profile-content h2 {
+          margin: 0 0 10px;
+          color: #173f2a;
+          font-family: Georgia, "Times New Roman", serif;
+          font-size: clamp(38px, 3.2vw, 54px);
+          font-weight: 500;
+          line-height: 1.2;
+        }
+
+        .ssf-about-redesign .founder-profile-content h2 span {
+          color: #b89a5a;
+        }
+
+        .ssf-about-redesign .founder-title {
+          margin: 0 0 18px;
+          color: #173f2a;
+          font-size: 17px;
+          font-weight: 700;
+        }
+
         /* Founder credentials */
 
         .ssf-about-redesign .founder-credentials {
           margin-top: 20px;
+          padding-left: 18px;
+          border-left: 3px solid #b89a5a;
           font-size: 17px;
           line-height: 1.9;
         }
@@ -156,6 +217,13 @@ const About: React.FC = () => {
           font-weight: 800;
         }
 
+        @media (max-width: 1000px) {
+          .ssf-about-redesign .founder-profile {
+            grid-template-columns: minmax(0, 340px) minmax(0, 1fr);
+            gap: 35px;
+          }
+        }
+
         @media (max-width: 800px) {
           .ssf-about-redesign {
             padding: 65px 22px;
@@ -180,6 +248,15 @@ const About: React.FC = () => {
 
           .ssf-about-redesign .about-intro-copy p {
             font-size: 18px;
+          }
+
+          .ssf-about-redesign .founder-profile {
+            grid-template-columns: minmax(0, 300px) minmax(0, 1fr);
+            gap: 28px;
+          }
+
+          .ssf-about-redesign .founder-profile-content h2 {
+            font-size: clamp(34px, 5vw, 44px);
           }
 
           .ssf-about-redesign .founder-biography p {
@@ -208,6 +285,21 @@ const About: React.FC = () => {
 
           .ssf-about-redesign .about-button {
             width: 100%;
+          }
+
+          .ssf-about-redesign .founder-profile {
+            grid-template-columns: 1fr;
+            gap: 28px;
+          }
+
+          .ssf-about-redesign .founder-image-wrapper {
+            width: 100%;
+            max-width: 380px;
+            margin: 0 auto;
+          }
+
+          .ssf-about-redesign .founder-profile-content h2 {
+            font-size: 39px;
           }
 
           .ssf-about-redesign .founder-biography p {
