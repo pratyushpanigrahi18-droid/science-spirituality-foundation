@@ -185,17 +185,17 @@ const ServicePage: React.FC<ServicePageProps> = ({
             align-items: center;
             justify-content: center;
             width: 100%;
-            min-height: 500px;
+            min-height: clamp(680px, 55vw, 820px);
             overflow: hidden;
-            padding: 70px 24px;
+            padding: 90px 24px;
             background-image:
               linear-gradient(
                 rgba(21, 42, 29, 0.30),
                 rgba(21, 42, 29, 0.48)
               ),
-              url("/plr-hero.webp?v=2");
+              url("/plr-hero.webp?v=3");
             background-size: cover;
-            background-position: center 15%;
+            background-position: center 50%;
             background-repeat: no-repeat;
             text-align: center;
           }
@@ -363,9 +363,9 @@ const ServicePage: React.FC<ServicePageProps> = ({
             }
 
             .service-page .plr-service-hero {
-              min-height: 390px;
+              min-height: 450px;
               padding: 55px 20px;
-              background-position: center 15%;
+              background-position: center 50%;
             }
 
             .service-page .plr-service-hero h1 {
