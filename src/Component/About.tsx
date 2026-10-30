@@ -1,165 +1,306 @@
+
 import React from "react";
 
 const About: React.FC = () => {
-return (
-<section id="about" className="about-section">
-<div className="about-container">
-{/* ABOUT THE FOUNDATION */}
+  return (
+    <>
+      <style>{`
+        .ssf-about-redesign {
+          background: #f3efe5;
+          padding: 90px 32px;
+        }
 
-    <div className="about-content">
-      <p className="section-tag">ABOUT THE FOUNDATION</p>
+        .ssf-about-redesign .about-container {
+          display: block;
+          width: min(100%, 1320px);
+          max-width: 1320px;
+          margin: 0 auto;
+        }
 
-      <h2>
-        A Journey Towards
-        <span> Inner Awareness</span>
-      </h2>
+        .ssf-about-redesign .about-content {
+          display: grid;
+          grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+          gap: clamp(45px, 7vw, 110px);
+          align-items: center;
+          width: 100%;
+          max-width: none;
+          margin: 0 auto 100px;
+          padding: 55px 60px;
+          background: #faf8f2;
+          border: 1px solid rgba(23, 63, 42, 0.10);
+          border-radius: 8px;
+          box-shadow: 0 12px 35px rgba(13, 47, 32, 0.06);
+        }
 
-      <p>
-        Science & Spirituality Foundation is a platform dedicated to
-        exploring consciousness, spirituality, self-discovery and holistic
-        wellbeing.
-      </p>
+        .ssf-about-redesign .about-intro-heading {
+          padding-right: 20px;
+          border-right: 1px solid rgba(184, 154, 90, 0.55);
+        }
 
-      <p>
-        Through different spiritual and complementary practices, individuals
-        can explore their inner world, understand themselves more deeply and
-        work towards personal growth.
-      </p>
+        .ssf-about-redesign .section-tag {
+          margin: 0 0 22px;
+          color: #92743a;
+          font-size: 14px;
+          font-weight: 700;
+          letter-spacing: 2px;
+          line-height: 1.7;
+        }
 
-      <p>
-        Our approach brings together traditional spiritual practices with
-        curiosity, awareness and a thoughtful exploration of human
-        consciousness.
-      </p>
+        .ssf-about-redesign .about-intro-heading h2 {
+          margin: 0;
+          color: #173f2a;
+          font-family: Georgia, "Times New Roman", serif;
+          font-size: clamp(44px, 4.2vw, 62px);
+          font-weight: 500;
+          line-height: 1.12;
+        }
 
-      <a href="#services" className="about-button">
-        Explore Our Services
-      </a>
-    </div>
+        .ssf-about-redesign .about-intro-heading h2 span {
+          display: block;
+          color: #b89a5a;
+        }
 
-    {/* FOUNDER PROFILE */}
+        .ssf-about-redesign .about-intro-copy p {
+          margin: 0 0 22px;
+          color: #53635a;
+          font-size: 19px;
+          line-height: 1.9;
+        }
 
-    <div className="founder-profile">
-      <div className="founder-image-wrapper">
-        <img
-          src={`${process.env.PUBLIC_URL}/founder-photo-website.jpg`}
-          alt="Pratyush Kumar Panigrahi - Founder, Science & Spirituality Foundation"
-          className="founder-image"
-        />
-      </div>
+        .ssf-about-redesign .about-button {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          min-height: 54px;
+          margin-top: 8px;
+          padding: 0 30px;
+          background: #173f2a;
+          color: #ffffff;
+          border-radius: 3px;
+          font-size: 16px;
+          font-weight: 700;
+          transition: background 0.2s ease, transform 0.2s ease;
+        }
 
-      <div className="founder-profile-content">
-        <p className="section-tag">MEET THE FOUNDER</p>
+        .ssf-about-redesign .about-button:hover {
+          background: #24583b;
+          transform: translateY(-2px);
+        }
 
-        <h2>
-          Pratyush Kumar
-          <span> Panigrahi</span>
-        </h2>
+        @media (max-width: 800px) {
+          .ssf-about-redesign {
+            padding: 65px 22px;
+          }
 
-        <p className="founder-title">
-          Founder — Science & Spirituality Foundation
-        </p>
+          .ssf-about-redesign .about-content {
+            grid-template-columns: 1fr;
+            gap: 32px;
+            padding: 38px 32px;
+            margin-bottom: 70px;
+          }
 
-        <p className="founder-credentials">
-          Reiki Master&nbsp; | &nbsp;MNI (USA) Recognised
-          <br />
-          Past Life Regression & Transpersonal Hypnotherapist
-          <br />
-          Dowsing Specialist&nbsp; | &nbsp;Fingerprint Analyst
-        </p>
+          .ssf-about-redesign .about-intro-heading {
+            padding: 0 0 26px;
+            border-right: 0;
+            border-bottom: 1px solid rgba(184, 154, 90, 0.55);
+          }
 
-        <p>
-          The founder brings together multiple approaches to healing,
-          consciousness, self-exploration and personal development. His
-          areas of practice include Reiki, Dowsing, Past Life Regression,
-          Transpersonal Hypnotherapy and Fingerprint Analysis.
-        </p>
+          .ssf-about-redesign .about-intro-heading h2 {
+            font-size: clamp(40px, 7vw, 52px);
+          }
 
-        <p>
-          He is MNI (USA) recognised in Past Life Regression and
-          Transpersonal Hypnotherapy. Through Science & Spirituality
-          Foundation, the intention is to create a space where people can
-          explore themselves through different perspectives — combining
-          knowledge, personal experience, inner awareness and practical
-          self-development.
-        </p>
+          .ssf-about-redesign .about-intro-copy p {
+            font-size: 18px;
+          }
+        }
 
-        <p>
-          The approach is not about asking people to blindly accept a
-          belief. It is about encouraging people to explore, question,
-          experience and develop their own understanding.
-        </p>
-      </div>
-    </div>
+        @media (max-width: 600px) {
+          .ssf-about-redesign {
+            padding: 42px 15px;
+          }
 
-    {/* MESSAGE FROM THE FOUNDER */}
+          .ssf-about-redesign .about-content {
+            padding: 30px 22px;
+            gap: 25px;
+          }
 
-    <div className="founder-message">
-      <div className="founder-message-heading">
-        <p className="section-tag">MESSAGE FROM THE FOUNDER</p>
+          .ssf-about-redesign .about-intro-heading h2 {
+            font-size: 39px;
+          }
 
-        <h2>
-          Explore. Question.
-          <span> Experience. Grow.</span>
-        </h2>
-      </div>
+          .ssf-about-redesign .about-intro-copy p {
+            font-size: 17px;
+            line-height: 1.8;
+          }
 
-      <div className="founder-message-content">
-        <p>
-          I believe that every individual carries within themselves a unique
-          combination of abilities, experiences, questions and
-          possibilities.
-        </p>
+          .ssf-about-redesign .about-button {
+            width: 100%;
+          }
+        }
+      `}</style>
 
-        <p>
-          Our journey through life is not only about achieving external
-          success. It is also about understanding who we are, why we think
-          and behave the way we do, what gives our life meaning, and what
-          potential lies within us.
-        </p>
+      <section id="about" className="about-section ssf-about-redesign">
+        <div className="about-container">
 
-        <p>
-          Science & Spirituality Foundation was created with the intention
-          of providing a space for this exploration.
-        </p>
+          <div className="about-content">
+            <div className="about-intro-heading">
+              <p className="section-tag">ABOUT THE FOUNDATION</p>
 
-        <p>
-          Here, we bring together different approaches to personal
-          development, healing, consciousness and self-exploration. Whether
-          you are looking for greater inner balance, exploring spirituality,
-          trying to understand recurring patterns, discovering your
-          potential, or simply searching for a clearer direction in life,
-          your journey begins with a question.
-        </p>
+              <h2>
+                A Journey Towards
+                <span> Inner Awareness</span>
+              </h2>
+            </div>
 
-        <p>
-          I do not believe that there is one path that is right for
-          everyone. Each person has to explore, experience and discover what
-          resonates with them.
-        </p>
+            <div className="about-intro-copy">
+              <p>
+                Science & Spirituality Foundation is a platform dedicated to
+                exploring consciousness, spirituality, self-discovery and
+                holistic wellbeing.
+              </p>
 
-        <p>
-          My role is not to tell you who you are or what your life must
-          become. My role is to provide guidance, tools and a space where
-          you can explore yourself more deeply.
-        </p>
+              <p>
+                Through different spiritual and complementary practices,
+                individuals can explore their inner world, understand
+                themselves more deeply and work towards personal growth.
+              </p>
 
-        <p>
-          I invite you to stay curious. Ask questions. Explore different
-          perspectives. Experience for yourself. And most importantly,
-          continue growing.
-        </p>
+              <p>
+                Our approach brings together traditional spiritual practices
+                with curiosity, awareness and a thoughtful exploration of
+                human consciousness.
+              </p>
 
-        <p className="founder-signature">
-          — Pratyush Kumar Panigrahi
-          <span>Founder, Science & Spirituality Foundation</span>
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
+              <a href="#services" className="about-button">
+                Explore Our Services
+              </a>
+            </div>
+          </div>
 
-);
+          {/* FOUNDER PROFILE */}
+
+          <div className="founder-profile">
+            <div className="founder-image-wrapper">
+              <img
+                src={`${process.env.PUBLIC_URL}/founder-photo-website.jpg`}
+                alt="Pratyush Kumar Panigrahi - Founder, Science & Spirituality Foundation"
+                className="founder-image"
+              />
+            </div>
+
+            <div className="founder-profile-content">
+              <p className="section-tag">MEET THE FOUNDER</p>
+
+              <h2>
+                Pratyush Kumar
+                <span> Panigrahi</span>
+              </h2>
+
+              <p className="founder-title">
+                Founder — Science & Spirituality Foundation
+              </p>
+
+              <p className="founder-credentials">
+                Reiki Master&nbsp; | &nbsp;MNI (USA) Recognised
+                <br />
+                Past Life Regression & Transpersonal Hypnotherapist
+                <br />
+                Dowsing Specialist&nbsp; | &nbsp;Fingerprint Analyst
+              </p>
+
+              <p>
+                The founder brings together multiple approaches to healing,
+                consciousness, self-exploration and personal development. His
+                areas of practice include Reiki, Dowsing, Past Life Regression,
+                Transpersonal Hypnotherapy and Fingerprint Analysis.
+              </p>
+
+              <p>
+                He is MNI (USA) recognised in Past Life Regression and
+                Transpersonal Hypnotherapy. Through Science & Spirituality
+                Foundation, the intention is to create a space where people can
+                explore themselves through different perspectives — combining
+                knowledge, personal experience, inner awareness and practical
+                self-development.
+              </p>
+
+              <p>
+                The approach is not about asking people to blindly accept a
+                belief. It is about encouraging people to explore, question,
+                experience and develop their own understanding.
+              </p>
+            </div>
+          </div>
+
+          {/* MESSAGE FROM THE FOUNDER */}
+
+          <div className="founder-message">
+            <div className="founder-message-heading">
+              <p className="section-tag">MESSAGE FROM THE FOUNDER</p>
+
+              <h2>
+                Explore. Question.
+                <span> Experience. Grow.</span>
+              </h2>
+            </div>
+
+            <div className="founder-message-content">
+              <p>
+                I believe that every individual carries within themselves a
+                unique combination of abilities, experiences, questions and
+                possibilities.
+              </p>
+
+              <p>
+                Our journey through life is not only about achieving external
+                success. It is also about understanding who we are, why we
+                think and behave the way we do, what gives our life meaning,
+                and what potential lies within us.
+              </p>
+
+              <p>
+                Science & Spirituality Foundation was created with the
+                intention of providing a space for this exploration.
+              </p>
+
+              <p>
+                Here, we bring together different approaches to personal
+                development, healing, consciousness and self-exploration.
+                Whether you are looking for greater inner balance, exploring
+                spirituality, trying to understand recurring patterns,
+                discovering your potential, or simply searching for a clearer
+                direction in life, your journey begins with a question.
+              </p>
+
+              <p>
+                I do not believe that there is one path that is right for
+                everyone. Each person has to explore, experience and discover
+                what resonates with them.
+              </p>
+
+              <p>
+                My role is not to tell you who you are or what your life must
+                become. My role is to provide guidance, tools and a space
+                where you can explore yourself more deeply.
+              </p>
+
+              <p>
+                I invite you to stay curious. Ask questions. Explore different
+                perspectives. Experience for yourself. And most importantly,
+                continue growing.
+              </p>
+
+              <p className="founder-signature">
+                — Pratyush Kumar Panigrahi
+                <span>Founder, Science & Spirituality Foundation</span>
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </section>
+    </>
+  );
 };
 
 export default About;
