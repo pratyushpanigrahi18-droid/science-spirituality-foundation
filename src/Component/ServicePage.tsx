@@ -195,7 +195,7 @@ const ServicePage: React.FC<ServicePageProps> = ({
               ),
               url("/plr-hero.webp?v=2");
             background-size: cover;
-            background-position: center 42%;
+            background-position: center 15%;
             background-repeat: no-repeat;
             text-align: center;
           }
@@ -365,7 +365,7 @@ const ServicePage: React.FC<ServicePageProps> = ({
             .service-page .plr-service-hero {
               min-height: 390px;
               padding: 55px 20px;
-              background-position: center center;
+              background-position: center 15%;
             }
 
             .service-page .plr-service-hero h1 {
