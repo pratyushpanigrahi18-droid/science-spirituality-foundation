@@ -461,9 +461,6 @@ Thank you.`;
                     Past Life Regression
                   </option>
 
-                  <option value="Spiritual Wellness">
-                    Spiritual Wellness
-                  </option>
                   <option value="Meditation">Meditation</option>
                   <option value="Manifestation">Manifestation</option>
 
