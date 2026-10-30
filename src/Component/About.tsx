@@ -87,6 +87,24 @@ const About: React.FC = () => {
           transform: translateY(-2px);
         }
 
+        /* Founder credentials highlight */
+        .ssf-about-redesign .founder-credentials {
+          font-size: 17px;
+          line-height: 2;
+        }
+
+        .ssf-about-redesign .credential-highlight {
+          color: #a17d35;
+          font-weight: 800;
+        }
+
+        .ssf-about-redesign .credential-training {
+          display: block;
+          margin-top: 10px;
+          color: #53635a;
+          font-size: 16px;
+        }
+
         @media (max-width: 800px) {
           .ssf-about-redesign {
             padding: 65px 22px;
@@ -201,11 +219,23 @@ const About: React.FC = () => {
               </p>
 
               <p className="founder-credentials">
-                Reiki Master&nbsp; | &nbsp;MNI (USA) Recognised
+                Advanced Reiki Healer
                 <br />
-                Past Life Regression & Transpersonal Hypnotherapist
+                Past Life Regression & Transpersonal Hypnotherapy Practitioner
                 <br />
-                Dowsing Specialist&nbsp; | &nbsp;Fingerprint Analyst
+                Dowsing Practitioner | Fingerprint Analyst
+
+                <span className="credential-training">
+                  Professional training completed through SCL
+                </span>
+
+                <span className="credential-highlight">
+                  MNI (USA) Career Partner
+                </span>
+                {" | "}
+                <span className="credential-highlight">
+                  IPHM (UK) Accredited Training Provider
+                </span>
               </p>
 
               <p>
