@@ -5,155 +5,169 @@ const Hero: React.FC = () => {
   return (
     <>
       <style>{`
-        .ssf-home-layout.ssf-hero-balanced {
-          grid-template-columns: minmax(0, 1.12fr) minmax(0, 0.88fr);
+        .ssf-full-hero {
+          width: 100%;
+          background: #faf8f2;
+          padding: 28px clamp(20px, 4vw, 64px) 48px;
+          box-sizing: border-box;
+        }
+
+        .ssf-full-hero-banner {
+          width: 100%;
+          margin: 0 auto;
+        }
+
+        .ssf-full-hero-banner img {
+          display: block;
+          width: 100%;
+          height: auto;
+          object-fit: contain;
+          border-radius: 4px;
+        }
+
+        .ssf-full-hero-actions {
+          display: flex;
+          justify-content: center;
           align-items: center;
-          gap: clamp(32px, 5vw, 76px);
-          min-height: 560px;
-          padding: 64px clamp(28px, 6.5vw, 110px);
+          flex-wrap: wrap;
+          gap: 16px;
+          margin: 30px auto 52px;
         }
 
-        .ssf-hero-balanced .ssf-home-left {
-          max-width: 760px;
-          margin: 0;
+        .ssf-full-hero-actions .hero-button {
+          display: inline-flex;
+          justify-content: center;
+          align-items: center;
+          min-width: 190px;
+          padding: 14px 24px;
+          border-radius: 4px;
+          text-decoration: none;
+          font-size: 15px;
+          font-weight: 600;
+          transition: 0.2s ease;
         }
 
-        .ssf-hero-balanced .ssf-home-intro {
-          padding: 0;
+        .ssf-full-hero-actions .hero-button.primary {
+          background: #173f2a;
+          color: #ffffff;
         }
 
-        .ssf-hero-balanced .ssf-home-intro h1 {
-          max-width: 740px;
-          font-size: clamp(36px, 3.5vw, 50px);
-          line-height: 1.14;
-          letter-spacing: -0.7px;
+        .ssf-full-hero-actions .hero-button.primary:hover {
+          background: #24583b;
         }
 
-        .ssf-hero-balanced .ssf-home-intro h1 span {
+        .ssf-full-hero-actions .hero-button.secondary {
+          border: 1px solid #173f2a;
+          color: #173f2a;
+          background: transparent;
+        }
+
+        .ssf-full-hero-actions .hero-button.secondary:hover {
+          background: #e9f0e9;
+        }
+
+        .ssf-full-hero-intro {
+          max-width: 1050px;
+          margin: 0 auto;
+          text-align: center;
+        }
+
+        .ssf-full-hero-intro .hero-tagline {
+          margin: 0 0 16px;
+          color: #92743a;
+          font-size: 12px;
+          font-weight: 700;
+          letter-spacing: 1.5px;
+          line-height: 1.8;
+          text-transform: uppercase;
+        }
+
+        .ssf-full-hero-intro h1 {
+          margin: 0 auto;
+          color: #173f2a;
+          font-family: Georgia, "Times New Roman", serif;
+          font-size: clamp(34px, 4vw, 52px);
+          font-weight: 500;
+          line-height: 1.2;
+        }
+
+        .ssf-full-hero-intro h1 span {
           color: #b89a5a;
         }
 
-        .ssf-hero-balanced .ssf-home-intro .hero-description {
-          max-width: 650px;
-          margin-top: 20px;
+        .ssf-full-hero-intro .hero-description {
+          max-width: 850px;
+          margin: 20px auto 0;
+          color: #68736c;
           font-size: 16px;
           line-height: 1.8;
         }
 
-        .ssf-hero-balanced .hero-buttons {
-          margin-top: 28px;
-        }
-
-        .ssf-hero-balanced .ssf-home-banner {
-          position: static;
-          width: 100%;
-          max-width: 650px;
-          justify-self: end;
-          align-self: center;
-          padding: 0;
-        }
-
-        .ssf-hero-balanced .ssf-home-banner img {
-          display: block;
-          width: 100%;
-          height: auto;
-          max-height: none;
-          object-fit: contain;
-          border-radius: 6px;
-          box-shadow: 0 18px 45px rgba(23, 63, 42, 0.10);
-        }
-
-        @media (max-width: 900px) {
-          .ssf-home-layout.ssf-hero-balanced {
-            grid-template-columns: 1fr;
-            min-height: auto;
-            gap: 38px;
-            padding: 48px 28px;
-          }
-
-          .ssf-hero-balanced .ssf-home-left {
-            max-width: 760px;
-            margin: 0 auto;
-          }
-
-          .ssf-hero-balanced .ssf-home-banner {
-            grid-row: auto;
-            justify-self: center;
-            width: 100%;
-            max-width: 720px;
-            margin: 0 auto;
-          }
-        }
-
         @media (max-width: 600px) {
-          .ssf-home-layout.ssf-hero-balanced {
-            padding: 36px 20px;
-            gap: 30px;
+          .ssf-full-hero {
+            padding: 18px 14px 36px;
           }
 
-          .ssf-hero-balanced .ssf-home-intro h1 {
-            font-size: clamp(32px, 8vw, 42px);
-            letter-spacing: -0.4px;
+          .ssf-full-hero-actions {
+            gap: 12px;
+            margin: 22px auto 38px;
           }
 
-          .ssf-hero-balanced .ssf-home-intro .hero-description {
+          .ssf-full-hero-actions .hero-button {
+            width: 100%;
+            min-width: 0;
+          }
+
+          .ssf-full-hero-intro h1 {
+            font-size: 34px;
+          }
+
+          .ssf-full-hero-intro .hero-description {
             font-size: 15px;
-          }
-
-          .ssf-hero-balanced .ssf-home-banner img {
-            border-radius: 4px;
           }
         }
       `}</style>
 
-      <section
-        id="home"
-        className="ssf-home-layout ssf-hero-balanced"
-      >
-        <div className="ssf-home-left">
-          <div className="ssf-home-intro">
-            <p className="hero-tagline">
-              SCIENCE • SPIRITUALITY • CONSCIOUSNESS • WELLBEING
-            </p>
-
-            <h1>
-              Exploring the Connection
-              <br />
-              Between Science, Spirituality
-              <br />
-              and <span>Human Consciousness</span>
-            </h1>
-
-            <p className="hero-description">
-              Science & Spirituality Foundation is dedicated to exploring
-              the intersections of scientific inquiry, spiritual traditions,
-              human consciousness and holistic wellbeing.
-            </p>
-
-            <p className="hero-description">
-              Through education, thoughtful exploration and individual
-              learning experiences, we encourage a deeper understanding
-              of ourselves and the world around us.
-            </p>
-
-            <div className="hero-buttons">
-              <a href="#services" className="hero-button primary">
-                Explore Our Work
-              </a>
-
-              <a href="#booking" className="hero-button secondary">
-                Discover Our Services
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <aside className="ssf-home-banner">
+      <section id="home" className="ssf-full-hero">
+        <div className="ssf-full-hero-banner">
           <img
             src="/ssf-banner.png"
-            alt="Science and Spirituality Foundation"
+            alt="Science & Spirituality Foundation"
           />
-        </aside>
+        </div>
+
+        <div className="ssf-full-hero-actions">
+          <a href="#services" className="hero-button primary">
+            Explore Our Work
+          </a>
+
+          <a href="#booking" className="hero-button secondary">
+            Discover Our Services
+          </a>
+        </div>
+
+        <div className="ssf-full-hero-intro">
+          <p className="hero-tagline">
+            SCIENCE • SPIRITUALITY • CONSCIOUSNESS • WELLBEING
+          </p>
+
+          <h1>
+            Exploring the Connection Between Science, Spirituality
+            and <span>Human Consciousness</span>
+          </h1>
+
+          <p className="hero-description">
+            Science & Spirituality Foundation is dedicated to exploring
+            the intersections of scientific inquiry, spiritual traditions,
+            human consciousness and holistic wellbeing.
+          </p>
+
+          <p className="hero-description">
+            Through education, thoughtful exploration and individual
+            learning experiences, we encourage a deeper understanding
+            of ourselves and the world around us.
+          </p>
+        </div>
       </section>
     </>
   );
