@@ -87,22 +87,55 @@ const About: React.FC = () => {
           transform: translateY(-2px);
         }
 
-        /* Founder credentials highlight */
+        /* Founder credentials */
+
         .ssf-about-redesign .founder-credentials {
+          margin-top: 20px;
           font-size: 17px;
-          line-height: 2;
+          line-height: 1.9;
         }
 
-        .ssf-about-redesign .credential-highlight {
-          color: #a17d35;
-          font-weight: 800;
+        .ssf-about-redesign .credential-heading {
+          margin-bottom: 16px;
+          color: #173f2a;
+          font-size: 17px;
+          font-weight: 700;
+        }
+
+        .ssf-about-redesign .credential-specialisation {
+          color: #26352c;
+          font-weight: 600;
+          line-height: 2;
         }
 
         .ssf-about-redesign .credential-training {
           display: block;
-          margin-top: 10px;
+          margin-top: 18px;
           color: #53635a;
           font-size: 16px;
+          line-height: 1.7;
+        }
+
+        .ssf-about-redesign .credential-affiliation {
+          display: block;
+          color: #b89a5a;
+          font-size: 16px;
+          font-weight: 800;
+          line-height: 1.9;
+        }
+
+        .ssf-about-redesign .credential-divider {
+          width: 100%;
+          height: 1px;
+          margin: 18px 0;
+          background: rgba(184, 154, 90, 0.65);
+        }
+
+        .ssf-about-redesign .credential-other {
+          color: #26352c;
+          font-size: 16px;
+          font-weight: 700;
+          line-height: 1.9;
         }
 
         @media (max-width: 800px) {
@@ -218,25 +251,37 @@ const About: React.FC = () => {
                 Founder — Science & Spirituality Foundation
               </p>
 
-              <p className="founder-credentials">
-                Advanced Reiki Healer
-                <br />
-                Past Life Regression & Transpersonal Hypnotherapy Practitioner
-                <br />
-                Dowsing Practitioner | Fingerprint Analyst
+              <div className="founder-credentials">
+                <div className="credential-heading">
+                  Professional Training & Credentials
+                </div>
 
-                <span className="credential-training">
-                  Professional training completed through SCL
+                <div className="credential-specialisation">
+                  Past Life Regression Therapist
+                  <br />
+                  Transpersonal Hypnotherapist
+                  <br />
+                  Womb Regression Therapist
+                </div>
+
+                <div className="credential-training">
+                  Professional training completed through <strong>SCL</strong>
+                </div>
+
+                <span className="credential-affiliation">
+                  MNI USA Career Partner
                 </span>
 
-                <span className="credential-highlight">
-                  MNI (USA) Career Partner
+                <span className="credential-affiliation">
+                  IPHM UK Accredited Training
                 </span>
-                {" | "}
-                <span className="credential-highlight">
-                  IPHM (UK) Accredited Training Provider
-                </span>
-              </p>
+
+                <div className="credential-divider"></div>
+
+                <div className="credential-other">
+                  Reiki Master | Dowsing Practitioner | Fingerprint Analyst
+                </div>
+              </div>
 
               <p>
                 The founder brings together multiple approaches to healing,
