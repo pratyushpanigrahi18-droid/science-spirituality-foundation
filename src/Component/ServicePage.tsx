@@ -104,8 +104,6 @@ const ServicePage: React.FC<ServicePageProps> = ({
             object-position: center center;
           }
 
-          /* Dowsing image replaces the green hero strip */
-
           .service-page .dowsing-service-hero {
             position: relative;
             display: flex;
@@ -464,7 +462,11 @@ const ServicePage: React.FC<ServicePageProps> = ({
             Book a Session
           </a>
 
-          <a href="/#contact" className="service-page-button secondary">
+          {/* Contact Us stays on the current service page */}
+          <a
+            href="#contact"
+            className="service-page-button secondary"
+          >
             Contact Us
           </a>
         </div>
