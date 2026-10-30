@@ -38,6 +38,24 @@ const dowsingAreas = [
   "Other Enquiries",
 ];
 
+const plrConcerns = [
+  "Repeating Problems in Life",
+  "Relationship Difficulties",
+  "Recurring Physical Pain or Discomfort",
+  "Mental and Emotional Disturbances",
+  "Fears and Phobias",
+  "Anxiety and Insecurity",
+  "Emotional Triggers",
+  "Feeling Stuck in Life",
+  "Attachment and Difficulty Letting Go",
+  "Self-Worth and Confidence",
+  "Unexplained Connections or Familiarity",
+  "Recurring Dreams or Inner Imagery",
+  "Childhood or Early-Life Experiences",
+  "Spiritual Exploration and Curiosity",
+  "Other Personal Concern",
+];
+
 const ServicePage: React.FC<ServicePageProps> = ({
   title,
   subtitle,
@@ -46,6 +64,7 @@ const ServicePage: React.FC<ServicePageProps> = ({
   const safeTitle = (title ?? "").toLowerCase();
   const isReiki = safeTitle === "reiki healing";
   const isDowsing = safeTitle === "dowsing";
+  const isPLR = safeTitle === "past life regression";
 
   // Desktop: scroll to the booking section.
   // Mobile: scroll directly to the actual booking form.
@@ -158,6 +177,62 @@ const ServicePage: React.FC<ServicePageProps> = ({
             line-height: 1.7;
           }
 
+          /* Past Life Regression hero */
+
+          .service-page .plr-service-hero {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            min-height: 500px;
+            overflow: hidden;
+            padding: 70px 24px;
+            background-image:
+              linear-gradient(
+                rgba(21, 42, 29, 0.30),
+                rgba(21, 42, 29, 0.48)
+              ),
+              url("/plr-hero.webp");
+            background-size: cover;
+            background-position: center 42%;
+            background-repeat: no-repeat;
+            text-align: center;
+          }
+
+          .service-page .plr-service-hero-inner {
+            position: relative;
+            z-index: 1;
+            width: min(100%, 900px);
+            margin: 0 auto;
+            color: #ffffff;
+          }
+
+          .service-page .plr-service-hero .service-page-label {
+            margin-bottom: 18px;
+            color: #e9e6c9;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 2.5px;
+          }
+
+          .service-page .plr-service-hero h1 {
+            margin: 0 0 20px;
+            color: #ffffff;
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: clamp(42px, 6vw, 72px);
+            font-weight: 500;
+            line-height: 1.15;
+          }
+
+          .service-page .plr-service-hero-inner > p:last-child {
+            max-width: 720px;
+            margin: 0 auto;
+            color: #ffffff;
+            font-size: clamp(16px, 2vw, 20px);
+            line-height: 1.7;
+          }
+
           .service-page .service-page-hero {
             position: relative;
             z-index: 1;
@@ -170,31 +245,36 @@ const ServicePage: React.FC<ServicePageProps> = ({
           }
 
           .reiki-concerns-section,
-          .dowsing-areas-section {
+          .dowsing-areas-section,
+          .plr-concerns-section {
             width: 100%;
             padding: 70px 4%;
             text-align: center;
           }
 
           .reiki-concerns-title,
-          .dowsing-areas-title {
+          .dowsing-areas-title,
+          .plr-concerns-title {
             margin-bottom: 45px;
           }
 
           .reiki-concerns-title h2,
-          .dowsing-areas-title h2 {
+          .dowsing-areas-title h2,
+          .plr-concerns-title h2 {
             margin-bottom: 12px;
           }
 
           .reiki-concerns-title p,
-          .dowsing-areas-title p {
+          .dowsing-areas-title p,
+          .plr-concerns-title p {
             max-width: 750px;
             margin: 0 auto;
             line-height: 1.7;
           }
 
           .reiki-concerns-grid,
-          .dowsing-areas-grid {
+          .dowsing-areas-grid,
+          .plr-concerns-grid {
             display: grid;
             grid-template-columns: repeat(3, minmax(0, 1fr));
             gap: 24px;
@@ -203,7 +283,8 @@ const ServicePage: React.FC<ServicePageProps> = ({
           }
 
           .reiki-concern-card,
-          .dowsing-area-card {
+          .dowsing-area-card,
+          .plr-concern-card {
             min-height: 125px;
             display: flex;
             align-items: center;
@@ -226,14 +307,16 @@ const ServicePage: React.FC<ServicePageProps> = ({
           }
 
           .reiki-concern-card:hover,
-          .dowsing-area-card:hover {
+          .dowsing-area-card:hover,
+          .plr-concern-card:hover {
             transform: translateY(-7px);
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.14);
             border-color: rgba(112, 79, 145, 0.35);
           }
 
           .reiki-concern-name,
-          .dowsing-area-name {
+          .dowsing-area-name,
+          .plr-concern-name {
             font-size: 1.12rem;
             font-weight: 600;
             color: #3f3151;
@@ -249,12 +332,13 @@ const ServicePage: React.FC<ServicePageProps> = ({
 
           @media (max-width: 900px) {
             .reiki-concerns-grid,
-            .dowsing-areas-grid {
+            .dowsing-areas-grid,
+            .plr-concerns-grid {
               grid-template-columns: repeat(2, minmax(0, 1fr));
               gap: 20px;
             }
 
-            /* Centre the seventh card on tablet */
+            /* Centre the seventh Dowsing card on tablet */
             .dowsing-areas-grid > .dowsing-area-card:nth-child(7) {
               grid-column: 1 / -1;
               width: calc(50% - 10px);
@@ -278,13 +362,30 @@ const ServicePage: React.FC<ServicePageProps> = ({
               letter-spacing: 1.8px;
             }
 
+            .service-page .plr-service-hero {
+              min-height: 390px;
+              padding: 55px 20px;
+              background-position: center center;
+            }
+
+            .service-page .plr-service-hero h1 {
+              font-size: 42px;
+            }
+
+            .service-page .plr-service-hero .service-page-label {
+              font-size: 10px;
+              letter-spacing: 1.6px;
+            }
+
             .reiki-concerns-section,
-            .dowsing-areas-section {
+            .dowsing-areas-section,
+            .plr-concerns-section {
               padding: 50px 5%;
             }
 
             .reiki-concerns-grid,
-            .dowsing-areas-grid {
+            .dowsing-areas-grid,
+            .plr-concerns-grid {
               grid-template-columns: 1fr;
               gap: 18px;
             }
@@ -295,13 +396,15 @@ const ServicePage: React.FC<ServicePageProps> = ({
             }
 
             .reiki-concern-card,
-            .dowsing-area-card {
+            .dowsing-area-card,
+            .plr-concern-card {
               min-height: 105px;
               padding: 22px 18px;
             }
 
             .reiki-concern-name,
-            .dowsing-area-name {
+            .dowsing-area-name,
+            .plr-concern-name {
               font-size: 1.05rem;
             }
           }
@@ -319,6 +422,18 @@ const ServicePage: React.FC<ServicePageProps> = ({
       ) : isDowsing ? (
         <section className="dowsing-service-hero">
           <div className="dowsing-service-hero-inner">
+            <p className="service-page-label">
+              SCIENCE & SPIRITUALITY FOUNDATION
+            </p>
+
+            <h1>{title}</h1>
+
+            <p>{subtitle}</p>
+          </div>
+        </section>
+      ) : isPLR ? (
+        <section className="plr-service-hero">
+          <div className="plr-service-hero-inner">
             <p className="service-page-label">
               SCIENCE & SPIRITUALITY FOUNDATION
             </p>
@@ -441,6 +556,34 @@ const ServicePage: React.FC<ServicePageProps> = ({
           </section>
         )}
 
+        {isPLR && (
+          <section className="plr-concerns-section">
+            <div className="plr-concerns-title">
+              <h2>What Would You Like to Explore?</h2>
+
+              <p>
+                Choose an area you would like to explore during your
+                Past Life Regression enquiry.
+              </p>
+            </div>
+
+            <div className="plr-concerns-grid">
+              {plrConcerns.map((concern) => (
+                <a
+                  key={concern}
+                  href="#booking"
+                  className="plr-concern-card"
+                  onClick={(event) =>
+                    handleConcernClick(event, "Past Life Regression")
+                  }
+                >
+                  <div className="plr-concern-name">{concern}</div>
+                </a>
+              ))}
+            </div>
+          </section>
+        )}
+
         <div className="service-page-actions">
           <a
             href="#booking"
@@ -448,10 +591,14 @@ const ServicePage: React.FC<ServicePageProps> = ({
             onClick={(event) => {
               event.preventDefault();
 
-              if (isReiki || isDowsing) {
+              if (isReiki || isDowsing || isPLR) {
                 window.dispatchEvent(
                   new CustomEvent<string>("ssf-select-service", {
-                    detail: isReiki ? "Reiki Healing" : "Dowsing",
+                    detail: isReiki
+                      ? "Reiki Healing"
+                      : isDowsing
+                      ? "Dowsing"
+                      : "Past Life Regression",
                   })
                 );
               }
@@ -462,7 +609,6 @@ const ServicePage: React.FC<ServicePageProps> = ({
             Book a Session
           </a>
 
-          {/* Contact Us stays on the current service page */}
           <a
             href="#contact"
             className="service-page-button secondary"
