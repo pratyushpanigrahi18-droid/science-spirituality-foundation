@@ -138,6 +138,24 @@ const About: React.FC = () => {
           line-height: 1.9;
         }
 
+        /* Founder biography */
+
+        .ssf-about-redesign .founder-biography {
+          margin-top: 30px;
+        }
+
+        .ssf-about-redesign .founder-biography p {
+          margin: 0 0 22px;
+          color: #53635a;
+          font-size: 18px;
+          line-height: 1.9;
+        }
+
+        .ssf-about-redesign .founder-biography .institution-highlight {
+          color: #b89a5a;
+          font-weight: 800;
+        }
+
         @media (max-width: 800px) {
           .ssf-about-redesign {
             padding: 65px 22px;
@@ -163,6 +181,10 @@ const About: React.FC = () => {
           .ssf-about-redesign .about-intro-copy p {
             font-size: 18px;
           }
+
+          .ssf-about-redesign .founder-biography p {
+            font-size: 17px;
+          }
         }
 
         @media (max-width: 600px) {
@@ -186,6 +208,11 @@ const About: React.FC = () => {
 
           .ssf-about-redesign .about-button {
             width: 100%;
+          }
+
+          .ssf-about-redesign .founder-biography p {
+            font-size: 16px;
+            line-height: 1.8;
           }
         }
       `}</style>
@@ -283,27 +310,45 @@ const About: React.FC = () => {
                 </div>
               </div>
 
-              <p>
-                The founder brings together multiple approaches to healing,
-                consciousness, self-exploration and personal development. His
-                areas of practice include Reiki, Dowsing, Past Life Regression,
-                Transpersonal Hypnotherapy and Fingerprint Analysis.
-              </p>
+              <div className="founder-biography">
+                <p>
+                  My work brings together different approaches to
+                  consciousness, self-exploration, holistic wellbeing and
+                  personal development. I am particularly interested in
+                  understanding the relationship between the human mind,
+                  inner experiences, behaviour and personal growth.
+                </p>
 
-              <p>
-                He is MNI (USA) recognised in Past Life Regression and
-                Transpersonal Hypnotherapy. Through Science & Spirituality
-                Foundation, the intention is to create a space where people can
-                explore themselves through different perspectives — combining
-                knowledge, personal experience, inner awareness and practical
-                self-development.
-              </p>
+                <p>
+                  I completed my professional training in Past Life
+                  Regression, Transpersonal Hypnotherapy and Womb Regression
+                  through{" "}
+                  <span className="institution-highlight">
+                    Soul Conscious Lab
+                  </span>
+                  , an{" "}
+                  <span className="institution-highlight">
+                    MNI (USA) Career Partner
+                  </span>{" "}
+                  and{" "}
+                  <span className="institution-highlight">
+                    IPHM (UK) Accredited Training Institution
+                  </span>
+                  . This training has further shaped my interest in guided
+                  inner exploration, self-awareness and the deeper dimensions
+                  of human experience.
+                </p>
 
-              <p>
-                The approach is not about asking people to blindly accept a
-                belief. It is about encouraging people to explore, question,
-                experience and develop their own understanding.
-              </p>
+                <p>
+                  Through Science & Spirituality Foundation, my vision is to
+                  create a space where scientific curiosity, spiritual
+                  perspectives and personal experiences can be explored
+                  together. I encourage individuals to remain curious, ask
+                  meaningful questions, examine different perspectives and
+                  develop their own understanding rather than blindly
+                  accepting any particular belief.
+                </p>
+              </div>
             </div>
           </div>
 
