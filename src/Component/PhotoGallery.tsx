@@ -1,200 +1,123 @@
 import React from "react";
 
-const certificates = [
-  {
-    title: "Advanced Reiki Healer",
-    category: "Certificate",
-    organisation: "Reiki Healing Foundation",
-    date: "22–23 August 2026",
-    code: "R.H.F. Code: DL/AUG/7595",
-    image: "/certificate-2-advanced-reiki-healer.jpg",
-  },
-  {
-    title: "Reiki & Mind Power Course",
-    category: "Membership & Course",
-    organisation: "Reiki Healing Foundation",
-    date: "22–23 August 2026",
-    code: "Regn. No.: DL/AUG/7595",
-    image: "/certificate-1-reiki-membership.jpg",
-  },
-];
-
-const Certificates: React.FC = () => {
+const PhotoGallery: React.FC = () => {
   return (
-    <main className="certificates-page">
+    <main className="certificates-page photo-gallery-page">
       <style>
         {`
-          /* =====================================================
-             CERTIFICATE DISPLAY
-             ===================================================== */
-
-          .certificates-page .certificates-grid {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 45px;
-            align-items: start;
+          .photo-gallery-page .photo-gallery-section {
+            width: 100%;
+            padding: 70px 4%;
           }
 
-          .certificates-page .certificate-card {
-            width: 100%;
-            min-width: 0;
+          .photo-gallery-page .photo-gallery-container {
+            width: min(100%, 1200px);
+            margin: 0 auto;
           }
 
-          .certificates-page .certificate-image-wrapper {
-            width: 100%;
-            height: auto !important;
-            min-height: 0;
+          .photo-gallery-page .photo-gallery-intro {
+            max-width: 780px;
+            margin: 0 auto 45px;
+            text-align: center;
+          }
+
+          .photo-gallery-page .photo-gallery-intro h2 {
+            margin-bottom: 14px;
+          }
+
+          .photo-gallery-page .photo-gallery-intro p:last-child {
+            margin: 0;
+            line-height: 1.8;
+          }
+
+          .photo-gallery-page .photo-gallery-empty {
+            min-height: 260px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 45px 24px;
+            border: 1px dashed rgba(112, 79, 145, 0.3);
+            border-radius: 20px;
+            background: linear-gradient(135deg, #ffffff, #f8f5fa);
+            text-align: center;
+          }
+
+          .photo-gallery-page .photo-gallery-empty-icon {
+            width: 66px;
+            height: 66px;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 10px;
-            box-sizing: border-box;
-            overflow: visible !important;
+            margin-bottom: 18px;
+            border-radius: 50%;
+            background: #eee8f3;
+            color: #604777;
+            font-size: 30px;
           }
 
-          .certificates-page .certificate-image {
-            display: block;
-            width: 100% !important;
-            height: auto !important;
-            max-width: 100%;
-            max-height: none !important;
-            object-fit: contain;
+          .photo-gallery-page .photo-gallery-empty h3 {
+            margin: 0 0 10px;
+            color: #3f3151;
           }
 
-          .certificates-page .certificate-card-content {
-            margin-top: 18px;
+          .photo-gallery-page .photo-gallery-empty p {
+            max-width: 560px;
+            margin: 0;
+            color: #66606d;
+            line-height: 1.7;
           }
 
-          .certificates-page .certificate-category {
-            display: inline-block;
-            margin-bottom: 10px;
-          }
-
-          .certificates-page .certificate-card-content h3 {
-            margin-bottom: 10px;
-          }
-
-          .certificates-page .certificate-organisation {
-            margin-bottom: 12px;
-          }
-
-          .certificates-page .certificate-meta {
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-          }
-
-          .certificates-page .certificate-meta span {
-            display: block;
-          }
-
-          @media (max-width: 700px) {
-            .certificates-page .certificates-grid {
-              grid-template-columns: 1fr;
-              gap: 40px;
+          @media (max-width: 600px) {
+            .photo-gallery-page .photo-gallery-section {
+              padding: 50px 5%;
             }
 
-            .certificates-page .certificate-image-wrapper {
-              padding: 5px;
+            .photo-gallery-page .photo-gallery-empty {
+              min-height: 220px;
+              padding: 35px 20px;
             }
           }
         `}
       </style>
 
-      {/* =====================================================
-          PAGE HEADER
-          ===================================================== */}
-
       <section className="certificates-hero">
         <div className="certificates-hero-inner">
-          <p className="certificates-eyebrow">CREDENTIALS & RECOGNITION</p>
+          <p className="certificates-eyebrow">MOMENTS & EXPERIENCES</p>
 
-          <h1>
-            Certificates &<span> Achievements</span>
-          </h1>
+          <h1>Photo <span>Gallery</span></h1>
 
           <p>
-            A record of professional training, certifications, memberships and
-            learning milestones that form part of the journey of Science &
-            Spirituality Foundation.
+            A glimpse into the sessions, activities, workshops and experiences
+            at Science &amp; Spirituality Foundation.
           </p>
         </div>
       </section>
 
-      {/* =====================================================
-          CERTIFICATES SECTION
-          ===================================================== */}
+      <section className="photo-gallery-section">
+        <div className="photo-gallery-container">
+          <div className="photo-gallery-intro">
+            <p className="section-tag">OUR GALLERY</p>
 
-      <section className="certificates-section">
-        <div className="certificates-container">
-          <div className="certificates-intro">
-            <p className="section-tag">PROFESSIONAL JOURNEY</p>
-
-            <h2>
-              Learning, Recognition &<span> Continuous Growth</span>
-            </h2>
+            <h2>Experiences at <span>the Foundation</span></h2>
 
             <p>
-              This page will continue to grow as new certifications,
-              memberships, courses and professional recognitions are received.
+              Explore photographs from our space, sessions, events and
+              activities. Gallery photographs will be added here soon.
             </p>
           </div>
 
-          {/* =================================================
-              CERTIFICATE GRID
-              ================================================= */}
-
-          <div className="certificates-grid">
-            {certificates.map((certificate) => (
-              <article className="certificate-card" key={certificate.title}>
-                {/* CERTIFICATE IMAGE */}
-
-                <div className="certificate-image-wrapper">
-                  <img
-                    src={certificate.image}
-                    alt={`${certificate.title} - ${certificate.organisation}`}
-                    className="certificate-image"
-                  />
-                </div>
-
-                {/* CERTIFICATE INFORMATION */}
-
-                <div className="certificate-card-content">
-                  <span className="certificate-category">
-                    {certificate.category}
-                  </span>
-
-                  <h3>{certificate.title}</h3>
-
-                  <p className="certificate-organisation">
-                    {certificate.organisation}
-                  </p>
-
-                  <div className="certificate-meta">
-                    <span>{certificate.date}</span>
-
-                    <span>{certificate.code}</span>
-                  </div>
-                </div>
-              </article>
-            ))}
-          </div>
-
-          {/* =================================================
-              FUTURE ACHIEVEMENTS
-              ================================================= */}
-
-          <div className="certificates-future">
-            <div className="certificates-future-number">+</div>
-
-            <div>
-              <h3>More Achievements to Come</h3>
-
-              <p>
-                New certificates, professional training and recognitions will be
-                added here as the journey continues.
-              </p>
+          <div className="photo-gallery-empty">
+            <div className="photo-gallery-empty-icon" aria-hidden="true">
+              ◎
             </div>
+
+            <h3>Gallery Coming Soon</h3>
+
+            <p>
+              We are preparing a collection of photographs to share moments
+              and activities from Science &amp; Spirituality Foundation.
+            </p>
           </div>
         </div>
       </section>
@@ -202,4 +125,4 @@ const Certificates: React.FC = () => {
   );
 };
 
-export default Certificates;
+export default PhotoGallery;
