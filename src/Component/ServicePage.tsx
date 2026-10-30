@@ -1,3 +1,4 @@
+
 import React from "react";
 
 interface ServicePageProps {
@@ -43,12 +44,15 @@ const dowsingAreas = [
 const ServicePage: React.FC<ServicePageProps> = ({
   title,
   subtitle,
-  sections,
+  sections = [],
 }) => {
-  const isReiki = title.toLowerCase() === "reiki healing";
-  const isDowsing = title.toLowerCase() === "dowsing";
+  const safeTitle = (title ?? "").toLowerCase();
+  const isReiki = safeTitle === "reiki healing";
+  const isDowsing = safeTitle === "dowsing";
 
-  const handleConcernClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
+  const handleConcernClick = (
+    event: React.MouseEvent<HTMLAnchorElement>
+  ) => {
     event.preventDefault();
 
     const bookingSection = document.getElementById("booking");
@@ -80,6 +84,62 @@ const ServicePage: React.FC<ServicePageProps> = ({
             max-width: 100%;
             object-fit: contain;
             object-position: center center;
+          }
+
+          /* Dowsing image replaces the green hero strip */
+
+          .service-page .dowsing-service-hero {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            min-height: 500px;
+            overflow: hidden;
+            padding: 70px 24px;
+            background-image:
+              linear-gradient(
+                rgba(9, 29, 20, 0.42),
+                rgba(9, 29, 20, 0.58)
+              ),
+              url("/dowsing-hero.webp");
+            background-size: cover;
+            background-position: center 45%;
+            background-repeat: no-repeat;
+            text-align: center;
+          }
+
+          .service-page .dowsing-service-hero-inner {
+            position: relative;
+            z-index: 1;
+            width: min(100%, 900px);
+            margin: 0 auto;
+            color: #ffffff;
+          }
+
+          .service-page .dowsing-service-hero .service-page-label {
+            margin-bottom: 18px;
+            color: #f1dfb5;
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 2.5px;
+          }
+
+          .service-page .dowsing-service-hero h1 {
+            margin: 0 0 20px;
+            color: #ffffff;
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: clamp(52px, 7vw, 82px);
+            font-weight: 500;
+            line-height: 1.1;
+          }
+
+          .service-page .dowsing-service-hero-inner > p:last-child {
+            max-width: 720px;
+            margin: 0 auto;
+            color: #ffffff;
+            font-size: clamp(17px, 2vw, 21px);
+            line-height: 1.7;
           }
 
           .service-page .service-page-hero {
@@ -173,6 +233,21 @@ const ServicePage: React.FC<ServicePageProps> = ({
           }
 
           @media (max-width: 600px) {
+            .service-page .dowsing-service-hero {
+              min-height: 390px;
+              padding: 55px 20px;
+              background-position: center center;
+            }
+
+            .service-page .dowsing-service-hero h1 {
+              font-size: 48px;
+            }
+
+            .service-page .dowsing-service-hero .service-page-label {
+              font-size: 11px;
+              letter-spacing: 1.8px;
+            }
+
             .reiki-concerns-section,
             .dowsing-areas-section {
               padding: 50px 5%;
@@ -206,6 +281,18 @@ const ServicePage: React.FC<ServicePageProps> = ({
             className="reiki-service-image"
           />
         </section>
+      ) : isDowsing ? (
+        <section className="dowsing-service-hero">
+          <div className="dowsing-service-hero-inner">
+            <p className="service-page-label">
+              SCIENCE & SPIRITUALITY FOUNDATION
+            </p>
+
+            <h1>{title}</h1>
+
+            <p>{subtitle}</p>
+          </div>
+        </section>
       ) : (
         <section className="service-page-hero">
           <div className="service-page-hero-inner">
@@ -224,10 +311,11 @@ const ServicePage: React.FC<ServicePageProps> = ({
         {sections.map((section, index) => (
           <section className="service-page-section" key={index}>
             {section.title && <h2>{section.title}</h2>}
-
             {section.heading && <h2>{section.heading}</h2>}
 
-            {typeof section.content === "string" && <p>{section.content}</p>}
+            {typeof section.content === "string" && (
+              <p>{section.content}</p>
+            )}
 
             {Array.isArray(section.content) &&
               section.content.map(
@@ -243,16 +331,21 @@ const ServicePage: React.FC<ServicePageProps> = ({
                 )
               )}
 
-            {Array.isArray(section.bullets) && section.bullets.length > 0 && (
-              <ul>
-                {section.bullets.map((bullet: string, bulletIndex: number) => (
-                  <li key={bulletIndex}>{bullet}</li>
-                ))}
-              </ul>
-            )}
+            {Array.isArray(section.bullets) &&
+              section.bullets.length > 0 && (
+                <ul>
+                  {section.bullets.map(
+                    (bullet: string, bulletIndex: number) => (
+                      <li key={bulletIndex}>{bullet}</li>
+                    )
+                  )}
+                </ul>
+              )}
 
             {section.note && (
-              <div className="service-page-note">{section.note}</div>
+              <div className="service-page-note">
+                {section.note}
+              </div>
             )}
           </section>
         ))}
@@ -288,7 +381,9 @@ const ServicePage: React.FC<ServicePageProps> = ({
             <div className="dowsing-areas-title">
               <h2>What Would You Like to Explore?</h2>
 
-              <p>Select an area below to enquire about a dowsing session.</p>
+              <p>
+                Select an area below to enquire about a dowsing session.
+              </p>
             </div>
 
             <div className="dowsing-areas-grid">
@@ -312,7 +407,6 @@ const ServicePage: React.FC<ServicePageProps> = ({
             className="service-page-button"
             onClick={(event) => {
               event.preventDefault();
-
               const bookingSection = document.getElementById("booking");
 
               if (bookingSection) {
