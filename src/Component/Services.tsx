@@ -44,6 +44,34 @@ const Services: React.FC = () => {
 
   return (
     <section id="services" className="services-section">
+      <style>{`
+        .services-section .services-grid {
+          display: grid !important;
+          grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+          gap: 24px !important;
+          align-items: stretch;
+        }
+
+        .services-section .services-grid > * {
+          width: 100%;
+          min-width: 0;
+          height: 100%;
+        }
+
+        @media (max-width: 900px) {
+          .services-section .services-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+          }
+        }
+
+        @media (max-width: 600px) {
+          .services-section .services-grid {
+            grid-template-columns: minmax(0, 1fr) !important;
+            gap: 18px !important;
+          }
+        }
+      `}</style>
+
       <div className="services-container">
         <div className="services-header">
           <h2>Our Services</h2>
