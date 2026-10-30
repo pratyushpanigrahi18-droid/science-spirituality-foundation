@@ -8,13 +8,14 @@ const Hero: React.FC = () => {
         .ssf-full-hero {
           width: 100%;
           background: #faf8f2;
-          padding: 28px clamp(20px, 4vw, 64px) 48px;
+          padding: 0 0 48px;
           box-sizing: border-box;
         }
 
         .ssf-full-hero-banner {
           width: 100%;
-          margin: 0 auto;
+          margin: 0;
+          padding: 0;
         }
 
         .ssf-full-hero-banner img {
@@ -22,7 +23,7 @@ const Hero: React.FC = () => {
           width: 100%;
           height: auto;
           object-fit: contain;
-          border-radius: 4px;
+          border-radius: 0;
         }
 
         .ssf-full-hero-actions {
@@ -32,6 +33,7 @@ const Hero: React.FC = () => {
           flex-wrap: wrap;
           gap: 16px;
           margin: 30px auto 52px;
+          padding: 0 20px;
         }
 
         .ssf-full-hero-actions .hero-button {
@@ -69,6 +71,7 @@ const Hero: React.FC = () => {
         .ssf-full-hero-intro {
           max-width: 1050px;
           margin: 0 auto;
+          padding: 0 20px;
           text-align: center;
         }
 
@@ -105,7 +108,7 @@ const Hero: React.FC = () => {
 
         @media (max-width: 600px) {
           .ssf-full-hero {
-            padding: 18px 14px 36px;
+            padding-bottom: 36px;
           }
 
           .ssf-full-hero-actions {
