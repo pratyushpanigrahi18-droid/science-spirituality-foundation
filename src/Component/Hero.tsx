@@ -11,8 +11,11 @@ const Hero: React.FC = () => {
           </p>
 
           <h1>
-            Exploring the Connection Between Science, Spirituality and
-            <span> Human Consciousness</span>
+            Exploring the Connection
+            <br />
+            Between Science, Spirituality
+            <br />
+            and <span>Human Consciousness</span>
           </h1>
 
           <p className="hero-description">
