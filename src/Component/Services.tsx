@@ -23,12 +23,6 @@ const Services: React.FC = () => {
       link: "/services/past-life-regression",
     },
     {
-      title: "Spiritual Wellness",
-      description:
-        "Explore mindfulness, self-awareness and practices for personal growth.",
-      link: "/services/spiritual-wellness",
-    },
-    {
       title: "Meditation",
       description:
         "Develop focus, mindfulness and inner calm through meditation practices.",
