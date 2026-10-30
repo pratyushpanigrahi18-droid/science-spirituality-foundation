@@ -140,11 +140,11 @@ const Hero: React.FC = () => {
         </div>
 
         <div className="ssf-full-hero-actions">
-          <a href="#services" className="hero-button primary">
-            Explore Our Work
+          <a href="#contact" className="hero-button primary">
+            Contact Us
           </a>
 
-          <a href="#booking" className="hero-button secondary">
+          <a href="#services" className="hero-button secondary">
             Discover Our Services
           </a>
         </div>
