@@ -1,3 +1,4 @@
+
 name: Deploy Science and Spirituality Foundation
 
 on:
@@ -33,6 +34,9 @@ jobs:
 
       - name: Build website
         run: npm run build
+
+      - name: Configure React Router fallback
+        run: cp build/index.html build/404.html
 
       - name: Upload build artifact
         uses: actions/upload-pages-artifact@v3
