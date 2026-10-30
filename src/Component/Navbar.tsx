@@ -19,7 +19,6 @@ const Navbar: React.FC = () => {
     navigateTo(path);
 
     const hashIndex = path.indexOf("#");
-
     if (hashIndex !== -1) {
       const hash = path.substring(hashIndex);
 
@@ -101,7 +100,6 @@ const Navbar: React.FC = () => {
       <nav className="navbar">
         <div className="navbar-container">
           {/* LOGO */}
-
           <a
             href="/"
             className="navbar-logo"
@@ -120,7 +118,6 @@ const Navbar: React.FC = () => {
           </a>
 
           {/* NAVIGATION LINKS */}
-
           <div className={`navbar-links ${menuOpen ? "mobile-open" : ""}`}>
             <a href="/" onClick={(event) => handleNavigation(event, "/")}>
               Home
@@ -141,10 +138,10 @@ const Navbar: React.FC = () => {
             </a>
 
             <a
-              href="/certificates"
-              onClick={(event) => handleNavigation(event, "/certificates")}
+              href="/photogallery"
+              onClick={(event) => handleNavigation(event, "/photogallery")}
             >
-              Certificates
+              Photo Gallery
             </a>
 
             <a
@@ -170,7 +167,6 @@ const Navbar: React.FC = () => {
           </div>
 
           {/* MOBILE MENU BUTTON */}
-
           <button
             className="mobile-menu-button"
             type="button"
