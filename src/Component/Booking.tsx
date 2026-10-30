@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+
+import React, { useEffect, useState } from "react";
 
 const WHATSAPP_NUMBER = "918328909832";
 
@@ -6,6 +7,30 @@ const Booking: React.FC = () => {
   const [selectedSessionType, setSelectedSessionType] = useState("");
   const [selectedService, setSelectedService] = useState("");
   const [selectedPLRConcerns, setSelectedPLRConcerns] = useState<string[]>([]);
+
+  useEffect(() => {
+    const handleServiceSelection = (event: Event) => {
+      const customEvent = event as CustomEvent<string>;
+      const service = customEvent.detail;
+
+      if (service) {
+        setSelectedService(service);
+
+        if (service !== "Past Life Regression") {
+          setSelectedPLRConcerns([]);
+        }
+      }
+    };
+
+    window.addEventListener("ssf-select-service", handleServiceSelection);
+
+    return () => {
+      window.removeEventListener(
+        "ssf-select-service",
+        handleServiceSelection
+      );
+    };
+  }, []);
 
   const plrConcerns = [
     "Repeating Problems in Life",
@@ -436,8 +461,9 @@ Thank you.`;
                     Past Life Regression
                   </option>
 
-                  <option value="Chakra Wellness">Chakra Wellness</option>
-                  <option value="Spiritual Wellness">Spiritual Wellness</option>
+                  <option value="Spiritual Wellness">
+                    Spiritual Wellness
+                  </option>
                   <option value="Meditation">Meditation</option>
                   <option value="Manifestation">Manifestation</option>
 
@@ -445,7 +471,9 @@ Thank you.`;
                     Fingerprint Analysis
                   </option>
 
-                  <option value="Free Consultation">Free Consultation</option>
+                  <option value="Free Consultation">
+                    Free Consultation
+                  </option>
                   <option value="General Enquiry">General Enquiry</option>
                 </select>
               </div>
