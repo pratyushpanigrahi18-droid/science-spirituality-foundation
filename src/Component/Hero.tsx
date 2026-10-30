@@ -7,27 +7,33 @@ const Hero: React.FC = () => {
       <div className="ssf-home-left">
         <div className="ssf-home-intro">
           <p className="hero-tagline">
-            Science • Spirituality • Consciousness • Wellbeing
+            SCIENCE • SPIRITUALITY • CONSCIOUSNESS • WELLBEING
           </p>
 
           <h1>
-            A Brighter Understanding
-            <span> of Life</span>
+            Exploring the Connection Between Science, Spirituality and
+            <span> Human Consciousness</span>
           </h1>
 
           <p className="hero-description">
-            Exploring science, spirituality, consciousness and wellbeing
-            through knowledge, inner growth and meaningful personal
-            exploration.
+            Science & Spirituality Foundation is dedicated to exploring
+            the intersections of scientific inquiry, spiritual traditions,
+            human consciousness and holistic wellbeing.
+          </p>
+
+          <p className="hero-description">
+            Through education, thoughtful exploration and individual
+            learning experiences, we encourage a deeper understanding
+            of ourselves and the world around us.
           </p>
 
           <div className="hero-buttons">
             <a href="#services" className="hero-button primary">
-              Explore Our Services
+              Explore Our Work
             </a>
 
             <a href="#booking" className="hero-button secondary">
-              Book a Session
+              Discover Our Services
             </a>
           </div>
         </div>
