@@ -29,16 +29,13 @@ const reikiConcerns = [
 ];
 
 const dowsingAreas = [
-  "Water Source Exploration",
-  "Land & Property",
-  "Home & Space Energy",
-  "Personal Energy",
-  "Wellness & Balance",
-  "Object & Environmental Checking",
-  "Decision Guidance",
-  "Energy Blockage Exploration",
-  "Space Harmony",
-  "Any Other Enquiry",
+  "Lost Things & Lost Persons",
+  "Any Negative Energy on You",
+  "Energy of a Place",
+  "Past, Present & Future Questions",
+  "Career & Professional Growth",
+  "Marriage & Relationship Prospects",
+  "Other Enquiries",
 ];
 
 const ServicePage: React.FC<ServicePageProps> = ({
@@ -245,11 +242,25 @@ const ServicePage: React.FC<ServicePageProps> = ({
             line-height: 1.45;
           }
 
+          /* Centre the seventh Dowsing card on desktop */
+          @media (min-width: 901px) {
+            .dowsing-areas-grid > .dowsing-area-card:nth-child(7) {
+              grid-column: 2;
+            }
+          }
+
           @media (max-width: 900px) {
             .reiki-concerns-grid,
             .dowsing-areas-grid {
               grid-template-columns: repeat(2, minmax(0, 1fr));
               gap: 20px;
+            }
+
+            /* Centre the seventh card on tablet */
+            .dowsing-areas-grid > .dowsing-area-card:nth-child(7) {
+              grid-column: 1 / -1;
+              width: calc(50% - 10px);
+              justify-self: center;
             }
           }
 
@@ -278,6 +289,11 @@ const ServicePage: React.FC<ServicePageProps> = ({
             .dowsing-areas-grid {
               grid-template-columns: 1fr;
               gap: 18px;
+            }
+
+            .dowsing-areas-grid > .dowsing-area-card:nth-child(7) {
+              grid-column: auto;
+              width: 100%;
             }
 
             .reiki-concern-card,
@@ -402,10 +418,11 @@ const ServicePage: React.FC<ServicePageProps> = ({
         {isDowsing && (
           <section className="dowsing-areas-section">
             <div className="dowsing-areas-title">
-              <h2>What Would You Like to Explore?</h2>
+              <h2>Explore the Unknown</h2>
 
               <p>
-                Select an area below to enquire about a dowsing session.
+                Explore your questions and enquiries through a personalised
+                dowsing session.
               </p>
             </div>
 
