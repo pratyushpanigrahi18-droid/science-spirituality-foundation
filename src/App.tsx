@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 
 import Navbar from "./Component/Navbar.tsx";
@@ -9,7 +8,7 @@ import Booking from "./Component/Booking.tsx";
 import Contact from "./Component/Contact.tsx";
 import Footer from "./Component/Footer.tsx";
 import ServicePage from "./Component/ServicePage.tsx";
-import Certificates from "./Component/Certificates.tsx";
+import PhotoGallery from "./Component/PhotoGallery.tsx";
 import { servicePages } from "./Component/serviceData.ts";
 
 import "./styles.css";
@@ -31,11 +30,11 @@ export default function App() {
     };
   }, []);
 
-  if (currentPath === "/certificates") {
+  if (currentPath === "/photogallery") {
     return (
       <div className="App">
         <Navbar />
-        <Certificates />
+        <PhotoGallery />
         <Footer />
       </div>
     );
