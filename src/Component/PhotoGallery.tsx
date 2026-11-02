@@ -3,40 +3,24 @@ import React, { useState } from "react";
 
 const galleryItems = [
   {
-    image: "/gallery-personalised-session.webp",
-    title: "A Personalised Healing Experience",
-    description:
-      "A calm and supportive environment where individuals are guided through relaxation, self-exploration and personal wellbeing.",
+    image: "/gallery-guided-relaxation-final.webp",
+    title: "Guided Relaxation & Hypnotherapy",
   },
   {
-    image: "/gallery-online-session.webp",
-    title: "Online Guided Regression Session",
-    description:
-      "Exploring inner experiences through a guided online session, offering the flexibility to participate from a familiar and comfortable setting.",
+    image: "/gallery-individual-guidance-final.webp",
+    title: "Individual Guidance & Support",
   },
   {
-    image: "/gallery-guided-relaxation.webp",
-    title: "Guided Relaxation Session",
-    description:
-      "A quiet space for relaxation, focused attention and guided exploration of personal experiences.",
+    image: "/gallery-session-29-oct.webp",
+    title: "A Moment from a Guided Session",
   },
   {
-    image: "/gallery-inner-exploration.webp",
-    title: "A Space for Inner Exploration",
-    description:
-      "A comfortable setting designed to encourage calmness, introspection and a deeper understanding of inner experiences.",
+    image: "/gallery-session-30-oct.webp",
+    title: "Inner Exploration & Self-Discovery",
   },
   {
-    image: "/gallery-individual-guidance.webp",
-    title: "Individual Guidance and Support",
-    description:
-      "Every session is approached with care, respect and individual attention in a welcoming environment.",
-  },
-  {
-    image: "/gallery-learning-milestone.webp",
-    title: "A Milestone in Professional Learning",
-    description:
-      "A memorable moment celebrating learning, training and continued development in Past Life Regression and Transpersonal Hypnotherapy.",
+    image: "/gallery-calm-therapy-room.webp",
+    title: "A Calm Space for Inner Exploration",
   },
 ];
 
@@ -46,68 +30,179 @@ const PhotoGallery: React.FC = () => {
   const closeLightbox = () => setSelectedImage(null);
 
   return (
-    <main className="certificates-page photo-gallery-page">
+    <main className="photo-gallery-page">
       <style>
         {`
+          .photo-gallery-page {
+            width: 100%;
+            overflow: hidden;
+            background: #faf9f5;
+          }
+
+          /* HERO SECTION */
+
+          .photo-gallery-page .gallery-hero {
+            width: 100%;
+            min-height: 650px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            background: #173c2b;
+          }
+
+          .photo-gallery-page .gallery-hero-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 75px 9%;
+            color: #ffffff;
+          }
+
+          .photo-gallery-page .gallery-hero-eyebrow {
+            margin: 0 0 22px;
+            color: #d5b77e;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+          }
+
+          .photo-gallery-page .gallery-hero-content h1 {
+            margin: 0 0 24px;
+            color: #ffffff;
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: clamp(38px, 4.2vw, 60px);
+            font-weight: 500;
+            line-height: 1.15;
+          }
+
+          .photo-gallery-page .gallery-hero-content h1 span {
+            color: #dfc18b;
+          }
+
+          .photo-gallery-page .gallery-hero-description {
+            max-width: 510px;
+            margin: 0 0 30px;
+            color: #e1e9e2;
+            font-size: 16px;
+            line-height: 1.85;
+          }
+
+          .photo-gallery-page .gallery-recognition {
+            display: flex;
+            flex-direction: column;
+            gap: 17px;
+            padding-top: 25px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+          }
+
+          .photo-gallery-page .gallery-recognition p {
+            margin: 0;
+            color: #f0dfbd;
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: clamp(17px, 1.7vw, 23px);
+            line-height: 1.4;
+          }
+
+          .photo-gallery-page .gallery-recognition strong {
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+          }
+
+          .photo-gallery-page .gallery-hero-image {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 0;
+            padding: 30px;
+            background: #e9e4d9;
+          }
+
+          .photo-gallery-page .gallery-hero-image img {
+            display: block;
+            width: 100%;
+            height: 590px;
+            object-fit: contain;
+            object-position: center;
+          }
+
+          /* GALLERY SECTION */
+
           .photo-gallery-page .photo-gallery-section {
             width: 100%;
-            padding: 75px 5%;
+            padding: 85px 5%;
             background: #faf9f5;
           }
 
           .photo-gallery-page .photo-gallery-container {
-            width: min(100%, 1200px);
+            width: min(100%, 1250px);
             margin: 0 auto;
           }
 
           .photo-gallery-page .photo-gallery-intro {
             max-width: 780px;
-            margin: 0 auto 55px;
+            margin: 0 auto 50px;
             text-align: center;
           }
 
-          .photo-gallery-page .photo-gallery-intro h2 {
-            margin-bottom: 16px;
+          .photo-gallery-page .photo-gallery-intro .section-tag {
+            margin: 0 0 15px;
+            color: #a88748;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 2px;
           }
 
-          .photo-gallery-page .photo-gallery-intro p:last-child {
+          .photo-gallery-page .photo-gallery-intro h2 {
+            margin: 0 0 17px;
+            color: #193d2b;
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: clamp(30px, 3.5vw, 43px);
+            font-weight: 500;
+            line-height: 1.25;
+          }
+
+          .photo-gallery-page .photo-gallery-intro h2 span {
+            color: #a88748;
+          }
+
+          .photo-gallery-page .photo-gallery-intro > p:last-child {
             margin: 0;
-            line-height: 1.8;
             color: #6b716b;
+            font-size: 15px;
+            line-height: 1.8;
           }
 
           .photo-gallery-page .photo-gallery-grid {
             display: grid;
             grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 30px;
-            align-items: stretch;
+            gap: 25px;
           }
 
           .photo-gallery-page .photo-gallery-card {
+            position: relative;
+            min-width: 0;
+            height: 360px;
             overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            background: #ffffff;
-            border: 1px solid rgba(29, 64, 46, 0.10);
-            border-radius: 16px;
-            box-shadow: 0 8px 28px rgba(24, 39, 31, 0.07);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-          }
-
-          .photo-gallery-page .photo-gallery-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 16px 35px rgba(24, 39, 31, 0.13);
+            border-radius: 14px;
+            background: #e8e5dc;
+            box-shadow: 0 8px 25px rgba(24, 39, 31, 0.10);
           }
 
           .photo-gallery-page .photo-gallery-image-button {
+            position: relative;
             display: block;
             width: 100%;
-            height: 290px;
+            height: 100%;
             padding: 0;
             overflow: hidden;
-            border: none;
-            background: #eeeae1;
+            border: 0;
+            background: transparent;
             cursor: zoom-in;
+            text-align: left;
           }
 
           .photo-gallery-page .photo-gallery-image-button img {
@@ -116,47 +211,50 @@ const PhotoGallery: React.FC = () => {
             height: 100%;
             object-fit: cover;
             object-position: center;
-            transition: transform 0.5s ease;
+            transition: transform 0.55s ease;
           }
 
           .photo-gallery-page .photo-gallery-card:hover
           .photo-gallery-image-button img {
-            transform: scale(1.045);
+            transform: scale(1.05);
           }
 
-          .photo-gallery-page .photo-gallery-card-content {
+          .photo-gallery-page .photo-gallery-card-overlay {
+            position: absolute;
+            inset: 0;
             display: flex;
-            flex: 1;
             flex-direction: column;
-            padding: 25px 24px 28px;
+            justify-content: flex-end;
+            padding: 28px 24px;
+            background: linear-gradient(
+              to top,
+              rgba(9, 27, 18, 0.88) 0%,
+              rgba(9, 27, 18, 0.42) 38%,
+              transparent 75%
+            );
+            pointer-events: none;
           }
 
-          .photo-gallery-page .photo-gallery-card-content h3 {
-            margin: 0 0 12px;
-            color: #193d2b;
+          .photo-gallery-page .photo-gallery-card-overlay span {
+            margin-bottom: 9px;
+            color: #e0c28b;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+          }
+
+          .photo-gallery-page .photo-gallery-card-overlay h3 {
+            max-width: 340px;
+            margin: 0;
+            color: #ffffff;
             font-family: Georgia, "Times New Roman", serif;
-            font-size: 22px;
+            font-size: 23px;
             font-weight: 500;
             line-height: 1.35;
           }
 
-          .photo-gallery-page .photo-gallery-card-content p {
-            margin: 0;
-            color: #69716b;
-            font-size: 15px;
-            line-height: 1.8;
-          }
-
-          .photo-gallery-page .photo-gallery-view-label {
-            display: inline-block;
-            margin-top: auto;
-            padding-top: 20px;
-            color: #a88748;
-            font-size: 12px;
-            font-weight: 700;
-            letter-spacing: 1.3px;
-            text-transform: uppercase;
-          }
+          /* LIGHTBOX */
 
           .photo-gallery-page .photo-gallery-lightbox {
             position: fixed;
@@ -166,12 +264,12 @@ const PhotoGallery: React.FC = () => {
             align-items: center;
             justify-content: center;
             padding: 25px;
-            background: rgba(8, 18, 13, 0.94);
+            background: rgba(8, 18, 13, 0.95);
           }
 
           .photo-gallery-page .photo-gallery-lightbox-content {
             position: relative;
-            width: min(100%, 1050px);
+            width: min(100%, 1100px);
             max-height: 92vh;
             display: flex;
             flex-direction: column;
@@ -181,35 +279,23 @@ const PhotoGallery: React.FC = () => {
           .photo-gallery-page .photo-gallery-lightbox img {
             display: block;
             max-width: 100%;
-            max-height: 72vh;
+            max-height: 78vh;
             object-fit: contain;
             border-radius: 8px;
           }
 
           .photo-gallery-page .photo-gallery-lightbox-caption {
-            max-width: 750px;
-            padding: 20px 10px 0;
-            text-align: center;
-            color: #ffffff;
-          }
-
-          .photo-gallery-page .photo-gallery-lightbox-caption h3 {
-            margin: 0 0 8px;
+            padding: 18px 10px 0;
             color: #f0dfb9;
             font-family: Georgia, "Times New Roman", serif;
-            font-size: 24px;
-          }
-
-          .photo-gallery-page .photo-gallery-lightbox-caption p {
-            margin: 0;
-            color: #e2e5df;
-            line-height: 1.7;
+            font-size: 22px;
+            text-align: center;
           }
 
           .photo-gallery-page .photo-gallery-close {
             position: absolute;
-            top: -15px;
-            right: -15px;
+            top: -18px;
+            right: -18px;
             z-index: 2;
             width: 44px;
             height: 44px;
@@ -221,20 +307,54 @@ const PhotoGallery: React.FC = () => {
             cursor: pointer;
           }
 
-          @media (max-width: 900px) {
-            .photo-gallery-page .photo-gallery-grid {
-              grid-template-columns: repeat(2, minmax(0, 1fr));
-              gap: 22px;
+          /* TABLET */
+
+          @media (max-width: 950px) {
+            .photo-gallery-page .gallery-hero {
+              min-height: 570px;
             }
 
-            .photo-gallery-page .photo-gallery-image-button {
-              height: 270px;
+            .photo-gallery-page .gallery-hero-content {
+              padding: 55px 7%;
+            }
+
+            .photo-gallery-page .gallery-hero-image img {
+              height: 510px;
+            }
+
+            .photo-gallery-page .photo-gallery-grid {
+              grid-template-columns: repeat(2, minmax(0, 1fr));
             }
           }
 
-          @media (max-width: 600px) {
+          /* MOBILE */
+
+          @media (max-width: 650px) {
+            .photo-gallery-page .gallery-hero {
+              grid-template-columns: 1fr;
+            }
+
+            .photo-gallery-page .gallery-hero-content {
+              padding: 55px 7% 40px;
+            }
+
+            .photo-gallery-page .gallery-hero-content h1 {
+              font-size: 40px;
+            }
+
+            .photo-gallery-page .gallery-hero-image {
+              padding: 15px;
+            }
+
+            .photo-gallery-page .gallery-hero-image img {
+              width: 100%;
+              height: auto;
+              max-height: 650px;
+              object-fit: contain;
+            }
+
             .photo-gallery-page .photo-gallery-section {
-              padding: 50px 5%;
+              padding: 55px 5%;
             }
 
             .photo-gallery-page .photo-gallery-intro {
@@ -243,15 +363,11 @@ const PhotoGallery: React.FC = () => {
 
             .photo-gallery-page .photo-gallery-grid {
               grid-template-columns: 1fr;
-              gap: 24px;
+              gap: 22px;
             }
 
-            .photo-gallery-page .photo-gallery-image-button {
-              height: 300px;
-            }
-
-            .photo-gallery-page .photo-gallery-card-content {
-              padding: 22px;
+            .photo-gallery-page .photo-gallery-card {
+              height: 340px;
             }
 
             .photo-gallery-page .photo-gallery-lightbox {
@@ -259,7 +375,7 @@ const PhotoGallery: React.FC = () => {
             }
 
             .photo-gallery-page .photo-gallery-lightbox img {
-              max-height: 65vh;
+              max-height: 70vh;
             }
 
             .photo-gallery-page .photo-gallery-close {
@@ -270,33 +386,61 @@ const PhotoGallery: React.FC = () => {
         `}
       </style>
 
-      <section className="certificates-hero">
-        <div className="certificates-hero-inner">
-          <p className="certificates-eyebrow">MOMENTS & EXPERIENCES</p>
+      {/* HERO */}
+      <section className="gallery-hero">
+        <div className="gallery-hero-content">
+          <p className="gallery-hero-eyebrow">
+            Professional Training & Recognition
+          </p>
 
           <h1>
-            Photo <span>Gallery</span>
+            Professional Training
+            <br />
+            Completed Through <span>SCL</span>
           </h1>
 
-          <p>
-            A glimpse into the sessions, activities, workshops and experiences
-            at Science &amp; Spirituality Foundation.
+          <p className="gallery-hero-description">
+            A milestone in professional learning and development in
+            Past Life Regression and Transpersonal Hypnotherapy.
           </p>
+
+          <div className="gallery-recognition">
+            <p>
+              <strong>MNI USA</strong>
+              <br />
+              Career Partner
+            </p>
+
+            <p>
+              <strong>IPHM UK</strong>
+              <br />
+              Accredited Training
+            </p>
+          </div>
+        </div>
+
+        <div className="gallery-hero-image">
+          <img
+            src="/gallery-hero-certificate.webp"
+            alt="Professional training certificate presentation at Soul Consciousness Lab"
+            fetchPriority="high"
+          />
         </div>
       </section>
 
+      {/* PHOTO GALLERY */}
       <section className="photo-gallery-section">
         <div className="photo-gallery-container">
           <div className="photo-gallery-intro">
-            <p className="section-tag">OUR GALLERY</p>
+            <p className="section-tag">SESSIONS & EXPERIENCES</p>
 
             <h2>
-              Experiences at <span>the Foundation</span>
+              Moments from <span>Our Sessions</span>
             </h2>
 
             <p>
-              Every photograph captures a moment of learning, guidance,
-              exploration and personal connection at our foundation.
+              A glimpse into the guided sessions, individual experiences
+              and welcoming spaces at Science &amp; Spirituality Foundation.
             </p>
           </div>
 
@@ -314,21 +458,19 @@ const PhotoGallery: React.FC = () => {
                     alt={item.title}
                     loading="lazy"
                   />
-                </button>
 
-                <div className="photo-gallery-card-content">
-                  <h3>{item.title}</h3>
-                  <p>{item.description}</p>
-                  <span className="photo-gallery-view-label">
-                    View photograph ↗
-                  </span>
-                </div>
+                  <div className="photo-gallery-card-overlay">
+                    <span>Science &amp; Spirituality Foundation</span>
+                    <h3>{item.title}</h3>
+                  </div>
+                </button>
               </article>
             ))}
           </div>
         </div>
       </section>
 
+      {/* IMAGE LIGHTBOX */}
       {selectedImage !== null && (
         <div
           className="photo-gallery-lightbox"
@@ -354,8 +496,7 @@ const PhotoGallery: React.FC = () => {
             />
 
             <div className="photo-gallery-lightbox-caption">
-              <h3>{galleryItems[selectedImage].title}</h3>
-              <p>{galleryItems[selectedImage].description}</p>
+              {galleryItems[selectedImage].title}
             </div>
           </div>
         </div>
