@@ -3,24 +3,29 @@ import React, { useState } from "react";
 
 const galleryItems = [
   {
-    image: "/gallery-guided-relaxation-final.webp",
-    title: "Guided Relaxation & Hypnotherapy",
+    image: "/gallery-calm-therapy-room.webp",
+    title: "A Calm Space for Inner Exploration",
+    category: "PLR & Guided Sessions",
   },
   {
-    image: "/gallery-individual-guidance-final.webp",
-    title: "Individual Guidance & Support",
+    image: "/gallery-guided-relaxation-final.webp",
+    title: "Guided Past Life Regression",
+    category: "PLR Session",
   },
   {
     image: "/gallery-session-29-oct.webp",
-    title: "A Moment from a Guided Session",
+    title: "Exploring Early Life Experiences",
+    category: "Womb & Age Regression",
+  },
+  {
+    image: "/gallery-individual-guidance-final.webp",
+    title: "Individual Regression Experience",
+    category: "Personalised PLR Session",
   },
   {
     image: "/gallery-session-30-oct.webp",
-    title: "Inner Exploration & Self-Discovery",
-  },
-  {
-    image: "/gallery-calm-therapy-room.webp",
-    title: "A Calm Space for Inner Exploration",
+    title: "A Journey of Inner Exploration",
+    category: "Womb & Age Regression",
   },
 ];
 
@@ -39,27 +44,57 @@ const PhotoGallery: React.FC = () => {
             background: #faf9f5;
           }
 
-          /* HERO SECTION */
+          /* FULL-WIDTH HERO */
 
           .photo-gallery-page .gallery-hero {
+            position: relative;
             width: 100%;
-            min-height: 650px;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
+            min-height: 720px;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
             background: #173c2b;
           }
 
+          .photo-gallery-page .gallery-hero-image {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+          }
+
+          .photo-gallery-page .gallery-hero-image img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 35%;
+          }
+
+          .photo-gallery-page .gallery-hero::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            background: linear-gradient(
+              90deg,
+              rgba(10, 30, 20, 0.93) 0%,
+              rgba(10, 30, 20, 0.83) 36%,
+              rgba(10, 30, 20, 0.48) 65%,
+              rgba(10, 30, 20, 0.12) 100%
+            );
+          }
+
           .photo-gallery-page .gallery-hero-content {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding: 75px 9%;
+            position: relative;
+            z-index: 2;
+            width: min(780px, 68%);
+            padding: 100px 7%;
             color: #ffffff;
           }
 
           .photo-gallery-page .gallery-hero-eyebrow {
-            margin: 0 0 22px;
-            color: #d5b77e;
+            margin: 0 0 24px;
+            color: #e0c28b;
             font-size: 12px;
             font-weight: 700;
             letter-spacing: 3px;
@@ -67,84 +102,69 @@ const PhotoGallery: React.FC = () => {
           }
 
           .photo-gallery-page .gallery-hero-content h1 {
-            margin: 0 0 24px;
+            margin: 0 0 25px;
             color: #ffffff;
             font-family: Georgia, "Times New Roman", serif;
-            font-size: clamp(38px, 4.2vw, 60px);
+            font-size: clamp(42px, 5.2vw, 72px);
             font-weight: 500;
-            line-height: 1.15;
+            line-height: 1.12;
           }
 
           .photo-gallery-page .gallery-hero-content h1 span {
-            color: #dfc18b;
+            color: #e0c28b;
           }
 
           .photo-gallery-page .gallery-hero-description {
-            max-width: 510px;
-            margin: 0 0 30px;
-            color: #e1e9e2;
+            max-width: 560px;
+            margin: 0 0 35px;
+            color: #f0f0e9;
             font-size: 16px;
             line-height: 1.85;
           }
 
           .photo-gallery-page .gallery-recognition {
             display: flex;
-            flex-direction: column;
-            gap: 17px;
+            flex-wrap: wrap;
+            gap: 35px;
             padding-top: 25px;
-            border-top: 1px solid rgba(255,255,255,0.2);
+            border-top: 1px solid rgba(255,255,255,0.4);
           }
 
           .photo-gallery-page .gallery-recognition p {
             margin: 0;
-            color: #f0dfbd;
+            color: #f0d6a5;
             font-family: Georgia, "Times New Roman", serif;
-            font-size: clamp(17px, 1.7vw, 23px);
-            line-height: 1.4;
+            font-size: 22px;
+            line-height: 1.5;
           }
 
           .photo-gallery-page .gallery-recognition strong {
+            display: block;
+            margin-bottom: 4px;
             color: #ffffff;
             font-family: Arial, sans-serif;
             font-size: 13px;
-            font-weight: 600;
-            letter-spacing: 1px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
             text-transform: uppercase;
           }
 
-          .photo-gallery-page .gallery-hero-image {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-width: 0;
-            padding: 30px;
-            background: #e9e4d9;
-          }
-
-          .photo-gallery-page .gallery-hero-image img {
-            display: block;
-            width: 100%;
-            height: 590px;
-            object-fit: contain;
-            object-position: center;
-          }
-
-          /* GALLERY SECTION */
+          /* GALLERY INTRO */
 
           .photo-gallery-page .photo-gallery-section {
             width: 100%;
-            padding: 85px 5%;
+            padding: 90px 5%;
             background: #faf9f5;
           }
 
           .photo-gallery-page .photo-gallery-container {
-            width: min(100%, 1250px);
+            width: min(100%, 1350px);
             margin: 0 auto;
           }
 
           .photo-gallery-page .photo-gallery-intro {
-            max-width: 780px;
-            margin: 0 auto 50px;
+            max-width: 800px;
+            margin: 0 auto 55px;
             text-align: center;
           }
 
@@ -160,7 +180,7 @@ const PhotoGallery: React.FC = () => {
             margin: 0 0 17px;
             color: #193d2b;
             font-family: Georgia, "Times New Roman", serif;
-            font-size: clamp(30px, 3.5vw, 43px);
+            font-size: clamp(32px, 3.5vw, 45px);
             font-weight: 500;
             line-height: 1.25;
           }
@@ -176,20 +196,22 @@ const PhotoGallery: React.FC = () => {
             line-height: 1.8;
           }
 
+          /* LARGER GALLERY IMAGES */
+
           .photo-gallery-page .photo-gallery-grid {
             display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 32px;
           }
 
           .photo-gallery-page .photo-gallery-card {
             position: relative;
             min-width: 0;
-            height: 360px;
+            height: 470px;
             overflow: hidden;
-            border-radius: 14px;
+            border-radius: 15px;
             background: #e8e5dc;
-            box-shadow: 0 8px 25px rgba(24, 39, 31, 0.10);
+            box-shadow: 0 9px 30px rgba(24, 39, 31, 0.12);
           }
 
           .photo-gallery-page .photo-gallery-image-button {
@@ -216,7 +238,7 @@ const PhotoGallery: React.FC = () => {
 
           .photo-gallery-page .photo-gallery-card:hover
           .photo-gallery-image-button img {
-            transform: scale(1.05);
+            transform: scale(1.045);
           }
 
           .photo-gallery-page .photo-gallery-card-overlay {
@@ -225,31 +247,31 @@ const PhotoGallery: React.FC = () => {
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
-            padding: 28px 24px;
+            padding: 35px 30px;
             background: linear-gradient(
               to top,
-              rgba(9, 27, 18, 0.88) 0%,
-              rgba(9, 27, 18, 0.42) 38%,
-              transparent 75%
+              rgba(9, 27, 18, 0.91) 0%,
+              rgba(9, 27, 18, 0.48) 38%,
+              transparent 78%
             );
             pointer-events: none;
           }
 
           .photo-gallery-page .photo-gallery-card-overlay span {
-            margin-bottom: 9px;
+            margin-bottom: 10px;
             color: #e0c28b;
-            font-size: 10px;
+            font-size: 11px;
             font-weight: 700;
             letter-spacing: 2px;
             text-transform: uppercase;
           }
 
           .photo-gallery-page .photo-gallery-card-overlay h3 {
-            max-width: 340px;
+            max-width: 450px;
             margin: 0;
             color: #ffffff;
             font-family: Georgia, "Times New Roman", serif;
-            font-size: 23px;
+            font-size: 27px;
             font-weight: 500;
             line-height: 1.35;
           }
@@ -269,7 +291,7 @@ const PhotoGallery: React.FC = () => {
 
           .photo-gallery-page .photo-gallery-lightbox-content {
             position: relative;
-            width: min(100%, 1100px);
+            width: min(100%, 1150px);
             max-height: 92vh;
             display: flex;
             flex-direction: column;
@@ -311,19 +333,20 @@ const PhotoGallery: React.FC = () => {
 
           @media (max-width: 950px) {
             .photo-gallery-page .gallery-hero {
-              min-height: 570px;
+              min-height: 620px;
             }
 
             .photo-gallery-page .gallery-hero-content {
-              padding: 55px 7%;
+              width: 78%;
+              padding: 75px 6%;
             }
 
-            .photo-gallery-page .gallery-hero-image img {
-              height: 510px;
+            .photo-gallery-page .photo-gallery-card {
+              height: 400px;
             }
 
             .photo-gallery-page .photo-gallery-grid {
-              grid-template-columns: repeat(2, minmax(0, 1fr));
+              gap: 22px;
             }
           }
 
@@ -331,26 +354,38 @@ const PhotoGallery: React.FC = () => {
 
           @media (max-width: 650px) {
             .photo-gallery-page .gallery-hero {
-              grid-template-columns: 1fr;
+              min-height: 720px;
+              align-items: flex-end;
+            }
+
+            .photo-gallery-page .gallery-hero::after {
+              background: linear-gradient(
+                0deg,
+                rgba(10, 30, 20, 0.97) 0%,
+                rgba(10, 30, 20, 0.88) 48%,
+                rgba(10, 30, 20, 0.25) 100%
+              );
             }
 
             .photo-gallery-page .gallery-hero-content {
-              padding: 55px 7% 40px;
+              width: 100%;
+              padding: 55px 7%;
             }
 
             .photo-gallery-page .gallery-hero-content h1 {
               font-size: 40px;
             }
 
-            .photo-gallery-page .gallery-hero-image {
-              padding: 15px;
+            .photo-gallery-page .gallery-hero-description {
+              font-size: 14px;
             }
 
-            .photo-gallery-page .gallery-hero-image img {
-              width: 100%;
-              height: auto;
-              max-height: 650px;
-              object-fit: contain;
+            .photo-gallery-page .gallery-recognition {
+              gap: 18px 28px;
+            }
+
+            .photo-gallery-page .gallery-recognition p {
+              font-size: 19px;
             }
 
             .photo-gallery-page .photo-gallery-section {
@@ -363,11 +398,19 @@ const PhotoGallery: React.FC = () => {
 
             .photo-gallery-page .photo-gallery-grid {
               grid-template-columns: 1fr;
-              gap: 22px;
+              gap: 25px;
             }
 
             .photo-gallery-page .photo-gallery-card {
-              height: 340px;
+              height: 420px;
+            }
+
+            .photo-gallery-page .photo-gallery-card-overlay {
+              padding: 27px 23px;
+            }
+
+            .photo-gallery-page .photo-gallery-card-overlay h3 {
+              font-size: 24px;
             }
 
             .photo-gallery-page .photo-gallery-lightbox {
@@ -386,8 +429,15 @@ const PhotoGallery: React.FC = () => {
         `}
       </style>
 
-      {/* HERO */}
       <section className="gallery-hero">
+        <div className="gallery-hero-image">
+          <img
+            src="/gallery-hero-certificate.webp"
+            alt="Professional training certificate presentation at Soul Consciousness Lab"
+            fetchPriority="high"
+          />
+        </div>
+
         <div className="gallery-hero-content">
           <p className="gallery-hero-eyebrow">
             Professional Training & Recognition
@@ -400,35 +450,24 @@ const PhotoGallery: React.FC = () => {
           </h1>
 
           <p className="gallery-hero-description">
-            A milestone in professional learning and development in
-            Past Life Regression and Transpersonal Hypnotherapy.
+            Professional learning and development in Past Life Regression
+            (PLR), Womb Regression and Age Regression.
           </p>
 
           <div className="gallery-recognition">
             <p>
               <strong>MNI USA</strong>
-              <br />
               Career Partner
             </p>
 
             <p>
               <strong>IPHM UK</strong>
-              <br />
               Accredited Training
             </p>
           </div>
         </div>
-
-        <div className="gallery-hero-image">
-          <img
-            src="/gallery-hero-certificate.webp"
-            alt="Professional training certificate presentation at Soul Consciousness Lab"
-            fetchPriority="high"
-          />
-        </div>
       </section>
 
-      {/* PHOTO GALLERY */}
       <section className="photo-gallery-section">
         <div className="photo-gallery-container">
           <div className="photo-gallery-intro">
@@ -439,8 +478,9 @@ const PhotoGallery: React.FC = () => {
             </h2>
 
             <p>
-              A glimpse into the guided sessions, individual experiences
-              and welcoming spaces at Science &amp; Spirituality Foundation.
+              Explore moments from Past Life Regression, Womb Regression
+              and Age Regression sessions at Science &amp; Spirituality
+              Foundation.
             </p>
           </div>
 
@@ -460,7 +500,7 @@ const PhotoGallery: React.FC = () => {
                   />
 
                   <div className="photo-gallery-card-overlay">
-                    <span>Science &amp; Spirituality Foundation</span>
+                    <span>{item.category}</span>
                     <h3>{item.title}</h3>
                   </div>
                 </button>
@@ -470,7 +510,6 @@ const PhotoGallery: React.FC = () => {
         </div>
       </section>
 
-      {/* IMAGE LIGHTBOX */}
       {selectedImage !== null && (
         <div
           className="photo-gallery-lightbox"
