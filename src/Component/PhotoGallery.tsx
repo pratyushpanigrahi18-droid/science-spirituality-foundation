@@ -18,6 +18,11 @@ const galleryItems = [
     category: "Womb & Age Regression",
   },
   {
+    image: "/gallery-online-session.webp",
+    title: "Online Guided Regression Session",
+    category: "Online PLR Session",
+  },
+  {
     image: "/gallery-individual-guidance-final.webp",
     title: "Individual Regression Experience",
     category: "Personalised PLR Session",
@@ -67,7 +72,7 @@ const PhotoGallery: React.FC = () => {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            object-position: center 35%;
+            object-position: center top;
           }
 
           .photo-gallery-page .gallery-hero::after {
@@ -356,6 +361,10 @@ const PhotoGallery: React.FC = () => {
             .photo-gallery-page .gallery-hero {
               min-height: 720px;
               align-items: flex-end;
+            }
+
+            .photo-gallery-page .gallery-hero-image img {
+              object-position: center top;
             }
 
             .photo-gallery-page .gallery-hero::after {
