@@ -371,7 +371,8 @@ const ServicePage: React.FC<ServicePageProps> = ({
               min-height: 460px;
               max-height: none;
               padding: 55px 20px;
-              background-size: contain;
+              background-size: cover;
+              background-position: center center;
               background-color: #18271f;
             }
 
