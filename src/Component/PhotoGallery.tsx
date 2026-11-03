@@ -47,7 +47,7 @@ const PhotoGallery: React.FC = () => {
             background: #faf9f5;
           }
 
-          /* FULL-WIDTH HERO IMAGE */
+          /* FULL-WIDTH HERO */
 
           .photo-gallery-page .gallery-hero {
             position: relative;
@@ -75,18 +75,28 @@ const PhotoGallery: React.FC = () => {
             object-position: center;
           }
 
+          /* NATURAL COLOUR INTEGRATION */
+
           .photo-gallery-page .gallery-hero::after {
             content: "";
             position: absolute;
             inset: 0;
             z-index: -1;
-            background: linear-gradient(
-              90deg,
-              rgba(8, 29, 19, 0.96) 0%,
-              rgba(8, 29, 19, 0.88) 31%,
-              rgba(8, 29, 19, 0.48) 55%,
-              rgba(8, 29, 19, 0.08) 100%
-            );
+            background:
+              linear-gradient(
+                90deg,
+                rgba(8, 29, 19, 0.96) 0%,
+                rgba(8, 29, 19, 0.88) 27%,
+                rgba(8, 29, 19, 0.48) 48%,
+                rgba(8, 29, 19, 0.08) 68%,
+                transparent 100%
+              ),
+              linear-gradient(
+                90deg,
+                transparent 55%,
+                rgba(205, 176, 140, 0.08) 72%,
+                rgba(205, 176, 140, 0.22) 100%
+              );
           }
 
           .photo-gallery-page .gallery-hero-content {
@@ -369,12 +379,18 @@ const PhotoGallery: React.FC = () => {
             }
 
             .photo-gallery-page .gallery-hero::after {
-              background: linear-gradient(
-                0deg,
-                rgba(8, 29, 19, 0.97) 0%,
-                rgba(8, 29, 19, 0.88) 48%,
-                rgba(8, 29, 19, 0.20) 100%
-              );
+              background:
+                linear-gradient(
+                  0deg,
+                  rgba(8, 29, 19, 0.97) 0%,
+                  rgba(8, 29, 19, 0.88) 48%,
+                  rgba(8, 29, 19, 0.20) 100%
+                ),
+                linear-gradient(
+                  90deg,
+                  transparent 55%,
+                  rgba(205, 176, 140, 0.12) 100%
+                );
             }
 
             .photo-gallery-page .gallery-hero-content {
