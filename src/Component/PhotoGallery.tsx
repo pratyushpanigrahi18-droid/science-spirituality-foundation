@@ -49,51 +49,55 @@ const PhotoGallery: React.FC = () => {
             background: #faf9f5;
           }
 
-          /* FULL-WIDTH HERO */
+          /* CINEMATIC FULL-WIDTH HERO */
 
           .photo-gallery-page .gallery-hero {
             position: relative;
+            isolation: isolate;
             width: 100%;
-            min-height: 720px;
-            display: flex;
+            min-height: 760px;
+            display: grid;
+            grid-template-columns: 1.05fr 0.95fr;
             align-items: center;
             overflow: hidden;
             background: #173c2b;
           }
 
-          .photo-gallery-page .gallery-hero-image {
+          /* Soft full-width background using the same photograph */
+
+          .photo-gallery-page .gallery-hero-backdrop {
             position: absolute;
-            inset: 0;
-            z-index: 0;
+            inset: -25px;
+            z-index: -2;
+            overflow: hidden;
           }
 
-          .photo-gallery-page .gallery-hero-image img {
-            display: block;
+          .photo-gallery-page .gallery-hero-backdrop img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            object-position: center top;
+            object-position: center 35%;
+            filter: blur(12px);
+            transform: scale(1.08);
           }
 
-          .photo-gallery-page .gallery-hero::after {
+          .photo-gallery-page .gallery-hero::before {
             content: "";
             position: absolute;
             inset: 0;
-            z-index: 1;
+            z-index: -1;
             background: linear-gradient(
               90deg,
-              rgba(10, 30, 20, 0.93) 0%,
-              rgba(10, 30, 20, 0.83) 36%,
-              rgba(10, 30, 20, 0.48) 65%,
-              rgba(10, 30, 20, 0.12) 100%
+              rgba(9, 29, 19, 0.97) 0%,
+              rgba(9, 29, 19, 0.91) 43%,
+              rgba(9, 29, 19, 0.76) 100%
             );
           }
 
           .photo-gallery-page .gallery-hero-content {
             position: relative;
             z-index: 2;
-            width: min(780px, 68%);
-            padding: 100px 7%;
+            padding: 80px 7% 80px 10%;
             color: #ffffff;
           }
 
@@ -110,9 +114,9 @@ const PhotoGallery: React.FC = () => {
             margin: 0 0 25px;
             color: #ffffff;
             font-family: Georgia, "Times New Roman", serif;
-            font-size: clamp(42px, 5.2vw, 72px);
+            font-size: clamp(40px, 4.2vw, 64px);
             font-weight: 500;
-            line-height: 1.12;
+            line-height: 1.13;
           }
 
           .photo-gallery-page .gallery-hero-content h1 span {
@@ -120,7 +124,7 @@ const PhotoGallery: React.FC = () => {
           }
 
           .photo-gallery-page .gallery-hero-description {
-            max-width: 560px;
+            max-width: 540px;
             margin: 0 0 35px;
             color: #f0f0e9;
             font-size: 16px;
@@ -130,7 +134,7 @@ const PhotoGallery: React.FC = () => {
           .photo-gallery-page .gallery-recognition {
             display: flex;
             flex-wrap: wrap;
-            gap: 35px;
+            gap: 30px;
             padding-top: 25px;
             border-top: 1px solid rgba(255,255,255,0.4);
           }
@@ -139,7 +143,7 @@ const PhotoGallery: React.FC = () => {
             margin: 0;
             color: #f0d6a5;
             font-family: Georgia, "Times New Roman", serif;
-            font-size: 22px;
+            font-size: 21px;
             line-height: 1.5;
           }
 
@@ -152,6 +156,30 @@ const PhotoGallery: React.FC = () => {
             font-weight: 700;
             letter-spacing: 1.5px;
             text-transform: uppercase;
+          }
+
+          /* COMPLETE UNCROPPED CERTIFICATE PHOTOGRAPH */
+
+          .photo-gallery-page .gallery-hero-portrait {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            height: 100%;
+            min-height: 760px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 35px 8% 35px 2%;
+          }
+
+          .photo-gallery-page .gallery-hero-portrait img {
+            display: block;
+            width: 100%;
+            height: 690px;
+            object-fit: contain;
+            object-position: center;
+            border-radius: 5px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.35);
           }
 
           /* GALLERY INTRO */
@@ -201,7 +229,7 @@ const PhotoGallery: React.FC = () => {
             line-height: 1.8;
           }
 
-          /* LARGER GALLERY IMAGES */
+          /* GALLERY CARDS */
 
           .photo-gallery-page .photo-gallery-grid {
             display: grid;
@@ -338,20 +366,29 @@ const PhotoGallery: React.FC = () => {
 
           @media (max-width: 950px) {
             .photo-gallery-page .gallery-hero {
-              min-height: 620px;
+              min-height: 650px;
+              grid-template-columns: 1fr 0.9fr;
             }
 
             .photo-gallery-page .gallery-hero-content {
-              width: 78%;
-              padding: 75px 6%;
+              padding: 65px 5%;
+            }
+
+            .photo-gallery-page .gallery-hero-content h1 {
+              font-size: clamp(36px, 5vw, 52px);
+            }
+
+            .photo-gallery-page .gallery-hero-portrait {
+              min-height: 650px;
+              padding: 25px 5% 25px 0;
+            }
+
+            .photo-gallery-page .gallery-hero-portrait img {
+              height: 590px;
             }
 
             .photo-gallery-page .photo-gallery-card {
               height: 400px;
-            }
-
-            .photo-gallery-page .photo-gallery-grid {
-              gap: 22px;
             }
           }
 
@@ -359,30 +396,16 @@ const PhotoGallery: React.FC = () => {
 
           @media (max-width: 650px) {
             .photo-gallery-page .gallery-hero {
-              min-height: 720px;
-              align-items: flex-end;
-            }
-
-            .photo-gallery-page .gallery-hero-image img {
-              object-position: center top;
-            }
-
-            .photo-gallery-page .gallery-hero::after {
-              background: linear-gradient(
-                0deg,
-                rgba(10, 30, 20, 0.97) 0%,
-                rgba(10, 30, 20, 0.88) 48%,
-                rgba(10, 30, 20, 0.25) 100%
-              );
+              grid-template-columns: 1fr;
+              min-height: auto;
             }
 
             .photo-gallery-page .gallery-hero-content {
-              width: 100%;
-              padding: 55px 7%;
+              padding: 55px 7% 35px;
             }
 
             .photo-gallery-page .gallery-hero-content h1 {
-              font-size: 40px;
+              font-size: 39px;
             }
 
             .photo-gallery-page .gallery-hero-description {
@@ -390,11 +413,23 @@ const PhotoGallery: React.FC = () => {
             }
 
             .photo-gallery-page .gallery-recognition {
-              gap: 18px 28px;
+              gap: 18px 25px;
             }
 
             .photo-gallery-page .gallery-recognition p {
               font-size: 19px;
+            }
+
+            .photo-gallery-page .gallery-hero-portrait {
+              min-height: auto;
+              padding: 5px 7% 45px;
+            }
+
+            .photo-gallery-page .gallery-hero-portrait img {
+              width: 100%;
+              height: auto;
+              max-height: 650px;
+              object-fit: contain;
             }
 
             .photo-gallery-page .photo-gallery-section {
@@ -439,11 +474,11 @@ const PhotoGallery: React.FC = () => {
       </style>
 
       <section className="gallery-hero">
-        <div className="gallery-hero-image">
+        <div className="gallery-hero-backdrop">
           <img
             src="/gallery-hero-certificate.webp"
-            alt="Professional training certificate presentation at Soul Consciousness Lab"
-            fetchPriority="high"
+            alt=""
+            aria-hidden="true"
           />
         </div>
 
@@ -474,6 +509,14 @@ const PhotoGallery: React.FC = () => {
               Accredited Training
             </p>
           </div>
+        </div>
+
+        <div className="gallery-hero-portrait">
+          <img
+            src="/gallery-hero-certificate.webp"
+            alt="Certificate presentation at Soul Consciousness Lab"
+            fetchPriority="high"
+          />
         </div>
       </section>
 
