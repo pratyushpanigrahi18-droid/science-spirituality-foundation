@@ -46,71 +46,54 @@ const PhotoGallery: React.FC = () => {
           background: #faf9f5;
         }
 
-        /* HERO SECTION */
+        /* TWO-COLUMN PROFESSIONAL HERO */
 
         .photo-gallery-page .gallery-hero {
-          position: relative;
-          isolation: isolate;
           width: 100%;
           min-height: 650px;
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          background: #173d2c;
+          overflow: hidden;
+        }
+
+        /* LEFT: ORIGINAL CERTIFICATE PHOTOGRAPH */
+
+        .photo-gallery-page .gallery-hero-image {
+          position: relative;
+          min-width: 0;
+          min-height: 650px;
+          background: #e8dfd1;
           display: flex;
           align-items: center;
+          justify-content: center;
           overflow: hidden;
-          background: #e9dfce;
         }
 
-        /* ORIGINAL PHOTOGRAPH */
-
-        .photo-gallery-page .gallery-hero-background {
-          position: absolute;
-          inset: 0;
-          z-index: -2;
-          width: 100%;
-          height: 100%;
-        }
-
-        .photo-gallery-page .gallery-hero-background img {
+        .photo-gallery-page .gallery-hero-image img {
           display: block;
           width: 100%;
           height: 100%;
+          min-height: 650px;
           object-fit: cover;
-          object-position: center 38%;
-          filter: brightness(1.16) contrast(1.03) saturate(1.06);
+          object-position: center center;
+          filter: brightness(1.10) contrast(1.03);
         }
 
-        /* LIGHT IVORY BLEND — NO DARK GREEN SHADING */
-
-        .photo-gallery-page .gallery-hero::after {
-          content: "";
-          position: absolute;
-          inset: 0;
-          z-index: -1;
-          pointer-events: none;
-          background: linear-gradient(
-            90deg,
-            rgba(248, 240, 224, 0.96) 0%,
-            rgba(248, 240, 224, 0.88) 23%,
-            rgba(248, 240, 224, 0.68) 38%,
-            rgba(248, 240, 224, 0.28) 53%,
-            rgba(248, 240, 224, 0.04) 72%,
-            transparent 100%
-          );
-        }
-
-        /* HERO TEXT */
+        /* RIGHT: WEBSITE THEME TEXT PANEL */
 
         .photo-gallery-page .gallery-hero-content {
-          position: relative;
-          z-index: 2;
-          width: 53%;
-          margin-left: 6.5%;
-          padding: 65px 0;
-          color: #193d2b;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          padding: 75px clamp(35px, 5vw, 85px);
+          background: #173d2c;
+          color: #fff;
         }
 
         .photo-gallery-page .gallery-hero-eyebrow {
-          margin: 0 0 22px;
-          color: #98713b;
+          margin: 0 0 25px;
+          color: #dfbd80;
           font-size: 12px;
           font-weight: 700;
           letter-spacing: 3px;
@@ -118,39 +101,37 @@ const PhotoGallery: React.FC = () => {
         }
 
         .photo-gallery-page .gallery-hero-content h1 {
-          max-width: 760px;
-          margin: 0 0 24px;
-          color: #193d2b;
+          margin: 0 0 27px;
+          color: #fff;
           font-family: Georgia, "Times New Roman", serif;
-          font-size: clamp(38px, 4.1vw, 62px);
+          font-size: clamp(38px, 4vw, 59px);
           font-weight: 500;
-          line-height: 1.13;
+          line-height: 1.15;
         }
 
         .photo-gallery-page .gallery-hero-content h1 span {
-          color: #a77d3e;
+          color: #dfbd80;
         }
 
         .photo-gallery-page .gallery-hero-description {
           max-width: 540px;
-          margin: 0 0 30px;
-          color: #293b30;
+          margin: 0 0 38px;
+          color: #f0eee5;
           font-size: 16px;
-          line-height: 1.85;
+          line-height: 1.9;
         }
 
         .photo-gallery-page .gallery-recognition {
           display: flex;
           flex-wrap: wrap;
           gap: 30px;
-          max-width: 620px;
-          padding-top: 22px;
-          border-top: 1px solid rgba(25, 61, 43, 0.35);
+          padding-top: 27px;
+          border-top: 1px solid rgba(255,255,255,0.3);
         }
 
         .photo-gallery-page .gallery-recognition p {
           margin: 0;
-          color: #98713b;
+          color: #dfbd80;
           font-family: Georgia, "Times New Roman", serif;
           font-size: 21px;
           line-height: 1.5;
@@ -158,8 +139,8 @@ const PhotoGallery: React.FC = () => {
 
         .photo-gallery-page .gallery-recognition strong {
           display: block;
-          margin-bottom: 4px;
-          color: #193d2b;
+          margin-bottom: 6px;
+          color: #fff;
           font-family: Arial, sans-serif;
           font-size: 13px;
           font-weight: 700;
@@ -167,7 +148,7 @@ const PhotoGallery: React.FC = () => {
           text-transform: uppercase;
         }
 
-        /* GALLERY SECTION */
+        /* GALLERY INTRODUCTION */
 
         .photo-gallery-page .photo-gallery-section {
           width: 100%;
@@ -214,7 +195,7 @@ const PhotoGallery: React.FC = () => {
           line-height: 1.8;
         }
 
-        /* GALLERY IMAGE GRID */
+        /* GALLERY GRID */
 
         .photo-gallery-page .photo-gallery-grid {
           display: grid;
@@ -294,7 +275,7 @@ const PhotoGallery: React.FC = () => {
           line-height: 1.35;
         }
 
-        /* IMAGE LIGHTBOX */
+        /* LIGHTBOX */
 
         .photo-gallery-page .photo-gallery-lightbox {
           position: fixed;
@@ -351,16 +332,20 @@ const PhotoGallery: React.FC = () => {
 
         @media (max-width: 950px) {
           .photo-gallery-page .gallery-hero {
-            min-height: 570px;
+            min-height: 550px;
+          }
+
+          .photo-gallery-page .gallery-hero-image,
+          .photo-gallery-page .gallery-hero-image img {
+            min-height: 550px;
           }
 
           .photo-gallery-page .gallery-hero-content {
-            width: 59%;
-            margin-left: 5%;
+            padding: 45px 30px;
           }
 
           .photo-gallery-page .gallery-hero-content h1 {
-            font-size: clamp(34px, 4.5vw, 49px);
+            font-size: clamp(32px, 4vw, 45px);
           }
 
           .photo-gallery-page .gallery-hero-description {
@@ -368,7 +353,7 @@ const PhotoGallery: React.FC = () => {
           }
 
           .photo-gallery-page .gallery-recognition {
-            gap: 20px;
+            gap: 18px;
           }
 
           .photo-gallery-page .gallery-recognition p {
@@ -384,51 +369,36 @@ const PhotoGallery: React.FC = () => {
 
         @media (max-width: 650px) {
           .photo-gallery-page .gallery-hero {
-            min-height: 720px;
-            align-items: flex-end;
+            grid-template-columns: 1fr;
           }
 
-          .photo-gallery-page .gallery-hero-background img {
-            object-position: center top;
+          .photo-gallery-page .gallery-hero-image {
+            min-height: 0;
+            height: auto;
+            aspect-ratio: 4 / 5;
           }
 
-          .photo-gallery-page .gallery-hero::after {
-            background: linear-gradient(
-              0deg,
-              rgba(248, 240, 224, 0.99) 0%,
-              rgba(248, 240, 224, 0.94) 42%,
-              rgba(248, 240, 224, 0.35) 75%,
-              rgba(248, 240, 224, 0.08) 100%
-            );
+          .photo-gallery-page .gallery-hero-image img {
+            min-height: 0;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 30%;
           }
 
           .photo-gallery-page .gallery-hero-content {
-            width: 100%;
-            margin: 0;
-            padding: 35px 7%;
+            padding: 45px 7%;
           }
 
           .photo-gallery-page .gallery-hero-content h1 {
-            font-size: 36px;
+            font-size: 37px;
           }
 
           .photo-gallery-page .gallery-hero-description {
             font-size: 14px;
-            margin-bottom: 20px;
-          }
-
-          .photo-gallery-page .gallery-hero-eyebrow {
-            font-size: 10px;
-            margin-bottom: 15px;
           }
 
           .photo-gallery-page .gallery-recognition {
-            gap: 15px 22px;
-            padding-top: 16px;
-          }
-
-          .photo-gallery-page .gallery-recognition p {
-            font-size: 17px;
+            gap: 18px 25px;
           }
 
           .photo-gallery-page .photo-gallery-section {
@@ -472,10 +442,10 @@ const PhotoGallery: React.FC = () => {
       `}</style>
 
       <section className="gallery-hero">
-        <div className="gallery-hero-background">
+        <div className="gallery-hero-image">
           <img
             src="/gallery-hero-certificate.webp"
-            alt="Professional training certificate presentation at Soul Consciousness Lab"
+            alt="Pratyush receiving his professional training certificate with his trainer"
             fetchPriority="high"
           />
         </div>
