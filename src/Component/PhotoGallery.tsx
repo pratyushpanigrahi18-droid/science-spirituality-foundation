@@ -47,56 +47,66 @@ const PhotoGallery: React.FC = () => {
             background: #faf9f5;
           }
 
-          /* FULL-WIDTH HERO */
+          /* HERO */
 
           .photo-gallery-page .gallery-hero {
             position: relative;
             isolation: isolate;
             width: 100%;
-            aspect-ratio: 16 / 9;
-            min-height: 680px;
+            min-height: 720px;
             display: flex;
             align-items: center;
             overflow: hidden;
-            background: #102c20;
+            background: linear-gradient(
+              90deg,
+              #102e21 0%,
+              #263c2d 38%,
+              #8c806b 72%,
+              #b6a58e 100%
+            );
           }
+
+          /* ORIGINAL SHARP PHOTO - NO BLUR */
 
           .photo-gallery-page .gallery-hero-background {
             position: absolute;
             inset: 0;
             z-index: -2;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            background: linear-gradient(
+              90deg,
+              #102e21 0%,
+              #263c2d 45%,
+              #a99a81 100%
+            );
           }
 
           .photo-gallery-page .gallery-hero-background img {
             display: block;
             width: 100%;
             height: 100%;
-            object-fit: cover;
-            object-position: center;
+            object-fit: contain;
+            object-position: right center;
           }
 
-          /* NATURAL COLOUR INTEGRATION */
+          /* TEXT READABILITY AND COLOUR BLENDING */
 
           .photo-gallery-page .gallery-hero::after {
             content: "";
             position: absolute;
             inset: 0;
             z-index: -1;
-            background:
-              linear-gradient(
-                90deg,
-                rgba(8, 29, 19, 0.96) 0%,
-                rgba(8, 29, 19, 0.88) 27%,
-                rgba(8, 29, 19, 0.48) 48%,
-                rgba(8, 29, 19, 0.08) 68%,
-                transparent 100%
-              ),
-              linear-gradient(
-                90deg,
-                transparent 55%,
-                rgba(205, 176, 140, 0.08) 72%,
-                rgba(205, 176, 140, 0.22) 100%
-              );
+            pointer-events: none;
+            background: linear-gradient(
+              90deg,
+              rgba(8, 29, 19, 0.98) 0%,
+              rgba(15, 43, 29, 0.94) 29%,
+              rgba(27, 49, 34, 0.76) 43%,
+              rgba(44, 53, 39, 0.24) 59%,
+              transparent 74%
+            );
           }
 
           .photo-gallery-page .gallery-hero-content {
@@ -369,28 +379,22 @@ const PhotoGallery: React.FC = () => {
 
           @media (max-width: 650px) {
             .photo-gallery-page .gallery-hero {
-              aspect-ratio: auto;
               min-height: 760px;
               align-items: flex-end;
             }
 
             .photo-gallery-page .gallery-hero-background img {
-              object-position: center;
+              object-fit: contain;
+              object-position: center top;
             }
 
             .photo-gallery-page .gallery-hero::after {
-              background:
-                linear-gradient(
-                  0deg,
-                  rgba(8, 29, 19, 0.97) 0%,
-                  rgba(8, 29, 19, 0.88) 48%,
-                  rgba(8, 29, 19, 0.20) 100%
-                ),
-                linear-gradient(
-                  90deg,
-                  transparent 55%,
-                  rgba(205, 176, 140, 0.12) 100%
-                );
+              background: linear-gradient(
+                0deg,
+                rgba(8, 29, 19, 0.98) 0%,
+                rgba(8, 29, 19, 0.90) 48%,
+                rgba(8, 29, 19, 0.15) 100%
+              );
             }
 
             .photo-gallery-page .gallery-hero-content {
@@ -458,7 +462,7 @@ const PhotoGallery: React.FC = () => {
       <section className="gallery-hero">
         <div className="gallery-hero-background">
           <img
-            src="/gallery-hero-wide.webp"
+            src="/gallery-hero-certificate.webp"
             alt="Professional training certificate presentation at Soul Consciousness Lab"
             fetchPriority="high"
           />
