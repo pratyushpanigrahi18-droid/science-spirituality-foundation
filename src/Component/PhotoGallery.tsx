@@ -37,8 +37,6 @@ const galleryItems = [
 const PhotoGallery: React.FC = () => {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
 
-  const closeLightbox = () => setSelectedImage(null);
-
   return (
     <main className="photo-gallery-page">
       <style>
@@ -49,56 +47,54 @@ const PhotoGallery: React.FC = () => {
             background: #faf9f5;
           }
 
-          /* CINEMATIC FULL-WIDTH HERO */
+          /* FULL-WIDTH HERO IMAGE */
 
           .photo-gallery-page .gallery-hero {
             position: relative;
             isolation: isolate;
             width: 100%;
-            min-height: 760px;
-            display: grid;
-            grid-template-columns: 1.05fr 0.95fr;
+            aspect-ratio: 16 / 9;
+            min-height: 680px;
+            display: flex;
             align-items: center;
             overflow: hidden;
-            background: #173c2b;
+            background: #102c20;
           }
 
-          /* Soft full-width background using the same photograph */
-
-          .photo-gallery-page .gallery-hero-backdrop {
+          .photo-gallery-page .gallery-hero-background {
             position: absolute;
-            inset: -25px;
+            inset: 0;
             z-index: -2;
-            overflow: hidden;
           }
 
-          .photo-gallery-page .gallery-hero-backdrop img {
+          .photo-gallery-page .gallery-hero-background img {
+            display: block;
             width: 100%;
             height: 100%;
             object-fit: cover;
-            object-position: center 35%;
-            filter: blur(12px);
-            transform: scale(1.08);
+            object-position: center;
           }
 
-          .photo-gallery-page .gallery-hero::before {
+          .photo-gallery-page .gallery-hero::after {
             content: "";
             position: absolute;
             inset: 0;
             z-index: -1;
             background: linear-gradient(
               90deg,
-              rgba(9, 29, 19, 0.97) 0%,
-              rgba(9, 29, 19, 0.91) 43%,
-              rgba(9, 29, 19, 0.76) 100%
+              rgba(8, 29, 19, 0.96) 0%,
+              rgba(8, 29, 19, 0.88) 31%,
+              rgba(8, 29, 19, 0.48) 55%,
+              rgba(8, 29, 19, 0.08) 100%
             );
           }
 
           .photo-gallery-page .gallery-hero-content {
             position: relative;
             z-index: 2;
-            padding: 80px 7% 80px 10%;
-            color: #ffffff;
+            width: 58%;
+            padding: 75px 0 75px 7%;
+            color: #fff;
           }
 
           .photo-gallery-page .gallery-hero-eyebrow {
@@ -112,7 +108,7 @@ const PhotoGallery: React.FC = () => {
 
           .photo-gallery-page .gallery-hero-content h1 {
             margin: 0 0 25px;
-            color: #ffffff;
+            color: #fff;
             font-family: Georgia, "Times New Roman", serif;
             font-size: clamp(40px, 4.2vw, 64px);
             font-weight: 500;
@@ -150,36 +146,12 @@ const PhotoGallery: React.FC = () => {
           .photo-gallery-page .gallery-recognition strong {
             display: block;
             margin-bottom: 4px;
-            color: #ffffff;
+            color: #fff;
             font-family: Arial, sans-serif;
             font-size: 13px;
             font-weight: 700;
             letter-spacing: 1.5px;
             text-transform: uppercase;
-          }
-
-          /* COMPLETE UNCROPPED CERTIFICATE PHOTOGRAPH */
-
-          .photo-gallery-page .gallery-hero-portrait {
-            position: relative;
-            z-index: 2;
-            width: 100%;
-            height: 100%;
-            min-height: 760px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 35px 8% 35px 2%;
-          }
-
-          .photo-gallery-page .gallery-hero-portrait img {
-            display: block;
-            width: 100%;
-            height: 690px;
-            object-fit: contain;
-            object-position: center;
-            border-radius: 5px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.35);
           }
 
           /* GALLERY INTRO */
@@ -302,7 +274,7 @@ const PhotoGallery: React.FC = () => {
           .photo-gallery-page .photo-gallery-card-overlay h3 {
             max-width: 450px;
             margin: 0;
-            color: #ffffff;
+            color: #fff;
             font-family: Georgia, "Times New Roman", serif;
             font-size: 27px;
             font-weight: 500;
@@ -357,7 +329,7 @@ const PhotoGallery: React.FC = () => {
             border: 1px solid rgba(255,255,255,0.5);
             border-radius: 50%;
             background: #193d2b;
-            color: #ffffff;
+            color: #fff;
             font-size: 27px;
             cursor: pointer;
           }
@@ -367,24 +339,15 @@ const PhotoGallery: React.FC = () => {
           @media (max-width: 950px) {
             .photo-gallery-page .gallery-hero {
               min-height: 650px;
-              grid-template-columns: 1fr 0.9fr;
             }
 
             .photo-gallery-page .gallery-hero-content {
-              padding: 65px 5%;
+              width: 65%;
+              padding-left: 6%;
             }
 
             .photo-gallery-page .gallery-hero-content h1 {
               font-size: clamp(36px, 5vw, 52px);
-            }
-
-            .photo-gallery-page .gallery-hero-portrait {
-              min-height: 650px;
-              padding: 25px 5% 25px 0;
-            }
-
-            .photo-gallery-page .gallery-hero-portrait img {
-              height: 590px;
             }
 
             .photo-gallery-page .photo-gallery-card {
@@ -396,12 +359,27 @@ const PhotoGallery: React.FC = () => {
 
           @media (max-width: 650px) {
             .photo-gallery-page .gallery-hero {
-              grid-template-columns: 1fr;
-              min-height: auto;
+              aspect-ratio: auto;
+              min-height: 760px;
+              align-items: flex-end;
+            }
+
+            .photo-gallery-page .gallery-hero-background img {
+              object-position: center;
+            }
+
+            .photo-gallery-page .gallery-hero::after {
+              background: linear-gradient(
+                0deg,
+                rgba(8, 29, 19, 0.97) 0%,
+                rgba(8, 29, 19, 0.88) 48%,
+                rgba(8, 29, 19, 0.20) 100%
+              );
             }
 
             .photo-gallery-page .gallery-hero-content {
-              padding: 55px 7% 35px;
+              width: 100%;
+              padding: 55px 7%;
             }
 
             .photo-gallery-page .gallery-hero-content h1 {
@@ -418,18 +396,6 @@ const PhotoGallery: React.FC = () => {
 
             .photo-gallery-page .gallery-recognition p {
               font-size: 19px;
-            }
-
-            .photo-gallery-page .gallery-hero-portrait {
-              min-height: auto;
-              padding: 5px 7% 45px;
-            }
-
-            .photo-gallery-page .gallery-hero-portrait img {
-              width: 100%;
-              height: auto;
-              max-height: 650px;
-              object-fit: contain;
             }
 
             .photo-gallery-page .photo-gallery-section {
@@ -474,11 +440,11 @@ const PhotoGallery: React.FC = () => {
       </style>
 
       <section className="gallery-hero">
-        <div className="gallery-hero-backdrop">
+        <div className="gallery-hero-background">
           <img
-            src="/gallery-hero-certificate.webp"
-            alt=""
-            aria-hidden="true"
+            src="/gallery-hero-wide.webp"
+            alt="Professional training certificate presentation at Soul Consciousness Lab"
+            fetchPriority="high"
           />
         </div>
 
@@ -509,14 +475,6 @@ const PhotoGallery: React.FC = () => {
               Accredited Training
             </p>
           </div>
-        </div>
-
-        <div className="gallery-hero-portrait">
-          <img
-            src="/gallery-hero-certificate.webp"
-            alt="Certificate presentation at Soul Consciousness Lab"
-            fetchPriority="high"
-          />
         </div>
       </section>
 
@@ -565,7 +523,7 @@ const PhotoGallery: React.FC = () => {
       {selectedImage !== null && (
         <div
           className="photo-gallery-lightbox"
-          onClick={closeLightbox}
+          onClick={() => setSelectedImage(null)}
           role="presentation"
         >
           <div
@@ -575,7 +533,7 @@ const PhotoGallery: React.FC = () => {
             <button
               type="button"
               className="photo-gallery-close"
-              onClick={closeLightbox}
+              onClick={() => setSelectedImage(null)}
               aria-label="Close image"
             >
               ×
