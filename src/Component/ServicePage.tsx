@@ -66,7 +66,9 @@ const ServicePage: React.FC<ServicePageProps> = ({
   const isDowsing = safeTitle === "dowsing";
   const isPLR = safeTitle === "past life regression";
   const isFingerprint = safeTitle === "fingerprint analysis";
+  const isManifestation = safeTitle === "manifestation";
   const [activeFingerprintTab, setActiveFingerprintTab] = React.useState("overview");
+  const [activeManifestationTab, setActiveManifestationTab] = React.useState("overview");
 
   // Desktop: scroll to the booking section.
   // Mobile: scroll directly to the actual booking form.
@@ -239,6 +241,23 @@ const ServicePage: React.FC<ServicePageProps> = ({
             line-height: 1.7;
           }
 
+          /* Manifestation diary hero image */
+          .service-page .manifestation-service-hero {
+            width: 100%;
+            overflow: hidden;
+            background: #f7f4eb;
+            line-height: 0;
+          }
+
+          .service-page .manifestation-service-image {
+            display: block;
+            width: 100%;
+            height: auto;
+            max-width: 100%;
+            object-fit: contain;
+            object-position: center;
+          }
+
           /* Fingerprint Analysis hero image */
           .service-page .fingerprint-service-hero {
             width: 100%;
@@ -257,45 +276,61 @@ const ServicePage: React.FC<ServicePageProps> = ({
           }
 
           /* Fingerprint Analysis information tabs */
-           .fingerprint-tabs-section {
+           .fingerprint-tabs-section,
+           .manifestation-tabs-section {
              width: 100%; padding: 64px 5%; background: #f8f6ef; color: #173d2c;
            }
-           .fingerprint-tabs-inner { max-width: 1120px; margin: 0 auto; }
-           .fingerprint-tabs-heading {
+           .fingerprint-tabs-inner,
+           .manifestation-tabs-inner { max-width: 1120px; margin: 0 auto; }
+           .fingerprint-tabs-heading,
+           .manifestation-tabs-heading {
              margin: 0 0 10px; text-align: center; color: #173d2c;
              font-family: Georgia, "Times New Roman", serif; font-size: clamp(28px, 4vw, 40px);
            }
-           .fingerprint-tabs-intro {
+           .fingerprint-tabs-intro,
+           .manifestation-tabs-intro {
              max-width: 760px; margin: 0 auto 30px; text-align: center;
              color: #526258; line-height: 1.7;
            }
-           .fingerprint-tab-list {
+           .fingerprint-tab-list,
+           .manifestation-tab-list {
              display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin: 0 0 22px;
            }
-           .fingerprint-tab-button {
+           .fingerprint-tab-button,
+           .manifestation-tab-button {
              border: 1px solid #b99a5a; border-radius: 999px; padding: 12px 22px;
              background: #fff; color: #173d2c; font: inherit; font-weight: 600; cursor: pointer;
              transition: background 0.2s ease, color 0.2s ease;
            }
-           .fingerprint-tab-button[aria-selected="true"] {
+           .fingerprint-tab-button[aria-selected="true"],
+           .manifestation-tab-button[aria-selected="true"] {
              background: #173d2c; border-color: #173d2c; color: #fff;
            }
-           .fingerprint-tab-button:focus-visible { outline: 3px solid #d7b66e; outline-offset: 3px; }
-           .fingerprint-tab-panel {
+           .fingerprint-tab-button:focus-visible,
+           .manifestation-tab-button:focus-visible { outline: 3px solid #d7b66e; outline-offset: 3px; }
+           .fingerprint-tab-panel,
+           .manifestation-tab-panel {
              min-height: 190px; padding: 30px clamp(20px, 4vw, 42px);
              border: 1px solid rgba(185, 154, 90, 0.45); border-radius: 20px;
              background: #fff; box-shadow: 0 12px 30px rgba(23, 61, 44, 0.07);
            }
-           .fingerprint-tab-panel h3 {
+           .fingerprint-tab-panel h3,
+           .manifestation-tab-panel h3 {
              margin: 0 0 12px; color: #173d2c; font-family: Georgia, "Times New Roman", serif; font-size: 25px;
            }
-           .fingerprint-tab-panel p { margin: 0 0 12px; color: #46564b; line-height: 1.75; }
-           .fingerprint-tab-panel p:last-child { margin-bottom: 0; }
+           .fingerprint-tab-panel p,
+           .manifestation-tab-panel p { margin: 0 0 12px; color: #46564b; line-height: 1.75; }
+           .fingerprint-tab-panel p:last-child,
+           .manifestation-tab-panel p:last-child { margin-bottom: 0; }
            @media (max-width: 600px) {
-             .fingerprint-tabs-section { padding: 46px 5%; }
-             .fingerprint-tab-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
-             .fingerprint-tab-button { padding: 11px 8px; font-size: 14px; }
-             .fingerprint-tab-panel { min-height: 0; padding: 24px 20px; }
+             .fingerprint-tabs-section,
+             .manifestation-tabs-section { padding: 46px 5%; }
+             .fingerprint-tab-list,
+             .manifestation-tab-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+             .fingerprint-tab-button,
+             .manifestation-tab-button { padding: 11px 8px; font-size: 14px; }
+             .fingerprint-tab-panel,
+             .manifestation-tab-panel { min-height: 0; padding: 24px 20px; }
            }
 
            .service-page .service-page-hero {
@@ -512,6 +547,15 @@ const ServicePage: React.FC<ServicePageProps> = ({
             <p>{subtitle}</p>
           </div>
         </section>
+      ) : isManifestation ? (
+        <section className="manifestation-service-hero">
+          <img
+            src="/ssf-manifestation-diary.webp"
+            alt="Manifestation: writing intentions in a diary and visualising meaningful goals becoming reality"
+            className="manifestation-service-image"
+            loading="eager"
+          />
+        </section>
       ) : isFingerprint ? (
         <section className="fingerprint-service-hero">
           <img
@@ -536,6 +580,61 @@ const ServicePage: React.FC<ServicePageProps> = ({
       )}
 
       <div className="service-page-content">
+        {isManifestation && (
+          <section className="manifestation-tabs-section">
+            <div className="manifestation-tabs-inner">
+              <h2 className="manifestation-tabs-heading">Explore Manifestation</h2>
+              <p className="manifestation-tabs-intro">
+                A conscious practice of clarifying what matters to you, visualising your goals and taking meaningful steps towards them.
+              </p>
+              <div className="manifestation-tab-list" role="tablist" aria-label="Manifestation topics">
+                <button type="button" role="tab" id="manifestation-tab-overview" aria-selected={activeManifestationTab === "overview"} aria-controls="manifestation-tab-content" className="manifestation-tab-button" onClick={() => setActiveManifestationTab("overview")}>Overview</button>
+                <button type="button" role="tab" id="manifestation-tab-principles" aria-selected={activeManifestationTab === "principles"} aria-controls="manifestation-tab-content" className="manifestation-tab-button" onClick={() => setActiveManifestationTab("principles")}>Core Principles</button>
+                <button type="button" role="tab" id="manifestation-tab-tools" aria-selected={activeManifestationTab === "tools"} aria-controls="manifestation-tab-content" className="manifestation-tab-button" onClick={() => setActiveManifestationTab("tools")}>Process & Tools</button>
+                <button type="button" role="tab" id="manifestation-tab-benefits" aria-selected={activeManifestationTab === "benefits"} aria-controls="manifestation-tab-content" className="manifestation-tab-button" onClick={() => setActiveManifestationTab("benefits")}>Benefits</button>
+                <button type="button" role="tab" id="manifestation-tab-practice" aria-selected={activeManifestationTab === "practice"} aria-controls="manifestation-tab-content" className="manifestation-tab-button" onClick={() => setActiveManifestationTab("practice")}>Practice Guide</button>
+              </div>
+              <div className="manifestation-tab-panel" id="manifestation-tab-content" role="tabpanel" aria-labelledby={`manifestation-tab-${activeManifestationTab}`}>
+                {activeManifestationTab === "overview" && (
+                  <>
+                    <h3>What Is Manifestation?</h3>
+                    <p>Manifestation can be approached as a reflective process of identifying what you want to work towards, bringing your attention to that intention and aligning your everyday choices with it.</p>
+                    <p>Visualisation can help you imagine a desired outcome, while planning and consistent action help translate that intention into practical steps. Visualisation alone cannot guarantee an outcome.</p>
+                  </>
+                )}
+                {activeManifestationTab === "principles" && (
+                  <>
+                    <h3>Core Principles</h3>
+                    <p><strong>Clarity:</strong> define what is meaningful and specific to you. <strong>Self-awareness:</strong> understand the reasons behind your intention. <strong>Constructive mindset:</strong> practise supportive and realistic self-talk.</p>
+                    <p><strong>Alignment:</strong> connect your daily choices with your priorities. <strong>Inspired action:</strong> take practical steps, learn from setbacks and adjust your approach.</p>
+                  </>
+                )}
+                {activeManifestationTab === "tools" && (
+                  <>
+                    <h3>Process & Tools</h3>
+                    <p>Use intention-setting and journaling to put your goals into words. Try visualisation as a form of mental rehearsal: imagine the process, the effort involved and how you might respond to challenges.</p>
+                    <p>Affirmations can be used as supportive self-talk. Pair them with an action plan, realistic milestones and regular reflection.</p>
+                  </>
+                )}
+                {activeManifestationTab === "benefits" && (
+                  <>
+                    <h3>What the Practice May Support</h3>
+                    <p>A structured manifestation practice may help you clarify priorities, focus attention, strengthen motivation and reflect on the habits that support your goals.</p>
+                    <p>Results depend on many factors, including circumstances, resources, opportunities and sustained effort. Manifestation is not a guarantee of wealth, relationships, health or any specific outcome.</p>
+                  </>
+                )}
+                {activeManifestationTab === "practice" && (
+                  <>
+                    <h3>A Simple Daily Practice</h3>
+                    <p>Write one meaningful intention in your diary. Describe why it matters, visualise the next realistic step and identify one action you can take today.</p>
+                    <p>At the end of the day, note what you did, what you learned and what you will adjust tomorrow. Keep your goals flexible and your actions practical.</p>
+                  </>
+                )}
+              </div>
+            </div>
+          </section>
+        )}
+
         {isFingerprint && (
           <section className="fingerprint-tabs-section">
             <div className="fingerprint-tabs-inner">
@@ -716,7 +815,7 @@ const ServicePage: React.FC<ServicePageProps> = ({
             onClick={(event) => {
               event.preventDefault();
 
-              if (isReiki || isDowsing || isPLR || isFingerprint) {
+              if (isReiki || isDowsing || isPLR || isFingerprint || isManifestation) {
                 window.dispatchEvent(
                   new CustomEvent<string>("ssf-select-service", {
                     detail: isReiki
@@ -725,7 +824,9 @@ const ServicePage: React.FC<ServicePageProps> = ({
                       ? "Dowsing"
                       : isPLR
                       ? "Past Life Regression"
-                      : "Fingerprint Analysis",
+                      : isFingerprint
+                      ? "Fingerprint Analysis"
+                      : "Manifestation",
                   })
                 );
               }
