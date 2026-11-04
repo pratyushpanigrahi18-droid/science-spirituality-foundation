@@ -666,7 +666,7 @@ const ServicePage: React.FC<ServicePageProps> = ({
                 {activeFingerprintTab === "development" && (
                   <>
                     <h3>Fingerprints, Brain & Development</h3>
-                    <p>Fingerprint ridges develop during prenatal life. Skin and the nervous system have related early embryological origins, and their development overlaps in time.</p>
+                    <p>Fingerprint patterns form during prenatal development, at a time when the brain and nervous system are also developing. The skin and nervous system share an early embryological origin, which is why fingerprint patterns are studied in relation to brain and nervous-system development.</p>
                   </>
                 )}
                 {activeFingerprintTab === "guidance" && (
