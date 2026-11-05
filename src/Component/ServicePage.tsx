@@ -620,7 +620,6 @@ const ServicePage: React.FC<ServicePageProps> = ({
                   <>
                     <h3>What the Practice May Support</h3>
                     <p>A structured manifestation practice may help you clarify priorities, focus attention, strengthen motivation and reflect on the habits that support your goals.</p>
-                    <p>Results depend on many factors, including circumstances, resources, opportunities and sustained effort. Manifestation is not a guarantee of wealth, relationships, health or any specific outcome.</p>
                   </>
                 )}
                 {activeManifestationTab === "practice" && (
