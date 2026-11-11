@@ -67,8 +67,10 @@ const ServicePage: React.FC<ServicePageProps> = ({
   const isPLR = safeTitle === "past life regression";
   const isFingerprint = safeTitle === "fingerprint analysis";
   const isManifestation = safeTitle === "manifestation";
+  const isMeditation = safeTitle === "meditation";
   const [activeFingerprintTab, setActiveFingerprintTab] = React.useState("overview");
   const [activeManifestationTab, setActiveManifestationTab] = React.useState("overview");
+  const [activeMeditationTab, setActiveMeditationTab] = React.useState("overview");
 
   // Desktop: scroll to the booking section.
   // Mobile: scroll directly to the actual booking form.
@@ -258,6 +260,23 @@ const ServicePage: React.FC<ServicePageProps> = ({
             object-position: center;
           }
 
+          /* Meditation service hero image */
+          .service-page .meditation-service-hero {
+            width: 100%;
+            overflow: hidden;
+            background: #19070a;
+            line-height: 0;
+          }
+
+          .service-page .meditation-service-image {
+            display: block;
+            width: 100%;
+            height: auto;
+            max-width: 100%;
+            object-fit: contain;
+            object-position: center;
+          }
+
           /* Fingerprint Analysis hero image */
           .service-page .fingerprint-service-hero {
             width: 100%;
@@ -277,60 +296,76 @@ const ServicePage: React.FC<ServicePageProps> = ({
 
           /* Fingerprint Analysis information tabs */
            .fingerprint-tabs-section,
-           .manifestation-tabs-section {
+           .manifestation-tabs-section,
+           .meditation-tabs-section {
              width: 100%; padding: 64px 5%; background: #f8f6ef; color: #173d2c;
            }
            .fingerprint-tabs-inner,
-           .manifestation-tabs-inner { max-width: 1120px; margin: 0 auto; }
+           .manifestation-tabs-inner,
+           .meditation-tabs-inner { max-width: 1120px; margin: 0 auto; }
            .fingerprint-tabs-heading,
-           .manifestation-tabs-heading {
+           .manifestation-tabs-heading,
+           .meditation-tabs-heading {
              margin: 0 0 10px; text-align: center; color: #173d2c;
              font-family: Georgia, "Times New Roman", serif; font-size: clamp(28px, 4vw, 40px);
            }
            .fingerprint-tabs-intro,
-           .manifestation-tabs-intro {
+           .manifestation-tabs-intro,
+           .meditation-tabs-intro {
              max-width: 760px; margin: 0 auto 30px; text-align: center;
              color: #526258; line-height: 1.7;
            }
            .fingerprint-tab-list,
-           .manifestation-tab-list {
+           .manifestation-tab-list,
+           .meditation-tab-list {
              display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin: 0 0 22px;
            }
            .fingerprint-tab-button,
-           .manifestation-tab-button {
+           .manifestation-tab-button,
+           .meditation-tab-button {
              border: 1px solid #b99a5a; border-radius: 999px; padding: 12px 22px;
              background: #fff; color: #173d2c; font: inherit; font-weight: 600; cursor: pointer;
              transition: background 0.2s ease, color 0.2s ease;
            }
            .fingerprint-tab-button[aria-selected="true"],
-           .manifestation-tab-button[aria-selected="true"] {
+           .manifestation-tab-button[aria-selected="true"],
+           .meditation-tab-button[aria-selected="true"] {
              background: #173d2c; border-color: #173d2c; color: #fff;
            }
            .fingerprint-tab-button:focus-visible,
-           .manifestation-tab-button:focus-visible { outline: 3px solid #d7b66e; outline-offset: 3px; }
+           .manifestation-tab-button:focus-visible,
+           .meditation-tab-button:focus-visible { outline: 3px solid #d7b66e; outline-offset: 3px; }
            .fingerprint-tab-panel,
-           .manifestation-tab-panel {
+           .manifestation-tab-panel,
+           .meditation-tab-panel {
              min-height: 190px; padding: 30px clamp(20px, 4vw, 42px);
              border: 1px solid rgba(185, 154, 90, 0.45); border-radius: 20px;
              background: #fff; box-shadow: 0 12px 30px rgba(23, 61, 44, 0.07);
            }
            .fingerprint-tab-panel h3,
-           .manifestation-tab-panel h3 {
+           .manifestation-tab-panel h3,
+           .meditation-tab-panel h3 {
              margin: 0 0 12px; color: #173d2c; font-family: Georgia, "Times New Roman", serif; font-size: 25px;
            }
            .fingerprint-tab-panel p,
-           .manifestation-tab-panel p { margin: 0 0 12px; color: #46564b; line-height: 1.75; }
+           .manifestation-tab-panel p,
+           .meditation-tab-panel p { margin: 0 0 12px; color: #46564b; line-height: 1.75; }
            .fingerprint-tab-panel p:last-child,
-           .manifestation-tab-panel p:last-child { margin-bottom: 0; }
+           .manifestation-tab-panel p:last-child,
+           .meditation-tab-panel p:last-child { margin-bottom: 0; }
            @media (max-width: 600px) {
              .fingerprint-tabs-section,
-             .manifestation-tabs-section { padding: 46px 5%; }
+             .manifestation-tabs-section,
+             .meditation-tabs-section { padding: 46px 5%; }
              .fingerprint-tab-list,
-             .manifestation-tab-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+             .manifestation-tab-list,
+             .meditation-tab-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
              .fingerprint-tab-button,
-             .manifestation-tab-button { padding: 11px 8px; font-size: 14px; }
+             .manifestation-tab-button,
+             .meditation-tab-button { padding: 11px 8px; font-size: 14px; }
              .fingerprint-tab-panel,
-             .manifestation-tab-panel { min-height: 0; padding: 24px 20px; }
+             .manifestation-tab-panel,
+             .meditation-tab-panel { min-height: 0; padding: 24px 20px; }
            }
 
            .service-page .service-page-hero {
@@ -556,6 +591,15 @@ const ServicePage: React.FC<ServicePageProps> = ({
             loading="eager"
           />
         </section>
+      ) : isMeditation ? (
+        <section className="meditation-service-hero">
+          <img
+            src="/ssf-meditation-hero.webp"
+            alt="Meditation at Science & Spirituality Foundation"
+            className="meditation-service-image"
+            loading="eager"
+          />
+        </section>
       ) : isFingerprint ? (
         <section className="fingerprint-service-hero">
           <img
@@ -627,6 +671,60 @@ const ServicePage: React.FC<ServicePageProps> = ({
                     <h3>A Simple Daily Practice</h3>
                     <p>Write one meaningful intention in your diary. Describe why it matters, visualise the next realistic step and identify one action you can take today.</p>
                     <p>At the end of the day, note what you did, what you learned and what you will adjust tomorrow. Keep your goals flexible and your actions practical.</p>
+                  </>
+                )}
+              </div>
+            </div>
+          </section>
+        )}
+
+        {isMeditation && (
+          <section className="meditation-tabs-section">
+            <div className="meditation-tabs-inner">
+              <h2 className="meditation-tabs-heading">Explore Meditation</h2>
+              <p className="meditation-tabs-intro">
+                Discover practical meditation approaches to develop present-moment awareness, focus and a calmer daily routine.
+              </p>
+              <div className="meditation-tab-list" role="tablist" aria-label="Meditation topics">
+                <button type="button" role="tab" id="meditation-tab-overview" aria-selected={activeMeditationTab === "overview"} aria-controls="meditation-tab-content" className="meditation-tab-button" onClick={() => setActiveMeditationTab("overview")}>Overview</button>
+                <button type="button" role="tab" id="meditation-tab-types" aria-selected={activeMeditationTab === "types"} aria-controls="meditation-tab-content" className="meditation-tab-button" onClick={() => setActiveMeditationTab("types")}>Types of Meditation</button>
+                <button type="button" role="tab" id="meditation-tab-techniques" aria-selected={activeMeditationTab === "techniques"} aria-controls="meditation-tab-content" className="meditation-tab-button" onClick={() => setActiveMeditationTab("techniques")}>Techniques</button>
+                <button type="button" role="tab" id="meditation-tab-benefits" aria-selected={activeMeditationTab === "benefits"} aria-controls="meditation-tab-content" className="meditation-tab-button" onClick={() => setActiveMeditationTab("benefits")}>Benefits</button>
+                <button type="button" role="tab" id="meditation-tab-practice" aria-selected={activeMeditationTab === "practice"} aria-controls="meditation-tab-content" className="meditation-tab-button" onClick={() => setActiveMeditationTab("practice")}>Practice Guide</button>
+              </div>
+              <div className="meditation-tab-panel" id="meditation-tab-content" role="tabpanel" aria-labelledby={`meditation-tab-${activeMeditationTab}`}>
+                {activeMeditationTab === "overview" && (
+                  <>
+                    <h3>What Is Meditation?</h3>
+                    <p>Meditation is a practice of training attention and awareness. It can involve observing the breath, noticing thoughts and sensations, repeating a mantra or cultivating kindness.</p>
+                    <p>The aim is not to force the mind to become blank, but to notice when attention wanders and gently bring it back to the chosen point of focus.</p>
+                  </>
+                )}
+                {activeMeditationTab === "types" && (
+                  <>
+                    <h3>Types of Meditation</h3>
+                    <p><strong>Mindfulness meditation:</strong> observing present-moment thoughts and sensations. <strong>Breath awareness:</strong> gently following the natural rhythm of breathing. <strong>Mantra meditation:</strong> returning attention to a repeated word or phrase.</p>
+                    <p><strong>Body scan:</strong> noticing sensations across the body. <strong>Loving-kindness meditation:</strong> cultivating kind and compassionate intentions towards yourself and others.</p>
+                  </>
+                )}
+                {activeMeditationTab === "techniques" && (
+                  <>
+                    <h3>Simple Meditation Techniques</h3>
+                    <p>Choose a quiet place and a comfortable, stable posture. Set a short timer, soften your gaze or close your eyes, and allow your breathing to remain natural.</p>
+                    <p>When you notice your attention wandering, acknowledge it without judgement and gently return to your breath, mantra or chosen focus.</p>
+                  </>
+                )}
+                {activeMeditationTab === "benefits" && (
+                  <>
+                    <h3>What Regular Practice May Support</h3>
+                    <p>For some people, regular meditation may support stress management, attention, self-awareness and emotional regulation. Experiences vary, and meditation is not a substitute for professional medical or mental-health care.</p>
+                  </>
+                )}
+                {activeMeditationTab === "practice" && (
+                  <>
+                    <h3>A Beginner's Practice Guide</h3>
+                    <p>Begin with five minutes. Sit comfortably, relax your shoulders and follow your natural breathing. There is no need to control or deepen each breath.</p>
+                    <p>Practise consistently at a time that suits you. Increase the duration gradually if comfortable, and choose a different meditation method if focusing on the breath feels uncomfortable.</p>
                   </>
                 )}
               </div>
@@ -812,7 +910,7 @@ const ServicePage: React.FC<ServicePageProps> = ({
             onClick={(event) => {
               event.preventDefault();
 
-              if (isReiki || isDowsing || isPLR || isFingerprint || isManifestation) {
+              if (isReiki || isDowsing || isPLR || isFingerprint || isManifestation || isMeditation) {
                 window.dispatchEvent(
                   new CustomEvent<string>("ssf-select-service", {
                     detail: isReiki
@@ -823,7 +921,9 @@ const ServicePage: React.FC<ServicePageProps> = ({
                       ? "Past Life Regression"
                       : isFingerprint
                       ? "Fingerprint Analysis"
-                      : "Manifestation",
+                      : isManifestation
+                      ? "Manifestation"
+                      : "Meditation",
                   })
                 );
               }
