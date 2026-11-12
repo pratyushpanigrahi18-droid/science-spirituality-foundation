@@ -1,6 +1,8 @@
+
 import React from "react";
 
 const WHATSAPP_NUMBER = "918328909832";
+const CONTACT_EMAIL = "contact@scienceandspiritualityfoundation.org";
 
 const Contact: React.FC = () => {
   const handleWhatsAppContact = (event: React.FormEvent<HTMLFormElement>) => {
@@ -72,14 +74,21 @@ Thank you.`;
               <span className="contact-arrow">→</span>
             </a>
 
-            <div className="contact-item">
+            <a
+              href={`mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(
+                "Enquiry - Science & Spirituality Foundation"
+              )}`}
+              className="contact-item contact-link"
+            >
               <span className="contact-icon">✉</span>
 
               <div>
                 <strong>Email</strong>
-                <p>Our email address will be added here</p>
+                <p>{CONTACT_EMAIL}</p>
               </div>
-            </div>
+
+              <span className="contact-arrow">→</span>
+            </a>
 
             <div className="contact-item">
               <span className="contact-icon">⌖</span>
