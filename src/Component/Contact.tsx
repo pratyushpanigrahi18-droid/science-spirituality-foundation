@@ -1,4 +1,3 @@
-
 import React from "react";
 
 const WHATSAPP_NUMBER = "918328909832";
@@ -75,9 +74,7 @@ Thank you.`;
             </a>
 
             <a
-              href={`mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(
-                "Enquiry - Science & Spirituality Foundation"
-              )}`}
+              href={`mailto:${CONTACT_EMAIL}`}
               className="contact-item contact-link"
             >
               <span className="contact-icon">✉</span>
@@ -114,6 +111,7 @@ Thank you.`;
 
             <p>
               Send us a message and continue the conversation through WhatsApp.
+              You can also email us directly at {CONTACT_EMAIL}.
             </p>
           </div>
 
@@ -161,6 +159,20 @@ Thank you.`;
               <span>◉</span>
               Send Enquiry on WhatsApp
             </button>
+
+            <a
+              href={`mailto:${CONTACT_EMAIL}`}
+              className="contact-button"
+              style={{
+                display: "block",
+                textAlign: "center",
+                textDecoration: "none",
+                marginTop: "12px",
+                boxSizing: "border-box",
+              }}
+            >
+              ✉ Email Science & Spirituality Foundation
+            </a>
 
             <p className="contact-form-note">
               We will get back to you with the relevant information and
