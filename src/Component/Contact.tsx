@@ -1,3 +1,4 @@
+
 import React from "react";
 
 const WHATSAPP_NUMBER = "918328909832";
@@ -164,11 +165,15 @@ Thank you.`;
               href={`mailto:${CONTACT_EMAIL}`}
               className="contact-button"
               style={{
-                display: "block",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
                 textAlign: "center",
                 textDecoration: "none",
                 marginTop: "12px",
                 boxSizing: "border-box",
+                minHeight: "52px",
+                lineHeight: "1.2",
               }}
             >
               ✉ Email Science & Spirituality Foundation
