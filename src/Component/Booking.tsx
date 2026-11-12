@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 
 const WHATSAPP_NUMBER = "918328909832";
+const CONTACT_EMAIL = "contact@scienceandspiritualityfoundation.org";
 
 const Booking: React.FC = () => {
   const [selectedSessionType, setSelectedSessionType] = useState("");
@@ -128,6 +129,50 @@ Thank you.`;
     )}`;
 
     window.open(whatsappUrl, "_blank");
+  };
+
+  const handleEmailBooking = () => {
+    const form = document.querySelector<HTMLFormElement>(".booking-form");
+
+    if (!form || !form.reportValidity()) {
+      return;
+    }
+
+    const name = (form.elements.namedItem("name") as HTMLInputElement).value.trim();
+    const email = (form.elements.namedItem("email") as HTMLInputElement).value.trim();
+    const phone = (form.elements.namedItem("phone") as HTMLInputElement).value.trim();
+    const service = (form.elements.namedItem("service") as HTMLSelectElement).value;
+    const sessionType = (form.elements.namedItem("sessionType") as HTMLSelectElement).value;
+    const message = (form.elements.namedItem("message") as HTMLTextAreaElement).value.trim();
+
+    const emailBody = `Hello Science & Spirituality Foundation,
+
+I would like to enquire about a session.
+
+Name: ${name}
+Email: ${email || "Not provided"}
+Phone / WhatsApp: ${phone}
+Service: ${service}
+Session Type: ${sessionType}
+${
+  service === "Past Life Regression" && selectedPLRConcerns.length > 0
+    ? `PLR areas to explore: ${selectedPLRConcerns.join(", ")}`
+    : ""
+}
+
+My requirements:
+${message || "I would like to discuss my requirements."}
+
+Please let me know the available timings and session details.
+
+Thank you.`;
+
+    const subject = `Session Enquiry - ${service}`;
+    const mailtoUrl = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(
+      subject
+    )}&body=${encodeURIComponent(emailBody)}`;
+
+    window.location.href = mailtoUrl;
   };
 
   return (
@@ -574,6 +619,24 @@ Thank you.`;
               >
                 <span className="button-icon">◉</span>
                 Enquire Through WhatsApp
+              </button>
+
+              <button
+                type="button"
+                className="booking-button email-booking-button"
+                onClick={handleEmailBooking}
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  width: "100%",
+                  marginTop: "12px",
+                  textAlign: "center",
+                  minHeight: "52px",
+                }}
+              >
+                <span className="button-icon">✉</span>
+                Email Science & Spirituality Foundation
               </button>
             </div>
 
