@@ -8,24 +8,20 @@ interface ServicePageProps {
 }
 
 const reikiConcerns = [
-  "Stress & Anxiety",
-  "Headaches & Migraines",
-  "Quick Pain Relief",
-  "Neck & Back Pain",
-  "Joint Pain",
-  "Digestive Problems",
-  "Fatigue & Low Energy",
-  "Emotional Stress",
-  "Wellness Assessment",
-  "Distance Healing",
-  "Relationship & Emotional Wellbeing",
-  "Grief & Emotional Healing",
-  "Chakra Cleaning",
-  "Women's Wellness",
-  "Chronic Pain & General Discomfort",
-  "Relaxation & Inner Peace",
-  "Personal Growth & Self-Discovery",
-  "Any Other Problem",
+  { name: "Headaches & Migraines", icon: "◉" },
+  { name: "Quick Pain Relief", icon: "✦" },
+  { name: "Neck & Back Pain", icon: "♧" },
+  { name: "Joint Pain", icon: "◎" },
+  { name: "Digestive Problems", icon: "❋" },
+  { name: "Fatigue & Low Energy", icon: "☀" },
+  { name: "Wellness Assessment", icon: "♡" },
+  { name: "Chakra Cleaning", icon: "✺" },
+  { name: "Chronic Pain & General Discomfort", icon: "✧" },
+  { name: "Women's Wellness", icon: "❀" },
+  { name: "Complex Health Conditions", icon: "✚" },
+  { name: "Distance Healing", icon: "◈" },
+  { name: "Psychic Surgery & Spiritual Protection from Negative Energies", icon: "◇" },
+  { name: "Any Other", icon: "+" },
 ];
 
 const dowsingAreas = [
@@ -458,7 +454,46 @@ const ServicePage: React.FC<ServicePageProps> = ({
             line-height: 1.45;
           }
 
-          /* Centre the seventh Dowsing card on desktop */
+                     /* Reiki-only compact icon cards; other services remain unchanged */
+           .reiki-concerns-grid {
+             grid-template-columns: repeat(3, minmax(0, 1fr));
+             gap: 16px;
+           }
+           .reiki-concern-card {
+             min-height: 112px;
+             padding: 18px 16px;
+             flex-direction: column;
+             gap: 10px;
+             background: linear-gradient(145deg, #fffefa, #f3f7f0);
+             border: 1px solid rgba(40, 92, 63, 0.18);
+             box-shadow: 0 6px 18px rgba(20, 65, 42, 0.07);
+           }
+           .reiki-concern-card:hover {
+             border-color: #8ba88e;
+           }
+           .reiki-concern-icon {
+             display: flex;
+             align-items: center;
+             justify-content: center;
+             width: 38px;
+             height: 38px;
+             border-radius: 50%;
+             background: #e9f1e6;
+             color: #285b40;
+             font-size: 23px;
+             line-height: 1;
+             flex-shrink: 0;
+           }
+           .reiki-concern-name {
+             color: #214e36;
+             font-size: 1rem;
+           }
+           .reiki-concern-card:focus-visible {
+             outline: 3px solid #b99a5a;
+             outline-offset: 3px;
+           }
+
+/* Centre the seventh Dowsing card on desktop */
           @media (min-width: 901px) {
             .dowsing-areas-grid > .dowsing-area-card:nth-child(7) {
               grid-column: 2;
@@ -833,14 +868,15 @@ const ServicePage: React.FC<ServicePageProps> = ({
             <div className="reiki-concerns-grid">
               {reikiConcerns.map((concern) => (
                 <a
-                  key={concern}
+                  key={concern.name}
                   href="#booking"
                   className="reiki-concern-card"
                   onClick={(event) =>
                     handleConcernClick(event, "Reiki Healing")
                   }
                 >
-                  <div className="reiki-concern-name">{concern}</div>
+                  <span className="reiki-concern-icon" aria-hidden="true">{concern.icon}</span>
+                  <div className="reiki-concern-name">{concern.name}</div>
                 </a>
               ))}
             </div>
