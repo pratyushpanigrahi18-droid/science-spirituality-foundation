@@ -1,4 +1,3 @@
-
 import React from "react";
 
 interface ServiceCardProps {
@@ -7,44 +6,41 @@ interface ServiceCardProps {
   link: string;
 }
 
+// Add a photo here as each service image becomes available in public/.
+const servicePhotos: Record<string, string> = {
+  "past life regression": "/plr-service-card.webp",
+};
+
 const ServiceCard: React.FC<ServiceCardProps> = ({
   title,
   description,
   link,
 }) => {
-  const isPLR = title.toLowerCase().includes("past life regression");
+  const photo = servicePhotos[title.trim().toLowerCase()];
+
+  if (photo) {
+    return (
+      <article className="service-card photo-service-card">
+        <a
+          href={link}
+          className="photo-service-card-link"
+          aria-label={`Explore ${title}`}
+        >
+          <img
+            src={photo}
+            alt={`${title} at Science & Spirituality Foundation`}
+            className="photo-service-card-image"
+            loading="lazy"
+          />
+          <h3 className="photo-service-card-title">{title}</h3>
+        </a>
+      </article>
+    );
+  }
 
   return (
     <article className="service-card">
-      {isPLR ? (
-        <a
-          href={link}
-          className="service-card-icon"
-          aria-label="Explore Past Life Regression"
-          style={{
-            padding: 0,
-            overflow: "hidden",
-            display: "inline-flex",
-            alignItems: "center",
-            justifyContent: "center",
-            borderRadius: "50%",
-          }}
-        >
-          <img
-            src="/plr-service-card.webp"
-            alt="Past Life Regression"
-            style={{
-              display: "block",
-              width: "100%",
-              height: "100%",
-              objectFit: "cover",
-              borderRadius: "50%",
-            }}
-          />
-        </a>
-      ) : (
-        <div className="service-card-icon">✦</div>
-      )}
+      <div className="service-card-icon">✦</div>
 
       <h3>{title}</h3>
 
