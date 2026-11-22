@@ -14,17 +14,30 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
 }) => {
   const isPLR = title.toLowerCase().includes("past life regression");
 
+  if (isPLR) {
+    return (
+      <article className="service-card plr-full-card">
+        <a
+          href={link}
+          className="plr-full-card-link"
+          aria-label="Explore Past Life Regression"
+        >
+          <img
+            src="/plr-service-card.webp"
+            alt="Past Life Regression session at SSF"
+            className="plr-full-card-image"
+            loading="lazy"
+          />
+          <h3 className="plr-full-card-title">
+            Past Life Regression
+          </h3>
+        </a>
+      </article>
+    );
+  }
+
   return (
     <article className="service-card">
-      {isPLR && (
-        <img
-          src="/plr-service-card.webp"
-          alt="Past Life Regression session at SSF"
-          className="plr-service-card-photo"
-          loading="lazy"
-        />
-      )}
-
       <div className="service-card-icon">✦</div>
 
       <h3>{title}</h3>
