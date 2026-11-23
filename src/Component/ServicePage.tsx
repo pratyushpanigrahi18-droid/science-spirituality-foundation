@@ -111,27 +111,27 @@ const ServicePage: React.FC<ServicePageProps> = ({
         {`
 
           /* Reiki educational introduction only */
-          .service-page .reiki-intro { padding: 54px 5% 44px; background: #f8f7f1; color: #173d2c; }
-          .service-page .reiki-intro-inner { max-width: 1120px; margin: 0 auto; }
-          .service-page .reiki-intro-heading { text-align: center; max-width: 700px; margin: 0 auto 34px; }
-          .service-page .reiki-eyebrow { display: block; font-size: 11px; font-weight: 700; letter-spacing: 2px; color: #a17c3d; margin-bottom: 9px; }
+          .service-page .reiki-intro { padding: 62px 4% 52px; background: #f8f7f1; color: #173d2c; }
+          .service-page .reiki-intro-inner { max-width: 1440px; margin: 0 auto; }
+          .service-page .reiki-intro-heading { text-align: center; max-width: 1000px; margin: 0 auto 42px; }
+          .service-page .reiki-eyebrow { display: block; font-size: 13px; font-weight: 700; letter-spacing: 2px; color: #a17c3d; margin-bottom: 9px; }
           .service-page .reiki-intro h2, .service-page .reiki-intro h3, .service-page .reiki-intro h4 { font-family: Georgia, "Times New Roman", serif; color: #173d2c; line-height: 1.2; }
-          .service-page .reiki-intro h2 { font-size: clamp(29px, 4vw, 42px); margin: 0 0 12px; }
-          .service-page .reiki-intro h3 { font-size: clamp(23px, 2.8vw, 29px); margin: 0 0 12px; }
-          .service-page .reiki-intro h4 { font-size: 20px; margin: 0 0 9px; }
-          .service-page .reiki-intro p { color: #53645a; line-height: 1.7; font-size: 15px; margin: 0; }
-          .service-page .reiki-intro-overview { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; margin-bottom: 36px; }
-          .service-page .reiki-intro-overview > div { background: #fff; border: 1px solid #e7e4d9; border-radius: 17px; padding: 28px; }
-          .service-page .reiki-process-heading { text-align: center; margin-bottom: 20px; }
-          .service-page .reiki-process-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; margin-bottom: 30px; }
-          .service-page .reiki-step { background: #fff; border: 1px solid #e5e7dc; border-radius: 16px; padding: 22px 18px; }
-          .service-page .reiki-step > span { display: inline-flex; align-items: center; justify-content: center; width: 39px; height: 39px; border-radius: 50%; background: #eaf1e9; color: #23543b; font-size: 13px; font-weight: 700; margin-bottom: 14px; }
-          .service-page .reiki-distance-panel { display: flex; align-items: flex-start; gap: 23px; background: #edf2e9; border: 1px solid #d9e5d6; border-radius: 18px; padding: 28px 32px; margin-bottom: 30px; }
+          .service-page .reiki-intro h2 { font-size: clamp(34px, 4vw, 52px); margin: 0 0 12px; }
+          .service-page .reiki-intro h3 { font-size: clamp(27px, 2.8vw, 36px); margin: 0 0 12px; }
+          .service-page .reiki-intro h4 { font-size: 24px; margin: 0 0 9px; }
+          .service-page .reiki-intro p { color: #53645a; line-height: 1.75; font-size: 18px; margin: 0; }
+          .service-page .reiki-intro-overview { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; margin-bottom: 44px; }
+          .service-page .reiki-intro-overview > div { background: #fff; border: 1px solid #e7e4d9; border-radius: 19px; padding: 38px 42px; }
+          .service-page .reiki-process-heading { text-align: center; margin-bottom: 26px; }
+          .service-page .reiki-process-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; margin-bottom: 38px; }
+          .service-page .reiki-step { background: #fff; border: 1px solid #e5e7dc; border-radius: 18px; padding: 30px 26px; }
+          .service-page .reiki-step > span { display: inline-flex; align-items: center; justify-content: center; width: 45px; height: 45px; border-radius: 50%; background: #eaf1e9; color: #23543b; font-size: 16px; font-weight: 700; margin-bottom: 18px; }
+          .service-page .reiki-distance-panel { display: flex; align-items: flex-start; gap: 28px; background: #edf2e9; border: 1px solid #d9e5d6; border-radius: 20px; padding: 40px 46px; margin-bottom: 38px; }
           .service-page .reiki-distance-icon { display: flex; align-items: center; justify-content: center; flex: 0 0 52px; height: 52px; background: #fff; border-radius: 50%; font-size: 30px; color: #a17c3d; }
-          .service-page .reiki-intro-close { text-align: center; max-width: 740px; margin: 0 auto; }
-          .service-page .reiki-intro-close .reiki-intro-disclaimer { font-size: 12px; color: #758078; margin-top: 16px; }
-          @media (max-width: 800px) { .service-page .reiki-process-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-          @media (max-width: 600px) { .service-page .reiki-intro { padding: 42px 5% 36px; } .service-page .reiki-intro-overview { grid-template-columns: 1fr; gap: 12px; } .service-page .reiki-process-grid { gap: 10px; } .service-page .reiki-step { padding: 18px 14px; } .service-page .reiki-step h4 { font-size: 17px; } .service-page .reiki-step p { font-size: 13px; } .service-page .reiki-distance-panel { padding: 23px 20px; gap: 13px; } .service-page .reiki-distance-icon { flex-basis: 38px; height: 38px; font-size: 23px; } }
+          .service-page .reiki-intro-close { text-align: center; max-width: 1000px; margin: 0 auto; }
+          .service-page .reiki-intro-close .reiki-intro-disclaimer { font-size: 15px; color: #758078; margin-top: 16px; }
+          @media (max-width: 900px) { .service-page .reiki-process-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .service-page .reiki-intro-overview > div { padding: 28px; } }
+          @media (max-width: 600px) { .service-page .reiki-intro { padding: 42px 5% 36px; } .service-page .reiki-intro h2 { font-size: 34px; } .service-page .reiki-intro h3 { font-size: 27px; } .service-page .reiki-intro p { font-size: 17px; } .service-page .reiki-intro-overview { grid-template-columns: 1fr; gap: 14px; } .service-page .reiki-intro-overview > div { padding: 25px 22px; } .service-page .reiki-process-grid { grid-template-columns: 1fr; gap: 14px; } .service-page .reiki-step { padding: 24px 22px; } .service-page .reiki-step h4 { font-size: 23px; } .service-page .reiki-step p { font-size: 17px; } .service-page .reiki-distance-panel { padding: 25px 22px; gap: 14px; } .service-page .reiki-distance-icon { flex: 0 0 38px; height: 38px; font-size: 23px; } }
 
           .service-page .reiki-service-hero {
             position: relative;
