@@ -6,9 +6,10 @@ interface ServiceCardProps {
   link: string;
 }
 
-// Add a photo here as each service image becomes available in public/.
+// Photo assets in public/. Each listed service uses the same card style.
 const servicePhotos: Record<string, string> = {
   "past life regression": "/plr-service-card.webp",
+  "reiki healing": "/reiki-service-card-final.webp",
 };
 
 const ServiceCard: React.FC<ServiceCardProps> = ({
