@@ -21,6 +21,7 @@ const reikiConcerns = [
   { name: "Complex Health Conditions", icon: "✚" },
   { name: "Distance Healing", icon: "◈" },
   { name: "Psychic Surgery & Spiritual Protection from Negative Energies", icon: "◇" },
+  { name: "Internal Organ Wellness & Support", icon: "♡" },
   { name: "Any Other", icon: "+" },
 ];
 
@@ -588,7 +589,7 @@ const ServicePage: React.FC<ServicePageProps> = ({
       {isReiki ? (
         <section className="reiki-service-hero">
           <img
-          src="/reiki-hero-final.webp"
+            src="/reiki-hero-final.webp"
             alt="Reiki Healing"
             className="reiki-service-image"
           />
@@ -812,7 +813,34 @@ const ServicePage: React.FC<ServicePageProps> = ({
           </section>
         )}
 
-        {sections.map((section, index) => (
+
+        {isReiki && (
+          <section className="service-page-section" aria-label="About Reiki Healing">
+            <h2>Reiki Healing</h2>
+            <p><em>Relax · Rebalance · Reconnect</em></p>
+
+            <h2>What Is Reiki?</h2>
+            <p>Reiki is a Japanese complementary wellbeing practice associated with relaxation, inner balance and spiritual awareness. Traditionally, Reiki means universal life energy. During a session, the practitioner holds their hands lightly on or just above the body, according to your comfort and consent.</p>
+
+            <h2>Where Did Reiki Begin?</h2>
+            <p>Modern Reiki developed in Japan in the early 20th century through the teachings of Mikao Usui. Today, it is practised around the world for relaxation and personal wellbeing.</p>
+
+            <h2>How Does a Reiki Session Work?</h2>
+            <p><strong>1. Consultation:</strong> We listen to your concerns and explain the session.</p>
+            <p><strong>2. Preparation:</strong> You sit or lie comfortably, fully clothed.</p>
+            <p><strong>3. Reiki Practice:</strong> The practitioner gently positions their hands on or above the body, with your consent.</p>
+            <p><strong>4. Completion:</strong> We discuss your experience and answer your questions.</p>
+
+            <h2>Distance Reiki Healing</h2>
+            <p>Distance Reiki is a traditional spiritual practice conducted remotely. After a brief discussion, you relax at home at the agreed time while the practitioner carries out the practice, followed by a short check-in.</p>
+
+            <h2>Begin Your Reiki Journey</h2>
+            <p>Whether you are curious about Reiki or looking for a peaceful wellbeing practice, you are welcome to book a consultation. More detailed information will be provided when you proceed.</p>
+            <p><small>Reiki is complementary wellbeing support, not a substitute for medical diagnosis or treatment. Its proposed energy-transfer mechanism has not been scientifically established.</small></p>
+          </section>
+        )}
+
+        {!isReiki && sections.map((section, index) => (
           <section className="service-page-section" key={index}>
             {section.title && <h2>{section.title}</h2>}
             {section.heading && <h2>{section.heading}</h2>}
