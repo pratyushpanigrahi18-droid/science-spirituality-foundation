@@ -109,6 +109,30 @@ const ServicePage: React.FC<ServicePageProps> = ({
     <main className="service-page">
       <style>
         {`
+
+          /* Reiki educational introduction only */
+          .service-page .reiki-intro { padding: 54px 5% 44px; background: #f8f7f1; color: #173d2c; }
+          .service-page .reiki-intro-inner { max-width: 1120px; margin: 0 auto; }
+          .service-page .reiki-intro-heading { text-align: center; max-width: 700px; margin: 0 auto 34px; }
+          .service-page .reiki-eyebrow { display: block; font-size: 11px; font-weight: 700; letter-spacing: 2px; color: #a17c3d; margin-bottom: 9px; }
+          .service-page .reiki-intro h2, .service-page .reiki-intro h3, .service-page .reiki-intro h4 { font-family: Georgia, "Times New Roman", serif; color: #173d2c; line-height: 1.2; }
+          .service-page .reiki-intro h2 { font-size: clamp(29px, 4vw, 42px); margin: 0 0 12px; }
+          .service-page .reiki-intro h3 { font-size: clamp(23px, 2.8vw, 29px); margin: 0 0 12px; }
+          .service-page .reiki-intro h4 { font-size: 20px; margin: 0 0 9px; }
+          .service-page .reiki-intro p { color: #53645a; line-height: 1.7; font-size: 15px; margin: 0; }
+          .service-page .reiki-intro-overview { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; margin-bottom: 36px; }
+          .service-page .reiki-intro-overview > div { background: #fff; border: 1px solid #e7e4d9; border-radius: 17px; padding: 28px; }
+          .service-page .reiki-process-heading { text-align: center; margin-bottom: 20px; }
+          .service-page .reiki-process-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; margin-bottom: 30px; }
+          .service-page .reiki-step { background: #fff; border: 1px solid #e5e7dc; border-radius: 16px; padding: 22px 18px; }
+          .service-page .reiki-step > span { display: inline-flex; align-items: center; justify-content: center; width: 39px; height: 39px; border-radius: 50%; background: #eaf1e9; color: #23543b; font-size: 13px; font-weight: 700; margin-bottom: 14px; }
+          .service-page .reiki-distance-panel { display: flex; align-items: flex-start; gap: 23px; background: #edf2e9; border: 1px solid #d9e5d6; border-radius: 18px; padding: 28px 32px; margin-bottom: 30px; }
+          .service-page .reiki-distance-icon { display: flex; align-items: center; justify-content: center; flex: 0 0 52px; height: 52px; background: #fff; border-radius: 50%; font-size: 30px; color: #a17c3d; }
+          .service-page .reiki-intro-close { text-align: center; max-width: 740px; margin: 0 auto; }
+          .service-page .reiki-intro-close .reiki-intro-disclaimer { font-size: 12px; color: #758078; margin-top: 16px; }
+          @media (max-width: 800px) { .service-page .reiki-process-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+          @media (max-width: 600px) { .service-page .reiki-intro { padding: 42px 5% 36px; } .service-page .reiki-intro-overview { grid-template-columns: 1fr; gap: 12px; } .service-page .reiki-process-grid { gap: 10px; } .service-page .reiki-step { padding: 18px 14px; } .service-page .reiki-step h4 { font-size: 17px; } .service-page .reiki-step p { font-size: 13px; } .service-page .reiki-distance-panel { padding: 23px 20px; gap: 13px; } .service-page .reiki-distance-icon { flex-basis: 38px; height: 38px; font-size: 23px; } }
+
           .service-page .reiki-service-hero {
             position: relative;
             width: 100%;
@@ -815,28 +839,49 @@ const ServicePage: React.FC<ServicePageProps> = ({
 
 
         {isReiki && (
-          <section className="service-page-section" aria-label="About Reiki Healing">
-            <h2>Reiki Healing</h2>
-            <p><em>Relax · Rebalance · Reconnect</em></p>
+          <section className="reiki-intro" aria-label="Understanding Reiki">
+            <div className="reiki-intro-inner">
+              <div className="reiki-intro-heading">
+                <span className="reiki-eyebrow">UNDERSTANDING REIKI</span>
+                <h2>A Gentle Approach to Inner Balance</h2>
+                <p>Discover the tradition, understand the experience, and choose the session that feels right for you.</p>
+              </div>
 
-            <h2>What Is Reiki?</h2>
-            <p>Reiki is a Japanese complementary wellbeing practice associated with relaxation, inner balance and spiritual awareness. Traditionally, Reiki means universal life energy. During a session, the practitioner holds their hands lightly on or just above the body, according to your comfort and consent.</p>
+              <div className="reiki-intro-overview">
+                <div>
+                  <span className="reiki-eyebrow">THE PRACTICE</span>
+                  <h3>What Is Reiki?</h3>
+                  <p>Reiki is a Japanese complementary wellbeing practice associated with relaxation, inner balance and spiritual awareness. In traditional teachings, Reiki refers to universal life energy.</p>
+                </div>
+                <div>
+                  <span className="reiki-eyebrow">ITS ORIGIN</span>
+                  <h3>Where Did It Begin?</h3>
+                  <p>Modern Reiki developed in Japan in the early 20th century through the teachings of Mikao Usui. It is now practised worldwide.</p>
+                </div>
+              </div>
 
-            <h2>Where Did Reiki Begin?</h2>
-            <p>Modern Reiki developed in Japan in the early 20th century through the teachings of Mikao Usui. Today, it is practised around the world for relaxation and personal wellbeing.</p>
+              <div className="reiki-process-heading">
+                <span className="reiki-eyebrow">YOUR EXPERIENCE</span>
+                <h3>How a Reiki Session Works</h3>
+              </div>
+              <div className="reiki-process-grid">
+                <div className="reiki-step"><span>01</span><h4>Consultation</h4><p>We listen to your concerns and explain what to expect.</p></div>
+                <div className="reiki-step"><span>02</span><h4>Preparation</h4><p>Relax comfortably, fully clothed, in a calm setting.</p></div>
+                <div className="reiki-step"><span>03</span><h4>Reiki Practice</h4><p>Hands are placed lightly on or above the body, with your consent.</p></div>
+                <div className="reiki-step"><span>04</span><h4>Reflection</h4><p>We discuss your experience and answer questions.</p></div>
+              </div>
 
-            <h2>How Does a Reiki Session Work?</h2>
-            <p><strong>1. Consultation:</strong> We listen to your concerns and explain the session.</p>
-            <p><strong>2. Preparation:</strong> You sit or lie comfortably, fully clothed.</p>
-            <p><strong>3. Reiki Practice:</strong> The practitioner gently positions their hands on or above the body, with your consent.</p>
-            <p><strong>4. Completion:</strong> We discuss your experience and answer your questions.</p>
+              <div className="reiki-distance-panel">
+                <div className="reiki-distance-icon" aria-hidden="true">✧</div>
+                <div><span className="reiki-eyebrow">FROM WHEREVER YOU ARE</span><h3>Distance Reiki Healing</h3><p>Distance Reiki is a traditional spiritual practice conducted remotely. After a brief consultation, you relax at home at an agreed time while the practitioner carries out the practice, followed by a short check-in.</p></div>
+              </div>
 
-            <h2>Distance Reiki Healing</h2>
-            <p>Distance Reiki is a traditional spiritual practice conducted remotely. After a brief discussion, you relax at home at the agreed time while the practitioner carries out the practice, followed by a short check-in.</p>
-
-            <h2>Begin Your Reiki Journey</h2>
-            <p>Whether you are curious about Reiki or looking for a peaceful wellbeing practice, you are welcome to book a consultation. More detailed information will be provided when you proceed.</p>
-            <p><small>Reiki is complementary wellbeing support, not a substitute for medical diagnosis or treatment. Its proposed energy-transfer mechanism has not been scientifically established.</small></p>
+              <div className="reiki-intro-close">
+                <h3>Begin Your Reiki Journey</h3>
+                <p>Explore Reiki for relaxation and personal wellbeing. More detailed guidance is shared when you proceed with a consultation.</p>
+                <p className="reiki-intro-disclaimer">Reiki is complementary wellbeing support, not a substitute for medical diagnosis or treatment.</p>
+              </div>
+            </div>
           </section>
         )}
 
