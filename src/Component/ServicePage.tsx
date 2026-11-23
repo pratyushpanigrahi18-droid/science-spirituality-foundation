@@ -588,7 +588,7 @@ const ServicePage: React.FC<ServicePageProps> = ({
       {isReiki ? (
         <section className="reiki-service-hero">
           <img
-            src="/reiki-healing.png"
+          src="/reiki-hero-final.webp"
             alt="Reiki Healing"
             className="reiki-service-image"
           />
