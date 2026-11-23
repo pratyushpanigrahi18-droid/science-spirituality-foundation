@@ -451,8 +451,8 @@ const About: React.FC = () => {
               <p className="section-tag">MESSAGE FROM THE FOUNDER</p>
 
               <h2>
-                Explore. Question.
-                <span> Experience. Grow.</span>
+                A Better Understanding
+                <span> of Life</span>
               </h2>
             </div>
 
@@ -497,9 +497,11 @@ const About: React.FC = () => {
               </p>
 
               <p>
-                I invite you to stay curious. Ask questions. Explore different
-                perspectives. Experience for yourself. And most importantly,
-                continue growing.
+                I invite you to stay curious, ask meaningful questions, explore
+                different perspectives and learn through your own experiences.
+                Because every question we ask, every experience we reflect upon,
+                and every discovery we make brings us closer to a better
+                understanding of ourselves and of life.
               </p>
 
               <p className="founder-signature">
