@@ -1,13 +1,23 @@
-
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 const navigateTo = (path: string) => {
-  window.history.pushState({}, "", path);
+  if (window.location.pathname + window.location.search + window.location.hash !== path) {
+    window.history.pushState({}, "", path);
+  }
   window.dispatchEvent(new PopStateEvent("popstate"));
 };
 
 const Navbar: React.FC = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const pendingScroll = useRef<number | null>(null);
+
+  useEffect(() => {
+    return () => {
+      if (pendingScroll.current !== null) {
+        window.cancelAnimationFrame(pendingScroll.current);
+      }
+    };
+  }, []);
 
   const handleNavigation = (
     event: React.MouseEvent<HTMLAnchorElement>,
@@ -16,30 +26,44 @@ const Navbar: React.FC = () => {
     event.preventDefault();
     setMenuOpen(false);
 
-    navigateTo(path);
+    if (pendingScroll.current !== null) {
+      window.cancelAnimationFrame(pendingScroll.current);
+      pendingScroll.current = null;
+    }
 
     const hashIndex = path.indexOf("#");
-    if (hashIndex !== -1) {
-      const hash = path.substring(hashIndex);
+    const hash = hashIndex !== -1 ? path.slice(hashIndex + 1) : "";
 
-      setTimeout(() => {
-        const element = document.querySelector(hash);
+    navigateTo(path);
 
-        if (element) {
-          element.scrollIntoView({
-            behavior: "smooth",
-            block: "start",
-          });
-        }
-      }, 100);
-    } else {
-      setTimeout(() => {
-        window.scrollTo({
-          top: 0,
-          behavior: "smooth",
-        });
-      }, 100);
+    if (!hash) {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      return;
     }
+
+    // When moving from a service page to the homepage, React may need time
+    // to render the target section. Check until it exists rather than using
+    // a single 100ms timeout that sometimes misses it.
+    const startedAt = performance.now();
+    const scrollWhenReady = () => {
+      const element = document.getElementById(decodeURIComponent(hash));
+      if (element) {
+        const navbar = document.querySelector<HTMLElement>(".navbar");
+        const offset = navbar ? navbar.getBoundingClientRect().height + 12 : 12;
+        const top = Math.max(0, element.getBoundingClientRect().top + window.scrollY - offset);
+        window.scrollTo({ top, behavior: "smooth" });
+        pendingScroll.current = null;
+      } else if (performance.now() - startedAt < 2500) {
+        pendingScroll.current = window.requestAnimationFrame(scrollWhenReady);
+      } else {
+        pendingScroll.current = null;
+        // Keep the URL hash intact so the visitor can retry if the section
+        // is unavailable; never silently scroll to an unrelated section.
+      }
+    };
+
+    // Give React a frame to respond to route changes. Same-page links work too.
+    pendingScroll.current = window.requestAnimationFrame(scrollWhenReady);
   };
 
   return (
