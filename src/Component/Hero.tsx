@@ -134,7 +134,7 @@ const Hero: React.FC = () => {
       <section id="home" className="ssf-full-hero">
         <div className="ssf-full-hero-banner">
           <img
-            src="/ssf-banner.png"
+           src="/ssf-landing-hero-final.webp"
             alt="Science & Spirituality Foundation"
           />
         </div>
