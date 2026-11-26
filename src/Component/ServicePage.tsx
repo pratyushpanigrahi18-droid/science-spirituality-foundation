@@ -36,21 +36,34 @@ const dowsingAreas = [
 ];
 
 const plrConcerns = [
-  "Repeating Problems in Life",
-  "Relationship Difficulties",
-  "Recurring Physical Pain or Discomfort",
-  "Mental and Emotional Disturbances",
-  "Fears and Phobias",
-  "Anxiety and Insecurity",
-  "Emotional Triggers",
-  "Feeling Stuck in Life",
-  "Attachment and Difficulty Letting Go",
-  "Self-Worth and Confidence",
-  "Unexplained Connections or Familiarity",
-  "Recurring Dreams or Inner Imagery",
-  "Childhood or Early-Life Experiences",
-  "Spiritual Exploration and Curiosity",
-  "Other Personal Concern",
+  { name: "Repeating Problems in Life", icon: "↻" },
+  { name: "Relationship Difficulties", icon: "♡" },
+  { name: "Recurring Physical Pain or Discomfort", icon: "✚" },
+  { name: "Mental and Emotional Disturbances", icon: "☁" },
+  { name: "Fears and Phobias", icon: "◈" },
+  { name: "Anxiety and Insecurity", icon: "◉" },
+  { name: "Emotional Triggers", icon: "⚡" },
+  { name: "Feeling Stuck in Life", icon: "⌛" },
+  { name: "Attachment and Difficulty Letting Go", icon: "∞" },
+  { name: "Self-Worth and Confidence", icon: "✦" },
+  { name: "Unexplained Connections or Familiarity", icon: "◇" },
+  { name: "Recurring Dreams or Inner Imagery", icon: "☾" },
+  { name: "Childhood or Early-Life Experiences", icon: "❀" },
+  { name: "Spiritual Exploration and Curiosity", icon: "☀" },
+  { name: "Addressing trauma and PTSD from past and present lives.", icon: "✧" },
+  { name: "Overcoming self-sabotaging behaviors.", icon: "↺" },
+  { name: "Enhancing creativity and accessing past life talents.", icon: "✿" },
+  { name: "Clearing ancestral karma and inherited family trauma.", icon: "♧" },
+  { name: "Releasing vows, contracts, and karmic debts.", icon: "∞" },
+  { name: "Gaining clarity on life purpose and mission.", icon: "✥" },
+  { name: "Breaking financial blockages related to past vows.", icon: "₹" },
+  { name: "Healing grief and unresolved emotions after losing a loved one.", icon: "♡" },
+  { name: "Releasing deep-seated anger and resentment.", icon: "♨" },
+  { name: "Improving sleep disorders linked to past traumas.", icon: "☾" },
+  { name: "Uncovering the origins of addictive behaviors.", icon: "↻" },
+  { name: "Understanding and resolving gender identity struggles.", icon: "◎" },
+  { name: "Strengthening self-love and acceptance.", icon: "♥" },
+  { name: "Other Personal Concern", icon: "+" },
 ];
 
 const ServicePage: React.FC<ServicePageProps> = ({
@@ -607,6 +620,14 @@ const ServicePage: React.FC<ServicePageProps> = ({
               font-size: 1.05rem;
             }
           }
+
+          /* PLR-only wider icon cards */
+          .service-page .plr-concerns-grid { max-width: 1440px; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+          .service-page .plr-concern-card { min-width: 0; min-height: 140px; flex-direction: column; gap: 12px; padding: 24px; background: linear-gradient(145deg, #fffefa, #f3f7f0); border: 1px solid rgba(40,92,63,.18); }
+          .service-page .plr-concern-icon { display: flex; align-items: center; justify-content: center; width: 48px; height: 48px; border-radius: 50%; background: #e9f1e6; color: #285b40; font-size: 26px; flex-shrink: 0; }
+          .service-page .plr-concern-name { color: #214e36; font-size: 1.12rem; overflow-wrap: anywhere; }
+          .service-page .plr-concern-card:focus-visible { outline: 3px solid #b99a5a; outline-offset: 3px; }
+          @media (max-width: 600px) { .service-page .plr-concerns-grid { grid-template-columns: 1fr; gap: 16px; } }
         `}
       </style>
 
@@ -998,14 +1019,15 @@ const ServicePage: React.FC<ServicePageProps> = ({
             <div className="plr-concerns-grid">
               {plrConcerns.map((concern) => (
                 <a
-                  key={concern}
+                  key={concern.name}
                   href="#booking"
                   className="plr-concern-card"
                   onClick={(event) =>
                     handleConcernClick(event, "Past Life Regression")
                   }
                 >
-                  <div className="plr-concern-name">{concern}</div>
+                  <span className="plr-concern-icon" aria-hidden="true">{concern.icon}</span>
+                  <div className="plr-concern-name">{concern.name}</div>
                 </a>
               ))}
             </div>
